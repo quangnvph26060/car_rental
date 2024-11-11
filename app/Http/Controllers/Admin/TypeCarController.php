@@ -21,8 +21,8 @@ class TypeCarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:6',
-            'title' => 'nullable|min:6',
+            'name' => 'required|min:6|unique:types,name',
+            'title' => 'nullable|min:6|unique:types,title',
             'short_description' => 'required|min:6',
             'described_above' => 'nullable|min:50',
             'described_below' => 'nullable|min:100'
@@ -47,7 +47,7 @@ class TypeCarController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'name' => 'required|min:6',
+            'name' => 'required|min:6|unique:types,name,' . $id,
             'title' => 'nullable|min:6',
             'short_description' => 'required|min:6',
             'described_above' => 'nullable|min:50',
@@ -69,15 +69,15 @@ class TypeCarController extends Controller
     {
         $type = Type::find($id);
         if (!$type) {
-            return response(['status', 'error', 'message' => 'Không tìm thấy dữ liệu này']);
+            return response(['status' => 'error', 'message' => 'Không tìm thấy dữ liệu này']);
         }
         if ($type->brands->count() > 0) {
-            return response(['status', 'error', 'message' => 'Không thể xóa thể loại này vì nó liên quan đến các hãng xe khác , bạn cần xóa các hãng xe liên quan đến loại này']);
+            return response(['status' => 'error', 'message' => 'Không thể xóa thể loại này vì nó liên quan đến các hãng xe khác , bạn cần xóa các hãng xe liên quan đến loại này']);
         }
         if ($type->cars->count() > 0) {
-            return response(['status', 'error', 'message' => 'Không thể xóa thể loại này vì nó liên quan đến các xe khác , bạn cần xóa các xe liên quan đến loại này']);
+            return response(['status' =>  'error', 'message' => 'Không thể xóa thể loại này vì nó liên quan đến các xe khác , bạn cần xóa các xe liên quan đến loại này']);
         }
         $type->delete();
-        return response(['status' => 'success', 'Xóa thành công']);
+        return response(['status' => 'success', 'message' => 'Xóa thành công']);
     }
 }
