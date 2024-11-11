@@ -13,6 +13,6 @@ $objs = [
 ];
 
 Route::name('admin.')->group(function () use ($objs) {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resources($objs);
 });
