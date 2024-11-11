@@ -26,12 +26,12 @@
                     <div class="card-header">
                         <div class="card-title">Cập nhật loại xe</div>
                     </div>
-                    <form action="{{ route('admin.type-car.update', $type->id) }}" method="post" autocomplete="off">
+                    <form action="{{ route('admin.type-car.update', $type->id) }}" method="post" autocomplete="off" enctype="multipart/form-data"> 
                         @csrf
                         @method('PUT')
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12 col-lg-6">
+                                <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="">Tên loại xe <code>*</code></label>
                                         <input type="text" class="form-control" name="name"
@@ -42,13 +42,22 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-6">
+                                <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="">Tiêu đề giới thiệu <code>(Không bắt buộc)</code></label>
                                         <input type="text" class="form-control" name="title"
                                             value="{{ $type->title }}" id="title"
                                             placeholder="Nhập tiêu đề giới thiệu loại xe" />
                                         @error('title')
+                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="">Ảnh <code>(Tối đa 2 ảnh)</code></label>
+                                        <input type="file" class="form-control" name="images[]" multiple />
+                                        @error('images')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
