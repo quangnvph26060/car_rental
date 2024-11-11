@@ -41,6 +41,12 @@
                         <p>Hãng xe</p>
                     </a>
                 </li>
+                <li class="nav-item {{ isActiveRoute('admin.car.index') }}">
+                    <a href="{{ route('admin.car.index') }}">
+                        <i class="fa-solid fa-car"></i>
+                        <p>Xe</p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>

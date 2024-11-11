@@ -1,39 +1,39 @@
     <!--   Core JS Files   -->
-    <script src="{{ asset('admin/assets/js/core/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/core/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/core/bootstrap.min.js') }}"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="{{ asset('admin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
     <!-- Chart JS -->
-    <script src="{{ asset('admin/assets/js/plugin/chart.js/chart.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/chart.js/chart.min.js') }}"></script>
 
     <!-- jQuery Sparkline -->
-    <script src="{{ asset('admin/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
 
     <!-- Chart Circle -->
-    <script src="{{ asset('admin/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
 
     <!-- Datatables -->
-    <script src="{{ asset('admin/assets/js/plugin/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{ asset('admin/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
     <!-- jQuery Vector Maps -->
-    <script src="{{ asset('admin/assets/js/plugin/jsvectormap/jsvectormap.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/plugin/jsvectormap/world.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/jsvectormap/jsvectormap.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/jsvectormap/world.js') }}"></script>
 
     <!-- Sweet Alert -->
-    <script src="{{ asset('admin/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
     <!-- Kaiadmin JS -->
-    <script src="{{ asset('admin/assets/js/kaiadmin.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/kaiadmin.min.js') }}"></script>
 
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('admin/assets/js/setting-demo.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/demo.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/setting-demo.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/demo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
     <script>
@@ -199,5 +199,14 @@
             });
 
         });
+    </script>
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
     </script>
     @stack('scripts')
