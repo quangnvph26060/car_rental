@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'slug', 'title', 'short_description', 'described_above', 'described_below'];
+    protected $fillable = ['name', 'slug', 'title', 'short_description', 'described_above', 'described_below', 'images'];
     public function cars()
     {
         return $this->belongsToMany(Car::class, 'car_type');
@@ -18,4 +18,5 @@ class Type extends Model
     {
         return $this->hasMany(Brand::class);
     }
+    protected $casts = ['images' => 'array'];
 }
