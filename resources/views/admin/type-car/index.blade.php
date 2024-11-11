@@ -23,27 +23,39 @@
                                     <tr>
                                         <th>Tên loại</th>
                                         <th>Tiêu đề giới thiệu</th>
-                                        <th>Mô tả ngắn</th> 
+                                        <th>Mô tả ngắn</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>Tên loại</th>
                                         <th>Tiêu đề giới thiệu</th>
-                                        <th>Mô tả ngắn</th> 
+                                        <th>Mô tả ngắn</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                   @foreach ($types as $item)
-                                   <tr>
-                                    <td>Donna Snider</td>
-                                    <td>Customer Support</td>
-                                    <td>New York</td>
-                                    <td>27</td>
-                                    <td>2011/01/25</td>
-                                    <td>$112,000</td>
-                                </tr>
-                                   @endforeach
+                                    @foreach ($types as $typeCar)
+                                        <tr>
+                                            <td>{{ $typeCar->name }}</td>
+                                            <td>{{ $typeCar->title }}</td>
+                                            <td>{{ \Str::limit(strip_tags(html_entity_decode($typeCar->short_description)), 100) }}
+                                            </td>
+
+                                            <td>
+
+                                                <div class="d-flex">
+                                                    <a href="{{ route('admin.type-car.edit', $typeCar->id) }}"
+                                                        class=" m-1 d-block btn btn-primary"><i
+                                                            class="fa-solid fa-pen-to-square"></i></a>
+
+
+                                                    <a href="{{ route('admin.type-car.destroy', $typeCar->id) }}"
+                                                        class=" m-1 d-block btn btn-danger delete-item"><i
+                                                            class="fa-solid fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -51,7 +63,7 @@
                 </div>
             </div>
 
-          
+
         </div>
     </div>
 @endsection

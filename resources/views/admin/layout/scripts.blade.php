@@ -109,6 +109,50 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            $('body').on('click',
+                '.delete-item',
+                function(event) {
+                    event.preventDefault();
+                    let deleteUrl = $(this).attr('href');
+                    Swal.fire({
+                        title: 'Bạn chắc chứ ?',
+                        text: "Bạn sẽ không thể hoàn tác điều này!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Đúng rồi, xóa nó đi!',
+                        cancelButtonText: 'Hủy'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                type: 'DELETE',
+                                url: deleteUrl,
+                                success: function(data) {
+                                    if (data.status == 'success') {
+                                        Swal.fire(
+                                            'Đã xóa',
+                                            data.message,
+                                            'success'
+                                        )
+                                        window.location.reload();
+                                    } else if (data.status == 'error') {
+                                        Swal.fire(
+                                            'Không thể xóa',
+                                            data.message,
+                                            'error'
+                                        )
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.log(error);
+                                }
+                            })
+                        }
+                    })
+                })
+
         });
     </script>
     @stack('scripts')
