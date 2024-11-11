@@ -6,18 +6,18 @@
     <title>@yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('admin/assets/img/kaiadmin/favicon.ico') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('backend/assets/img/kaiadmin/favicon.ico') }}" type="image/x-icon" />
 
     <!-- Fonts and icons -->
-    <script src="{{ asset('admin/assets/js/plugin/webfont/webfont.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugin/webfont/webfont.min.js') }}"></script>
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/plugins.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/kaiadmin.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/plugins.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/kaiadmin.min.css') }}" />
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/demo.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/assets/fonts/fontawesome/css/all.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/fonts/fontawesome/css/all.css') }}" />
     <style>
         .cke_notification_warning {
             display: none;
