@@ -3,7 +3,8 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="index.html" class="logo">
-                <img src="{{ asset('admin/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand" height="20" />
+                <img src="{{ asset('admin/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand"
+                    height="20" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -22,16 +23,22 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-item active">
-                    <a  href="{{ route('admin.dashboard') }}" class="collapsed" aria-expanded="false">
+                <li class="nav-item {{ isActiveRoute('admin.dashboard') }}">
+                    <a href="{{ route('admin.dashboard') }}" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Trang chủ</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a  href="{{ route('admin.type-car.index') }}">
+                <li class="nav-item {{ isActiveRoute('admin.type-car.index') }}">
+                    <a href="{{ route('admin.type-car.index') }}">
                         <i class="fas fa-layer-group"></i>
                         <p>Loại xe</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ isActiveRoute('admin.brand-car.index') }}">
+                    <a href="{{ route('admin.brand-car.index') }}">
+                        <i class="fa-solid fa-code-branch"></i>
+                        <p>Hãng xe</p>
                     </a>
                 </li>
                 {{-- <li class="nav-item">
