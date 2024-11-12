@@ -22,8 +22,8 @@ class TypeCarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:6|unique:types,name',
-            'title' => 'nullable|min:6|unique:types,title',
+            'name' => 'required|min:6|unique:sgo_types,name',
+            'title' => 'nullable|min:6|unique:sgo_types,title',
             'short_description' => 'required|min:6|max:255',
             'described_above' => 'nullable|min:50',
             'described_below' => 'nullable|min:100',
@@ -59,13 +59,13 @@ class TypeCarController extends Controller
     }
     public function update($id, Request $request)
     {
-        $request->validate([
-            'name' => 'required|min:6|unique:types,name,' . $id,
+        $data = $request->validate([
+            'name' => 'required|min:6|unique:sgo_types,name,' . $id,
             'title' => 'nullable|min:6',
             'short_description' => 'required|min:6',
             'described_above' => 'nullable|min:50',
             'described_below' => 'nullable|min:100',
-            'images' => 'required|array|max:2',
+            'images' => 'array|max:2',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], __('request.messages'), [
             'name' => 'Tên loại xe',
@@ -75,23 +75,17 @@ class TypeCarController extends Controller
             'described_below' => 'Mô tả dưới',
             'images' => 'Hình ảnh'
         ]);
-        $images = saveImages($request, 'images', 'type', 640, 370, true);
         try {
-            $data = $request->except('_token', '_method');
-            $data['slug'] =  Str::of($data['name'])->slug('-');
             $type = Type::find($id);
-            $type->name = $data['name'];
-            $type->title = $data['title'];
-            $type->slug = $data['slug'];
-            $type->short_description = $data['short_description'];
-            $type->described_above = $data['described_above'];
-            $type->described_below = $data['described_below'];
-            foreach ((array)$type->images as $image) {
-                deleteImage($image);
+            if (!empty($data['images'])) {
+                foreach ((array)$type->images as $image) {
+                    deleteImage($image);
+                }
+                $images = saveImages($request, 'images', 'type', 640, 370, true);
+                $data['images'] = $images;
             }
-            $type->images = $images;
-            $type->save();
-
+            $data['slug'] =   Str::slug($data['name'], '-');
+            $type->update($data);
             toastr()->success('Cập nhật loại xe thành công');
             return redirect()->route('admin.type-car.index');
         } catch (\Exception $e) {

@@ -83,7 +83,9 @@ function deleteImage($path)
     }
 }
 
-function isActiveRoute($route, $output = "active")
+function isActiveRoute(array $routes, $output = "active")
 {
-    if (Route::currentRouteName() == $route) return $output;
+    if (in_array(Route::currentRouteName(), $routes)) {
+        return $output;
+    }
 }

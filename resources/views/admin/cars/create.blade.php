@@ -18,8 +18,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <div class="card-title">Thêm xe</div>
+                        <div><a href="{{ route('admin.car.index') }}" class="btn btn-success">Danh sách</a></div>
                     </div>
                     <form action="{{ route('admin.car.store') }}" method="POST" autocomplete="off"
                         enctype="multipart/form-data">
@@ -42,7 +43,7 @@
                                         <label for="">Hình ảnh <code>*</code></label>
                                         <input type="file" name="image" class="form-control"
                                             onchange="loadFile(event)">
-                                        <img id="output" src="{{ asset('admin/assets/img/no-image.jpg') }}"
+                                        <img id="output" src="{{ asset('backend/assets/img/no-image.jpg') }}"
                                             width="100" height="100" class="mt-3 border" />
                                         @error('image')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
@@ -53,17 +54,17 @@
                                 <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="">Tiêu đề giới thiệu <code>(Không bắt buộc)</code></label>
-                                        <input type="text" class="form-control" name="title"
-                                            value="{{ old('title') }}" id="title"
+                                        <input type="text" class="form-control" name="introductory_title"
+                                            value="{{ old('introductory_title') }}" id="introductory_title"
                                             placeholder="Nhập tiêu đề giới thiệu hãng xe" />
-                                        @error('title')
+                                        @error('introductory_title')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 col-lg-3">
+                                <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="">Giá thuê <code>*</code></label>
                                         <input type="text" class="form-control" name="price"
@@ -74,7 +75,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-3">
+                                <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="">Số chỗ <code>*</code></label>
                                         <input type="text" class="form-control" name="number_of_seats"
@@ -86,24 +87,16 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-3">
+                                <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="">Màu sắc <code>(Không bắt buộc)</code></label>
-                                        <input type="text" class="form-control" name="color"
-                                            value="{{ old('color') }}" id="color" placeholder="Nhập màu xe" />
-                                        @error('color')
-                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
-                                        @enderror
-
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-lg-3">
-                                    <div class="form-group">
-                                        <label for="">Số điện thoại liên hệ <code>(Không bắt buộc)</code></label>
-                                        <input type="text" class="form-control" name="contact_phone"
-                                            value="{{ old('contact_phone') }}" id="contact_phone"
-                                            placeholder="Nhập số điện thoại liên hệ" />
-                                        @error('contact_phone')
+                                        <select name="color_id" id="color_id" class="form-control">
+                                            <option value="">-- Chọn màu --</option>
+                                            @foreach ($colors as $color)
+                                                <option value="{{ $color->id }}">{{ $color->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('color_id')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
 
@@ -118,20 +111,23 @@
                                             @if ($types->isNotEmpty())
                                                 @foreach ($types as $key => $type)
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="type_id[]"
-                                                            value="{{ $type->id }}"
+                                                        <input class="form-check-input" type="checkbox" name="type_ids[]"
+                                                            multiple value="{{ $type->id }}"
                                                             id="type_id_{{ $key + 1 }}" />
-                                                        <label class="form-check-label"
-                                                            for="type_id_{{ $key + 1 }}">
+                                                        <label class="form-check-label" for="type_id_{{ $key + 1 }}">
                                                             {{ $type->name }}
                                                         </label>
                                                     </div>
                                                 @endforeach
                                             @else
-                                                <p>Chưa có loại xe nào</p>
+                                                <p>Chưa có loại xe nào (Hãy thêm để thêm được xe)</p>
                                             @endif
 
+
                                         </div>
+                                        @error('type_ids')
+                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-lg-12">
@@ -141,8 +137,8 @@
                                             @if ($types->isNotEmpty())
                                                 @foreach ($brands as $keyBrand => $brand)
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="brand_id[]"
-                                                            value="{{ $brand->id }}"
+                                                        <input class="form-check-input" type="checkbox" name="brand_ids[]"
+                                                            multiple value="{{ $brand->id }}"
                                                             id="brand_id_{{ $keyBrand + 1 }}" />
                                                         <label class="form-check-label"
                                                             for="brand_id_{{ $keyBrand + 1 }}">
@@ -151,10 +147,13 @@
                                                     </div>
                                                 @endforeach
                                             @else
-                                                <p>Chưa có hãng xe nào</p>
+                                                <p>Chưa có hãng xe nào (Hãy thêm để thêm được xe)</p>
                                             @endif
 
                                         </div>
+                                        @error('brand_ids')
+                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +193,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="status"
-                                                    value="0" id="flexRadioDefault2" checked />
+                                                    value="0" id="flexRadioDefault2" />
                                                 <label class="form-check-label" for="flexRadioDefault2">
                                                     Không công khai
                                                 </label>
@@ -215,4 +214,34 @@
 @endsection
 
 @push('scripts')
+    {{-- <script>
+    const priceInput = document.getElementById("price");
+
+    priceInput.addEventListener("input", function (e) {
+        // Lấy giá trị từ input và xóa các ký tự không phải số
+        let value = e.target.value.replace(/[^0-9]/g, "");
+
+        // Kiểm tra xem có giá trị nào được nhập vào hay không
+        if (value) {
+            // Định dạng giá trị theo kiểu VND với dấu chấm
+            value = new Intl.NumberFormat("vi-VN").format(value);
+            e.target.value = value + " ₫";
+        } else {
+            e.target.value = "";
+        }
+    });
+
+    // Xóa ký tự "₫" khi focus vào input để người dùng dễ nhập
+    priceInput.addEventListener("focus", function (e) {
+        e.target.value = e.target.value.replace(" ₫", "");
+    });
+
+    // Định dạng lại với "₫" khi blur khỏi input
+    priceInput.addEventListener("blur", function (e) {
+        if (e.target.value) {
+            let value = e.target.value.replace(/[^0-9]/g, "");
+            e.target.value = new Intl.NumberFormat("vi-VN").format(value) + " ₫";
+        }
+    });
+</script> --}}
 @endpush
