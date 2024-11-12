@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\TypeCarController;
 use Illuminate\Support\Facades\Route;
 
 $objs = [
-    'type-car' => DashboardController::class,
+    'type-car' => TypeCarController::class,
     'brand-car' =>  BrandCarController::class,
     'car' => CarController::class
 ];
@@ -15,4 +15,5 @@ $objs = [
 Route::name('admin.')->group(function () use ($objs) {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resources($objs);
+    Route::post('car/change-status' , [CarController::class , 'changeStatus'])->name('car.change.status');
 });

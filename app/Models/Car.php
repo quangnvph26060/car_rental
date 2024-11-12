@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     use HasFactory;
+    protected $table = 'sgo_cars';
     protected $fillable = [
         'name',
         'introductory_title',
@@ -22,18 +23,19 @@ class Car extends Model
     ];
     public function types()
     {
-        return $this->belongsToMany(Type::class, 'car_type');
+        return $this->belongsToMany(Type::class, 'sgo_car_type');
     }
 
     public function brands()
     {
-        return $this->belongsToMany(Brand::class, 'brand_car');
+        return $this->belongsToMany(Brand::class, 'sgo_brand_car');
     }
     public function carImages()
     {
         return $this->hasMany(CarImage::class);
     }
-    public function colors(){
-        return $this->hasMany(Color::class);
+    public function color()
+    {
+        return $this->belongsTo(Color::class);
     }
 }

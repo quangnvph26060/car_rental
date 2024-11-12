@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
+    protected $table = 'sgo_types';
     protected $fillable = ['name', 'slug', 'title', 'short_description', 'described_above', 'described_below', 'images'];
     public function cars()
     {
-        return $this->belongsToMany(Car::class, 'car_type');
+        return $this->belongsToMany(Car::class, 'sgo_car_type');
     }
 
     public function brands()

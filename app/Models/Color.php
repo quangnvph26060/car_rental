@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Color extends Model
 {
     use HasFactory;
+    protected $table = 'sgo_colors';
     protected $fillable = ['name', 'code_color'];
     public function cars()
     {
