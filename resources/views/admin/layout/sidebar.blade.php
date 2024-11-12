@@ -49,6 +49,12 @@
                         <p>Xe</p>
                     </a>
                 </li>
+                <li class="nav-item {{ isActiveRoute(['admin.benefits.index']) }}">
+                    <a href="{{ route('admin.benefits.index') }}">
+                        <i class="fa-solid fa-check"></i>
+                        <p>Lợi ích</p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>

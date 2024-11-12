@@ -127,4 +127,9 @@
             })
         })
     </script>
+    <script>
+        $(document).ready(function() {
+            dataTableRental([0, 1])
+        });
+    </script>
 @endpush

@@ -155,54 +155,68 @@
                         }
                     })
                 })
-            $("#multi-filter-select").DataTable({
-                pageLength: 5,
-                initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            var select = $(
-                                    '<select class="form-select"><option value=""></option></select>'
-                                )
-                                .appendTo($(column.footer()).empty())
-                                .on("change", function() {
-                                    var val =
-                                        $.fn.dataTable.util.escapeRegex(
-                                            $(this).val()
+
+            window.dataTableRental = function(column) {
+                $("#multi-filter-select").DataTable({
+                    pageLength: 10,
+                    columnDefs: [{
+                            orderable: true,
+                            targets: column
+                        }, // Chỉ bật sắp xếp cho cột "STT", "Tên danh mục", "Danh mục cha"
+                        {
+                            orderable: false,
+                            targets: '_all'
+                        } // Tắt sắp xếp cho các cột còn lại
+                    ],
+                    initComplete: function() {
+                        this.api()
+                            .columns(column)
+
+                            .every(function() {
+                                var column = this;
+                                var select = $(
+                                        '<select class="form-select"><option value=""></option></select>'
+                                    )
+                                    .appendTo($(column.footer()).empty())
+                                    .on("change", function() {
+                                        var val =
+                                            $.fn.dataTable.util.escapeRegex(
+                                                $(this).val()
+                                            );
+
+                                        column
+                                            .search(
+                                                val ? "^" + val + "$" : "",
+                                                true,
+                                                false
+                                            )
+                                            .draw();
+                                    });
+
+                                column
+                                    .data()
+                                    .unique()
+                                    .sort()
+                                    .each(function(d, j) {
+                                        select.append(
+                                            '<option value="' +
+                                            d +
+                                            '">' +
+                                            d +
+                                            "</option>"
                                         );
+                                    });
+                            });
+                    },
+                });
+            }
 
-                                    column
-                                        .search(
-                                            val ? "^" + val + "$" : "",
-                                            true,
-                                            false
-                                        )
-                                        .draw();
-                                });
-
-                            column
-                                .data()
-                                .unique()
-                                .sort()
-                                .each(function(d, j) {
-                                    select.append(
-                                        '<option value="' +
-                                        d +
-                                        '">' +
-                                        d +
-                                        "</option>"
-                                    );
-                                });
-                        });
-                },
-            });
 
         });
     </script>
     <script>
-        var loadFile = function(event) {
-            var output = document.getElementById('output');
+        var loadFile = function(event , selector) {
+            var output = document.getElementById(selector);
             output.src = URL.createObjectURL(event.target.files[0]);
             output.onload = function() {
                 URL.revokeObjectURL(output.src) // free memory

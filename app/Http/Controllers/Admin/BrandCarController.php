@@ -23,8 +23,8 @@ class BrandCarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:6|unique:brands,name',
-            'title' => 'nullable|min:6|unique:brands,title',
+            'name' => 'required|min:6|unique:sgo_brands,name',
+            'title' => 'nullable|min:6|unique:sgo_brands,title',
             'short_description' => 'nullable|min:20',
             'long_description' => 'nullable|min:30',
             'type_id' => 'nullable',
@@ -50,7 +50,7 @@ class BrandCarController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'name' => 'required|min:6|unique:brands,name,' . $id,
+            'name' => 'required|min:6|unique:sgo_brands,name,' . $id,
             'title' => 'nullable|min:6',
             'short_description' => 'nullable|min:20',
             'long_description' => 'nullable|min:30',
