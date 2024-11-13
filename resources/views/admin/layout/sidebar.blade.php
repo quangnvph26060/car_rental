@@ -43,7 +43,8 @@
                         <p>Hãng xe</p>
                     </a>
                 </li>
-                <li class="nav-item {{ isActiveRoute(['admin.car.index', 'admin.car.create', 'admin.car.edit','admin.images.car.index']) }}">
+                <li
+                    class="nav-item {{ isActiveRoute(['admin.car.index', 'admin.car.create', 'admin.car.edit', 'admin.images.car.index']) }}">
                     <a href="{{ route('admin.car.index') }}">
                         <i class="fa-solid fa-car"></i>
                         <p>Xe</p>
@@ -53,6 +54,12 @@
                     <a href="{{ route('admin.benefits.index') }}">
                         <i class="fa-solid fa-check"></i>
                         <p>Lợi ích</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ isActiveRoute(['admin.service-commitment.index']) }}">
+                    <a href="{{ route('admin.service-commitment.index') }}">
+                        <i class="fa-solid fa-code-commit"></i>
+                        <p>Cam kết</p>
                     </a>
                 </li>
                 {{-- <li class="nav-item">
