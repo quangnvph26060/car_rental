@@ -37,8 +37,7 @@
                                                 <div class="d-flex">
                                                     <a href="#" id="{{ $item->id }}"
                                                         class="m-1 d-block btn btn-primary editIconCategoriesPost"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#editServiceCommitmentModal"><i
+                                                        data-bs-toggle="modal" data-bs-target="#editCategoriesPostModal"><i
                                                             class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="{{ route('admin.categories-post.destroy', $item->id) }}"
                                                         class="m-1 d-block btn btn-danger delete-item"><i
@@ -84,7 +83,7 @@
     </div>
     {{-- add new benefit modal end --}}
     {{-- edit benefit modal start --}}
-    <div class="modal fade" id="editServiceCommitmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="editCategoriesPostModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -226,7 +225,7 @@
                             )
                         }
                         $("#edit_categories_post_form")[0].reset();
-                        $("#editServiceCommitmentModal").modal('hide');
+                        $("#editCategoriesPostModal").modal('hide');
                         $("#edit_categories_post_btn").text('Cập nhật');
                         $("#edit_categories_post_btn").prop('disabled', false);
                         window.location.reload();
@@ -240,6 +239,12 @@
                         }
                     }
                 });
+            });
+
+            $('#addCategoriesPostModal , #editCategoriesPostModal').on('hidden.bs.modal', function() {
+                $('#edit_categories_post_form')[0].reset();
+                $('#add_categories_post_form')[0].reset();
+                $(".error-text").text('');
             });
         });
     </script>

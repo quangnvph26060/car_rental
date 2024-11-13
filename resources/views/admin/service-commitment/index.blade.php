@@ -282,6 +282,11 @@
                     }
                 });
             });
+            $('#addServiceCommitmentModal , #editServiceCommitmentModal').on('hidden.bs.modal', function() {
+                $('#edit_service_commitment_form')[0].reset();
+                $('#add_service_commitment_form')[0].reset();
+                $(".error-text").text('');
+            });
         });
     </script>
 @endpush
