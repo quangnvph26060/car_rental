@@ -62,6 +62,18 @@
                         <p>Cam kết</p>
                     </a>
                 </li>
+                <li class="nav-item {{ isActiveRoute(['admin.categories-post.index']) }}">
+                    <a href="{{ route('admin.categories-post.index') }}">
+                        <i class="fa-solid fa-list"></i>
+                        <p>Danh mục tin tức</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ isActiveRoute(['admin.posts.index']) }}">
+                    <a href="{{ route('admin.posts.index') }}">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <p>Bài viết</p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>
