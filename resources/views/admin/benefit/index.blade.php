@@ -267,6 +267,8 @@
                         if (xhr.status === 422) {
                             let errors = xhr.responseJSON.validation_errors;
                             printErrorMsg(errors)
+                            $("#add_benefit_btn").text('Xác nhận');
+                            $("#add_benefit_btn").prop('disabled', false);
                         }
                     }
                 })
