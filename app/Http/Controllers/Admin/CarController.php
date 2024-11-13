@@ -15,7 +15,7 @@ class CarController extends Controller
 {
     public function index()
     {
-        $cars  = Car::select('id', 'name', 'price', 'status', 'image')->with('types', 'brands', 'carImages', 'color')->get();
+        $cars  = Car::select('id', 'name', 'price', 'status', 'slug', 'image')->with('types', 'brands', 'carImages', 'color')->get();
         return view('admin.cars.index', compact('cars'));
     }
     public function create()

@@ -18,6 +18,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/demo.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/fonts/fontawesome/css/all.css') }}" />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <style>
         .cke_notification_warning {
             display: none;

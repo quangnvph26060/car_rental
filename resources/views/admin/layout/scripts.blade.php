@@ -36,6 +36,7 @@
     <script src="{{ asset('backend/assets/js/demo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <script>
         CKEDITOR.replace('content', {
             toolbar: [{
@@ -215,7 +216,7 @@
         });
     </script>
     <script>
-        var loadFile = function(event , selector) {
+        var loadFile = function(event, selector) {
             var output = document.getElementById(selector);
             output.src = URL.createObjectURL(event.target.files[0]);
             output.onload = function() {

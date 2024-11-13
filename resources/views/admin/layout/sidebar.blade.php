@@ -43,7 +43,7 @@
                         <p>Hãng xe</p>
                     </a>
                 </li>
-                <li class="nav-item {{ isActiveRoute(['admin.car.index', 'admin.car.create', 'admin.car.edit']) }}">
+                <li class="nav-item {{ isActiveRoute(['admin.car.index', 'admin.car.create', 'admin.car.edit','admin.images.car.index']) }}">
                     <a href="{{ route('admin.car.index') }}">
                         <i class="fa-solid fa-car"></i>
                         <p>Xe</p>
