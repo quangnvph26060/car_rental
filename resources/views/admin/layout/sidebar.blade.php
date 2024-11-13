@@ -74,6 +74,12 @@
                         <p>Bài viết</p>
                     </a>
                 </li>
+                <li class="nav-item {{ isActiveRoute(['admin.reviews.index']) }}">
+                    <a href="{{ route('admin.reviews.index') }}">
+                        <i class="fa-solid fa-star"></i>
+                        <p>Đánh giá</p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>
