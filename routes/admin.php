@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryPostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImageCarController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ServiceCommitmentController;
 use App\Http\Controllers\Admin\TypeCarController;
 use Illuminate\Support\Facades\Route;
@@ -42,11 +43,12 @@ Route::name('admin.')->group(function () use ($objs) {
         Route::delete('/delete/{id}', [CategoryPostController::class, 'destroy'])->name('destroy');
     });
     Route::prefix('posts')->name('posts.')->group(function () {
-        Route::get('/', [CategoryPostController::class, 'index'])->name('index');
-        Route::post('/store', [CategoryPostController::class, 'store'])->name('store');
-        Route::get('/edit', [CategoryPostController::class, 'edit'])->name('edit');
-        Route::post('/update', [CategoryPostController::class, 'update'])->name('update');
-        Route::delete('/delete/{id}', [CategoryPostController::class, 'destroy'])->name('destroy');
+        Route::get('/', [PostController::class, 'index'])->name('index');
+        Route::post('/store', [PostController::class, 'store'])->name('store');
+        Route::get('/edit', [PostController::class, 'edit'])->name('edit');
+        Route::post('/update', [PostController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('destroy');
+        Route::post('/change-status', [PostController::class, 'changeStatus'])->name('change.status');
     });
 
     Route::get('/images/car/{slug?}', [ImageCarController::class, 'index'])->name('images.car.index');
