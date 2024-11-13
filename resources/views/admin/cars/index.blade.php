@@ -40,7 +40,8 @@
                                     @if ($cars->isNotEmpty())
                                         @foreach ($cars as $car)
                                             <tr>
-                                                <td>{{ $car->name }}</td>
+                                                <td><a href="{{ route('admin.images.car.index' , $car->slug) }}">{{ $car->name }}</a>
+                                                </td>
 
                                                 <td>{{ $car->price }}đ</td>
                                                 <td>
