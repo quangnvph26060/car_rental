@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BenefitController;
 use App\Http\Controllers\Admin\BrandCarController;
 use App\Http\Controllers\Admin\CarController;
+use App\Http\Controllers\Admin\CategoryPostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImageCarController;
 use App\Http\Controllers\Admin\ServiceCommitmentController;
@@ -25,13 +26,28 @@ Route::name('admin.')->group(function () use ($objs) {
     Route::get('/benefits/edit', [BenefitController::class, 'edit'])->name('benefits.edit');
     Route::post('/benefits/update', [BenefitController::class, 'update'])->name('benefits.update');
     Route::delete('/benefits/delete/{id}', [BenefitController::class, 'destroy'])->name('benefits.destroy');
-    Route::post('benefits/change-status', [BenefitController::class, 'changeStatus'])->name('benefits.change.status');
+    Route::post('/benefits/change-status', [BenefitController::class, 'changeStatus'])->name('benefits.change.status');
 
     Route::get('/service-commitment', [ServiceCommitmentController::class, 'index'])->name('service-commitment.index');
     Route::post('/service-commitment/store', [ServiceCommitmentController::class, 'store'])->name('service-commitment.store');
     Route::get('/service-commitment/edit', [ServiceCommitmentController::class, 'edit'])->name('service-commitment.edit');
     Route::post('/service-commitment/update', [ServiceCommitmentController::class, 'update'])->name('service-commitment.update');
     Route::delete('/service-commitment/delete/{id}', [ServiceCommitmentController::class, 'destroy'])->name('service-commitment.destroy');
+
+    Route::prefix('categories-post')->name('categories-post.')->group(function () {
+        Route::get('/', [CategoryPostController::class, 'index'])->name('index');
+        Route::post('/store', [CategoryPostController::class, 'store'])->name('store');
+        Route::get('/edit', [CategoryPostController::class, 'edit'])->name('edit');
+        Route::post('/update', [CategoryPostController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [CategoryPostController::class, 'destroy'])->name('destroy');
+    });
+    Route::prefix('posts')->name('posts.')->group(function () {
+        Route::get('/', [CategoryPostController::class, 'index'])->name('index');
+        Route::post('/store', [CategoryPostController::class, 'store'])->name('store');
+        Route::get('/edit', [CategoryPostController::class, 'edit'])->name('edit');
+        Route::post('/update', [CategoryPostController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [CategoryPostController::class, 'destroy'])->name('destroy');
+    });
 
     Route::get('/images/car/{slug?}', [ImageCarController::class, 'index'])->name('images.car.index');
     Route::post('/images/car/store', [ImageCarController::class, 'store'])->name('images.car.store');
