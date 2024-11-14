@@ -9,6 +9,12 @@ class HomeController extends Controller
 {
     public function home()
     {
+        $search = request()->input('s');
+
+        if ($search) {
+            return view('frontend.pages.product.search');
+        }
+
         return view('frontend.pages.home');
     }
 }

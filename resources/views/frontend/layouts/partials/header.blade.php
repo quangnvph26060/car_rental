@@ -47,7 +47,7 @@
                     </a>
 
                     <div class="form-search">
-                        <form method="get" id="searchform" class="searchform" action="https://xecuoiluxury.com/">
+                        <form method="get" id="searchform" class="searchform" action="{{route('frontend.home')}}">
                             <input type="search" class="search-field f-control" name="s" value=""
                                 id="s" placeholder="Search …" />
                             <button type="submit" class="mn-btn submit-btn">
