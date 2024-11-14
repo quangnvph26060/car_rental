@@ -17,7 +17,12 @@ class ProductController extends Controller
     //     return view('frontend.pages.detail');
     // }
 
-    public function product($slug = null) {
-        return view('frontend.pages.product', compact('slug'));
+    public function product($slug = null)
+    {
+        if ($slug) {
+            return view('frontend.pages.product.detail', compact('slug'));
+        }
+
+        return view('frontend.pages.product.list', compact('slug'));
     }
 }

@@ -18,26 +18,9 @@
         </div>
 
         <div class="service-page">
-            <div class="all">
-                <div class="row100">
-                    <div class="col25 left">
 
-                        @include('frontend.includes.sideleft')
+            @include('frontend.includes.sideleft')
 
-                    </div>
-
-                    <div class="col75 right">
-
-
-                        @if (!$slug)
-                            @include('frontend.includes.service.noSlug')
-                        @else
-                            @include('frontend.includes.service.yesSlug')
-                        @endif
-
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
 @endsection
