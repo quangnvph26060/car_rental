@@ -9,5 +9,5 @@ class Review extends Model
 {
     use HasFactory;
     protected $table = 'sgo_reviews';
-    protected $fillable = ['customer_name', 'customer_role', 'avatar', 'comment'];
+    protected $fillable = ['customer_name', 'customer_role', 'avatar', 'comment', 'rate'];
 }

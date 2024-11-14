@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('sgo_reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_name');
-            $table->string('customer_role');
-            $table->string('avatar');
-            $table->longText('comment');
+            $table->string('customer_name')->nullable();
+            $table->string('customer_role')->nullable();
+            $table->string('avatar')->nullable();
+            $table->longText('comment')->nullable();
+            $table->float('rate')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('sgo_reviews');
     }
 };

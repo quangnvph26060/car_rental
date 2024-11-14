@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Type;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class BrandCarController extends Controller
@@ -28,18 +30,33 @@ class BrandCarController extends Controller
             'short_description' => 'nullable|min:20',
             'long_description' => 'nullable|min:30',
             'type_id' => 'nullable',
+            'images' => 'array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], __('request.messages'), [
             'name' => 'Tên hãng xe',
             'title' => 'Tiêu đề giới thiệu',
             'type_id' => 'Hãng xe',
             'short_description' => 'Mô tả ngắn',
-            'long_description' => 'Mô tả dài'
+            'long_description' => 'Mô tả dài',
+            'images' => 'Hình ảnh'
         ]);
-        $data = $request->all();
-        $data['slug'] = Str::of($data['name'])->slug('-');
-        Brand::create($data);
-        toastr()->success('Thêm hãng xe thành công');
-        return redirect()->route('admin.brand-car.index');
+
+        $images = saveImages($request, 'images', 'brand', 640, 370, true);
+
+        try {
+            $data = $request->all();
+            $data['slug'] = Str::of($data['name'])->slug('-');
+            $data['images'] = $images;
+            Brand::create($data);
+            toastr()->success('Thêm hãng xe thành công');
+            return redirect()->route('admin.brand-car.index');
+        } catch (Exception $e) {
+            foreach ((array)$images as $image) {
+                deleteImage($image);
+            }
+            Log::info('Failed to create new Brand: ' . $e->getMessage());
+            throw new Exception('Failed to create new Brand');
+        }
     }
     public function edit($id)
     {
