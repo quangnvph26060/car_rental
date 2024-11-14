@@ -1,4 +1,5 @@
     <!--   Core JS Files   -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('backend/assets/js/core/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/core/bootstrap.min.js') }}"></script>

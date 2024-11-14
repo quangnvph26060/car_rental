@@ -62,6 +62,15 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-12 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="">Ảnh</label>
+                                        <input type="file" class="form-control" name="images[]" multiple />
+                                        @error('images')
+                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-lg-12">
