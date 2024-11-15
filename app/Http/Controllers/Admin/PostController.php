@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -31,6 +32,7 @@ class PostController extends Controller
             'category_post_id' => 'Danh mục bài viết'
         ]);
         $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
         $image = saveImages($request, 'image', 'post', 800, 507);
         try {
             $data['image'] = $image;
@@ -57,6 +59,7 @@ class PostController extends Controller
     }
     public function update(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|min:6|unique:sgo_posts,title,' . $request->post_id,
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -70,12 +73,15 @@ class PostController extends Controller
         ]);
         try {
             $data = $request->all();
+
+            // log::info( $data['slug']);
             if (!empty($data['image'])) {
                 deleteImage($request->post_image);
                 $image = saveImages($request, 'image', 'post', 800, 507);
                 $data['image'] = $image;
             }
             $post = Post::find($request->post_id);
+            $data['slug'] = Str::slug($request->title);
             $post->update($data);
             return response()->json([
                 'status' => 200,
@@ -87,7 +93,9 @@ class PostController extends Controller
                     'validation_errors' => $validator->errors()
                 ], 422);
             }
-            deleteImage($image);
+            if (!empty($image)) {
+                deleteImage($image);
+            }
             Log::info($e->getMessage());
         }
     }

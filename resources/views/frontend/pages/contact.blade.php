@@ -25,32 +25,27 @@
                         <li class="brand__item">
                             <div class="contact-block">
                                 <p class="hd">Trụ sở chính</p>
-                                <p>Tầng 4 &#8211; Viet Tower &#8211; 01 Thái Hà</p>
-                                <p>Quận: Đống Đa, Hà Nội, Việt Nam</p>
-                                <p>&nbsp;</p>
-                                <p>&nbsp;</p>
-                                <p>&nbsp;</p>
+                                 {!! $contact->headquarters !!}
                             </div>
                         </li>
                         <li class="brand__item">
                             <div class="contact-block">
                                 <p class="hd">Nhân Viên Tư Vấn</p>
                                 <p>Tư Vấn Báo Giá</p>
-                                <p><a href="tel:+">094.8888.438</a></p>
+                                <p><a href="tel:+">{{ $contact->advisory }}</a></p>
                             </div>
                         </li>
                         <li class="brand__item">
                             <div class="contact-block">
                                 <p class="hd">Thời Gian Làm Việc</p>
-                                <p>Thứ 2 &#8211; Thứ 7: 8h00 &#8211; 17h30</p>
-                                <p>Chủ Nhật: Vui Lòng Hẹn Trước</p>
+                                {!! $contact->working_hours !!}
                             </div>
                         </li>
                         <li class="brand__item">
                             <div class="contact-block">
                                 <p class="hd">Thủ Tục Đặt Xe:</p>
                                 <p>Liên Hệ Hotline:</p>
-                                <p>094.8888.438</p>
+                                <p>{{ $contact->booking_procedure }}</p>
                             </div>
                         </li>
                     </ul>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ImageCarController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\ServiceCommitmentController;
+use App\Http\Controllers\Admin\SgoContactController;
 use App\Http\Controllers\Admin\TypeCarController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,11 @@ Route::name('admin.')->group(function () use ($objs) {
         Route::get('/edit', [ReviewController::class, 'edit'])->name('edit');
         Route::post('/update', [ReviewController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [ReviewController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('contact')->name('contact.')->group(function () {
+        Route::get('/contact-info', [SgoContactController::class, 'getContactInfo'])->name('getContactInfo');
+        Route::post('/update-contact-info', [SgoContactController::class, 'updateContactInfo'])->name('updateContactInfo');
     });
 
 
