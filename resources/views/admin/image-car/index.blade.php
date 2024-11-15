@@ -1,88 +1,76 @@
 @extends('admin.layout.master')
 @section('title')
-    Danh sách hình ảnh {{ $car->name }}
+Danh sách hình ảnh {{ $car->name }}
 @endsection
 @section('content')
-    <div class="page-inner">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Thêm hình ảnh</h4>
-                    </div>
-                    <div class="card-body">
-                        <form id="uploadForm" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-12 col-lg-4">
-                                    <div class="form-group">
-                                        <label for="">Tải hình ảnh <code>*</code></label>
-                                        <input type="hidden" name="carId" value="{{ $car->id }}">
-                                        <input type="file" class="form-control" name="image_path[]" multiple
-                                            id="imageUpload" />
-                                        <span class="text-danger error-text image_path_error" style="color: red"></span>
-                                        <div class="preview-container" id="previewContainer"></div>
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Thêm hình ảnh</h4>
+                </div>
+                <div class="card-body">
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="">Tải hình ảnh <code>*</code></label>
+                                    <input type="hidden" name="carId" value="{{ $car->id }}">
+                                    <input type="file" class="form-control" name="image_path[]" multiple
+                                        id="imageUpload" />
+                                    <span class="text-danger error-text image_path_error" style="color: red"></span>
+                                    <div class="preview-container" id="previewContainer"></div>
 
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-success" id="btn-upload">Xác nhận</button>
-                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success" id="btn-upload">Xác nhận</button>
                                 </div>
                             </div>
-                        </form>
-                        {{-- <form action="{{ route('admin.images.car.store') }}" class="dropzone" id="myDropzone"></form> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Danh sách hình ảnh xe : {{ $car->name }}</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="multi-filter-select" class="display table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Ảnh</th>
-                                        <th>Hành động</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if ($images->isNotEmpty())
-                                        @foreach ($images as $image)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td><img src="{{ showImage($image->image_path) }}" width="120"
-                                                        height="120" alt=""></td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="{{ route('admin.images.car.destroy', $image->id) }}"
-                                                            class=" m-1 d-block btn btn-danger delete-item"><i
-                                                                class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @else 
-                                       <p class="text-center">Không có hình ảnh nào, hãy thêm ngay !</p>
-                                    @endif
-
-                                </tbody>
-                            </table>
                         </div>
-                    </div>
+                    </form>
+                    {{-- <form action="{{ route('admin.images.car.store') }}" class="dropzone" id="myDropzone"></form>
+                    --}}
                 </div>
             </div>
-
-
         </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Danh sách hình ảnh xe : {{ $car->name }}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @if ($images->isNotEmpty())
+                        @foreach ($images as $image)
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                            <div class="position-relative image-container">
+                                <img src="{{ showImage($image->image_path) }}" class="img-fluid" alt="Image"
+                                    style="height: 120px; object-fit: cover;">
+                                <!-- Nút xóa nằm trong ảnh -->
+                                <a href="{{ route('admin.images.car.destroy', $image->id) }}" class="m-1 delete-item"><i
+                                        class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                        @endforeach
+                        @else
+                        <p class="text-center">Không có hình ảnh nào, hãy thêm ngay!</p>
+                        @endif
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
     </div>
+</div>
 @endsection
 @push('scripts')
-    {{-- <script>
-        Dropzone.options.myDropzone = {
+{{-- <script>
+    Dropzone.options.myDropzone = {
             paramName: "file", // Tên tham số sẽ được gửi lên server
             maxFilesize: 2, // Giới hạn kích thước file (MB)
             acceptedFiles: ".jpeg,.jpg,.png,.gif", // Các loại file chấp nhận
@@ -118,9 +106,9 @@
                 }
             };
         }
-    </script> --}}
-    <script>
-        document.getElementById("imageUpload").addEventListener("change", function(event) {
+</script> --}}
+<script>
+    document.getElementById("imageUpload").addEventListener("change", function(event) {
             const files = event.target.files;
             const previewContainer = document.getElementById("previewContainer");
 
@@ -144,9 +132,9 @@
                 }
             });
         });
-    </script>
-    <script>
-        $(document).ready(function() {
+</script>
+<script>
+    $(document).ready(function() {
             function printErrorMsg(msg) {
                 $(".error-text").text('');
                 $.each(msg, function(key, value) {
@@ -191,22 +179,43 @@
                 })
             })
         })
-    </script>
+</script>
 @endpush
 
 @push('styles')
-    <style>
-        .preview-container img {
-            width: 100px;
-            /* Set width as desired */
-            height: 100px;
-            /* Maintain aspect ratio */
-            margin: 5px;
-            border: 1px solid #ccc;
-            object-fit: cover;
-            /* Optional: crop image to fit the box */
-            border-radius: 8px;
-            /* Optional: add rounded corners */
+<style>
+     #previewContainer {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
         }
-    </style>
+        #previewContainer img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+    .image-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .delete-item {
+        position: absolute;
+        right: 5px;
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 5px;
+        color: red;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .delete-item:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+</style>
 @endpush
