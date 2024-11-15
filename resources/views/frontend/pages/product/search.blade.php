@@ -7,11 +7,11 @@
         background-image: url(https://xecuoiluxury.com/wp-content/uploads/2018/07/childpage-bg-1.jpg);
       ">
             <div class="title">
-                <h2 class="hd">Tìm kiếm:{{ $search }}</h2>
+                <h2 class="hd">Tìm kiếm:a</h2>
                 <div class="pos-nav">
                     <a href="https://xecuoiluxury.com">Trang chủ</a>
                     -
-                    <span class="current">Tìm kiếm: {{ $search }}</span>
+                    <span class="current">Tìm kiếm: a</span>
                 </div>
             </div>
         </div>
@@ -49,17 +49,16 @@
                         <div class="side-right">
                             <div id="nav-ct1">
                                 <ul class="list-news clear">
-                                    @forelse ($cars as $item )
                                     <li class="news__item">
                                         <div class="news-block1">
                                             <div class="img">
                                                 <a href="https://xecuoiluxury.com/san-pham/thue-xe-cuoi-vinfast-lux-a2-0/">
                                                     <img width="600" height="450"
-                                                        src="{{ file_exists(public_path('storage/' . $item->image)) ? asset('storage/' . $item->image) : asset('frontend/assets/images/no-photo.jpg') }}"
+                                                        src="https://xecuoiluxury.com/wp-content/uploads/2020/02/thue-xe-cuoi-vinfast-lux-a20-1.jpg"
                                                         class="attachment-full size-full wp-post-image" alt=""
                                                         srcset="
-                                                        {{ file_exists(public_path('storage/' . $item->image)) ? asset('storage/' . $item->image) : asset('frontend/assets/images/no-photo.jpg') }}   600w,
-                                                        {{ file_exists(public_path('storage/' . $item->image)) ? asset('storage/' . $item->image) : asset('frontend/assets/images/no-photo.jpg') }} 300w
+                              https://xecuoiluxury.com/wp-content/uploads/2020/02/thue-xe-cuoi-vinfast-lux-a20-1.jpg         600w,
+                              https://xecuoiluxury.com/wp-content/uploads/2020/02/thue-xe-cuoi-vinfast-lux-a20-1-300x225.jpg 300w
                             "
                                                         sizes="(max-width: 600px) 100vw, 600px" />
                                                 </a>
@@ -67,14 +66,14 @@
                                             <div class="ct">
                                                 <p class="hd">
                                                     <a
-                                                        href="https://xecuoiluxury.com/san-pham/thue-xe-cuoi-vinfast-lux-a2-0/">
-                                                        {{ $item->name }}
-                                                        </a>
+                                                        href="https://xecuoiluxury.com/san-pham/thue-xe-cuoi-vinfast-lux-a2-0/">Xe
+                                                        Cưới Vinfast Lux A 2.0</a>
                                                 </p>
-                                                <p class="date">Đăng ngày {{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d \\T\\há\\n\\g F, Y') }}</p>
+                                                <p class="date">Đăng ngày 29 Tháng Hai, 2020</p>
                                                 <div class="mona-except">
                                                     <p>
-                                                        {!! \Illuminate\Support\Str::limit($item->description, 45, '...') !!}
+                                                        CHO THUÊ XE CƯỚI VINFAST LUX A 2.0 TẠI HÀ
+                                                        [&hellip;]
                                                     </p>
                                                 </div>
 
@@ -83,10 +82,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    @empty
-
-                                    @endforelse
-                                    {{-- <li class="news__item">
+                                    <li class="news__item">
                                         <div class="news-block1">
                                             <div class="img">
                                                 <a href="https://xecuoiluxury.com/san-pham/mau-xe-hoa-hcl-039/">
@@ -382,7 +378,7 @@
                                             <li>
                                                 <a class="next page-numbers"
                                                     href="https://xecuoiluxury.com/page/2/?s=a">&rarr;</a>
-                                            </li> --}}
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
