@@ -19,6 +19,7 @@ class ImageCarController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'image_path' => 'required|array',
             'image_path.*' => 'image|mimes:jpeg,jpg,png,gif|max:2048',

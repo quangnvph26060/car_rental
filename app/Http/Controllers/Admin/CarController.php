@@ -54,7 +54,9 @@ class CarController extends Controller
             'brand_ids' => 'Hãng xe',
             'status' => 'Trạng thái'
         ]);
+
         $image = saveImages($request, 'image', 'cars', 670, 446);
+
         try {
             $validated['slug'] = Str::slug($validated['name'], '-');
             $validated['image'] = $image;
