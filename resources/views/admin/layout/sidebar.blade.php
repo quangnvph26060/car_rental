@@ -80,6 +80,12 @@
                         <p>Đánh giá</p>
                     </a>
                 </li>
+                <li class="nav-item {{ isActiveRoute(['admin.contact.getContactInfo']) }}">
+                    <a href="{{ route('admin.contact.getContactInfo') }}">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>Liên hệ</p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>
