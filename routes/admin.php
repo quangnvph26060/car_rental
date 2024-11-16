@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\ServiceCommitmentController;
 use App\Http\Controllers\Admin\SgoContactController;
 use App\Http\Controllers\Admin\TypeCarController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 $objs = [
@@ -18,8 +19,14 @@ $objs = [
     'brand-car' =>  BrandCarController::class,
     'car' => CarController::class,
 ];
+Route::get('/login', function () {
+    return view('login.index');
+})->name('form_login');
 
-Route::name('admin.')->group(function () use ($objs) {
+Route::post('', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(function () use ($objs) {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resources($objs);
     Route::post('car/change-status', [CarController::class, 'changeStatus'])->name('car.change.status');

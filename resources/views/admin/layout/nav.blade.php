@@ -220,7 +220,7 @@
                     </div>
                     <span class="profile-username">
                         <span class="op-7">Hi,</span>
-                        <span class="fw-bold">Hizrian</span>
+                        <span class="fw-bold">{{ Auth::user()->name }}</span>
                     </span>
                 </a>
                 <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -231,8 +231,8 @@
                                     <img src="{{ asset('backend/assets/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded" />
                                 </div>
                                 <div class="u-text">
-                                    <h4>Hizrian</h4>
-                                    <p class="text-muted">hello@example.com</p>
+                                    <h4>{{ Auth::user()->name }}</h4>
+                                    <p class="text-muted">{{ Auth::user()->email }}</p>
                                     <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                                 </div>
                             </div>
@@ -245,11 +245,28 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Account Setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <form action="{{ route('logout') }}" method="POST" style="display: none;" id="logout-form">
+                                @csrf
+                            </form>
+
+                            <a class="dropdown-item" href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">Logout</a>
+
                         </li>
                     </div>
                 </ul>
             </li>
         </ul>
     </div>
+
+    <script>
+        document.querySelectorAll('.dropdown-toggle').forEach(function (dropdownToggle) {
+            dropdownToggle.addEventListener('click', function () {
+                var menu = this.nextElementSibling; // dropdown-menu
+                var isOpen = menu.classList.contains('show');
+                menu.classList.toggle('show', !isOpen);
+                this.setAttribute('aria-expanded', !isOpen);  // Cập nhật aria-expanded
+            });
+        });
+    </script>
+
 </nav>
