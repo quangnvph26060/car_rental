@@ -19,7 +19,7 @@ class HomeController extends Controller
         $cars = Car::where('status', 1)->get();
         $reviews = Review::all();
         if ($search) {
-            $cars = Car::where('name', 'like', '%' . $search . '%')->get();
+            $cars = Car::where('name', 'like', '%' . $search . '%')->paginate(9);
             return view('frontend.pages.product.search', compact('cars','search'));
         }
 

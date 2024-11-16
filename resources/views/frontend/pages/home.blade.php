@@ -665,6 +665,7 @@
                         <p class="hd">
                             <span style="color: #3366ff"><strong>ĐẶT THUÊ XE </strong></span>
                         </p>
+                        <p>Hotline:</p>
                         <p>{{ $contact->booking_procedure }}</p>
                     </div>
                 </li>
