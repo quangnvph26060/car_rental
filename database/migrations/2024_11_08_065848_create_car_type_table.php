@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('car_type', function (Blueprint $table) {
+        Schema::create('sgo_car_type', function (Blueprint $table) {
             $table->id();
             $table->foreignId('car_id')->constrained('cars')->onDelete('cascade');
             $table->foreignId('type_id')->constrained('types')->onDelete('cascade');
+
+            $table->primary(['car_id', 'type_id']);
             $table->timestamps();
         });
     }

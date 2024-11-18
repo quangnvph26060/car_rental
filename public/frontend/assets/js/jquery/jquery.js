@@ -5008,7 +5008,7 @@
       accepts: {
         "*": Pb,
         text: "text/plain",
-        html: "text/html",  
+        html: "text/html",
         xml: "application/xml, text/xml",
         json: "application/json, text/javascript",
       },
