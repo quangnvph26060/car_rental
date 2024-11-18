@@ -14,6 +14,8 @@ use App\Http\Controllers\Frontend\IntroduceController;
 
 Route::name('frontend.')->group(function () {
 
+    route::post('ajax', [HomeController::class, 'ajax'])->name('ajax');
+
     route::get('/', [HomeController::class, 'home'])->name('home');
     route::get('gioi-thieu', [IntroduceController::class, 'introduce'])->name('introduce');
     route::get('dich-vu/{slug?}', [ServiceController::class, 'service'])->name('service');

@@ -32,4 +32,25 @@ class HomeController extends Controller
         $commitments = ServiceCommitment::latest()->take(3)->get();
         return view('frontend.pages.home', compact('types', 'cars', 'reviews', 'posts', 'contact', 'benefits', 'commitments', 'carsGallery'));
     }
+
+    public function ajax(Request $request)
+    {
+        // Số bản ghi mỗi lần tải
+        $perPage = 6;
+
+        // Tính offset dựa vào page được gửi lên
+        $page = $request->input('page', 2); // Mặc định page = 1 nếu không có giá trị
+        $offset = ($page - 1) * $perPage;
+
+        // Lấy thêm các bản ghi
+        $cars = Car::skip($offset)->take($perPage)->get();
+
+        // Kiểm tra nếu hết bản ghi
+        $hasMore = Car::count() > ($offset + $perPage);
+
+        return response()->json([
+            'cars' => $cars,
+            'hasMore' => $hasMore, // Để kiểm tra còn xe hay không
+        ]);
+    }
 }
