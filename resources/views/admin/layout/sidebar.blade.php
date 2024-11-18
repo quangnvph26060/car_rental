@@ -74,6 +74,12 @@
                         <p>Bài viết</p>
                     </a>
                 </li>
+                <li class="nav-item {{ isActiveRoute(['admin.colors.index']) }}">
+                    <a href="{{ route('admin.colors.index') }}">
+                        <i class="fa-solid fa-palette"></i>
+                        <p>Màu sắc</p>
+                    </a>
+                </li>
                 <li class="nav-item {{ isActiveRoute(['admin.reviews.index']) }}">
                     <a href="{{ route('admin.reviews.index') }}">
                         <i class="fa-solid fa-star"></i>

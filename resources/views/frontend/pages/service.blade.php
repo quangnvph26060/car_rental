@@ -21,7 +21,7 @@
         <div class="all">
             <div class="row100">
                 <div class="col25 left">
-                    @include('frontend.includes.sideleft')
+                    @include('frontend.includes.sideleft' , ['types' => $types])
                 </div>
                 <div class="col75 right">
                     @if($slug == null)
