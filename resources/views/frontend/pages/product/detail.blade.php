@@ -107,6 +107,7 @@
                                                             rel="tag">{{ $product->brands->first()->name }}</a>
                                                     @endif
 
+
                                                 </td>
                                             </tr>
                                             <tr>
@@ -130,6 +131,35 @@
                                             class="btn-phone">{{ $contact->phone_number }}</a>
                                     </span>
                                 </div>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số chỗ</td>
+                                            <td>{{ $product->number_of_seats }} Chỗ Sedan</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Màu sắc</td>
+                                            <td>
+                                                <a href="https://xecuoiluxury.com/mau-sac/xe-cuoi-mau-trang/"><span
+                                                        class="mona-span-color" style="width: 100%"><span> {{
+                                                            isset($product->color) ? $product->color->name : '' }}
+                                                        </span></span></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><strong>Chi tiết khuyến mãi:</strong></p>
+                                <span class="hl">
+                                    {!! $product->promotion_details !!}
+
+                                    <a
+                                    href="{{route('frontend.booking')}}?xe={{$product->id}}"
+                                    class="mn-btn btn-1"
+                                    >Đặt xe</a
+                                  >
+                                </span>
+
                             </div>
                         </div>
                     </div>

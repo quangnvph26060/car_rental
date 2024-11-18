@@ -27,24 +27,26 @@
                         <form action="" method="post" class="" id="add_booking_form">
                             <div class="form-order clear">
                                 <div class="form__child">
-                                    <span class="wpcf7-form-control-wrap menu-124">
-                                        <select name="type_id"
+                                    <span class="wpcf7-form-control-wrap menu-123">
+                                        <select name="car_id"
                                             class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required f-control"
-                                            id="mona-dv-xe-select" aria-required="true" aria-invalid="false">
-                                            <option value="Chọn dịch vụ">Chọn dịch vụ</option>
-                                            @foreach ($typecars as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            id="mona-loai-xe-select" aria-required="true" aria-invalid="false">
+                                            @foreach ($cars as $id => $name)
+                                                <option value="{{ $id }}" @selected($id == request('xe', null))>
+                                                    {{ $name }}</option>
                                             @endforeach
                                         </select>
                                     </span>
                                     <span class="icon"><i class="fa fa-caret-down"></i></span>
                                 </div>
+
                                 <div class="form__child">
-                                    <span class="wpcf7-form-control-wrap menu-123">
-                                        <select name="car_id"
+                                    <span class="wpcf7-form-control-wrap menu-124">
+                                        <select name="type_id"
                                             class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required f-control"
-                                            id="mona-loai-xe-select" aria-required="true" aria-invalid="false">
-                                            <option value="Chọn xe">Chọn xe</option>
+                                            id="mona-dv-xe-select" aria-required="true" aria-invalid="false">
+                                            <option value="">Chọn dịch vụ</option>
+
                                         </select>
                                     </span>
                                     <span class="icon"><i class="fa fa-caret-down"></i></span>
@@ -52,13 +54,13 @@
 
                                 <div class="form__child">
 
-                                    <input type="datetime-local" required
+                                    <input type="datetime-local"
                                         class="wpcf7-form-control wpcf7-date wpcf7-validates-as-required wpcf7-validates-as-date f-control ngaythue"
                                         placeholder="Ngày thuê" name="start_date">
                                 </div>
                                 <div class="form__child">
 
-                                    <input type="text" required pattern="[0-9]*" inputmode="numeric"
+                                    <input type="text" pattern="[0-9]*" inputmode="numeric"
                                         title="Vui lượng nhập số ngày thuê" size="40"
                                         class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required f-control"
                                         placeholder="Số ngày thuê" name="rental_days">
@@ -69,7 +71,7 @@
                                         placeholder="Họ tên khách hàng" name="name">
                                 </div>
                                 <div class="form__child">
-                                    <input type="text" name="phone" value="" size="40" required
+                                    <input type="text" name="phone" value="" size="40"
                                         pattern="[0-9]*" title="Vui lượng nhập số điện thoại"
                                         class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel f-control"
                                         aria-required="true" aria-invalid="false" placeholder="Số điện thoại">
@@ -104,28 +106,51 @@
 @endsection
 
 @push('scripts')
+<script src="{{asset('frontend/assets/js/toastr.js')}}"></script>
     <script>
         jQuery(document).ready(function() {
-            jQuery('#mona-dv-xe-select').on('change', function() {
+            jQuery('#mona-loai-xe-select').on('change', function() {
 
                 jQuery.ajax({
-
                     type: 'GET',
                     data: {
                         _token: '{{ csrf_token() }}',
-                        type_id: this.value
+                        car_id: this.value
                     },
                     success: function(response) {
 
-                        var options = '<option value="Chọn xe">Chọn xe</option>';
-                        response.cars.forEach(function(car) {
-                            options += '<option value="' + car.id + '">' + car.name +
+                        var options = '<option value="Chọn dịch vụ">Chọn dịch vụ</option>';
+                        response.types.forEach(function(type) {
+                            options += '<option value="' + type.id + '">' + type.name +
                                 '</option>';
                         });
-                        jQuery("#mona-loai-xe-select").html(options);
+                        jQuery("#mona-dv-xe-select").html(options);
                     }
                 })
             });
+
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const xe = urlParams.get('xe');
+
+            if (xe) {
+
+                jQuery.ajax({
+                    type: 'GET',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        car_id: xe
+                    },
+                    success: function(response) {
+                        var options = '<option value="">Chọn dịch vụ</option>';
+                        response.types.forEach(function(car) {
+                            options += '<option value="' + car.id + '">' + car.name +
+                                '</option>';
+                        });
+                        jQuery("#mona-dv-xe-select").html(options);
+                    }
+                });
+            }
 
             jQuery('#add_booking_form').on('submit', function(e) {
                 e.preventDefault();
@@ -142,12 +167,20 @@
 
                     success: function(response) {
                         if (response.status) {
-                            alert(response.message);
-                            jQuery('#add_booking_form')[0].reset();
+                            toastr.success(response.message);
+                            jQuery('#add_booking_form').trigger('reset');
                         }
+                    },
+                    error: function(error) {
+                        toastr.error(error.responseJSON.message);
+
                     }
                 })
             })
         })
     </script>
+@endpush
+
+@push('styles')
+<link rel="stylesheet" href="{{asset('frontend/assets/css/toastr.min.css')}}">
 @endpush
