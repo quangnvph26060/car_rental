@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BenefitController;
 use App\Http\Controllers\Admin\BrandCarController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryPostController;
+use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImageCarController;
 use App\Http\Controllers\Admin\PostController;
@@ -65,6 +66,13 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
         Route::get('/edit', [ReviewController::class, 'edit'])->name('edit');
         Route::post('/update', [ReviewController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [ReviewController::class, 'destroy'])->name('destroy');
+    });
+    Route::prefix('colors')->name('colors.')->group(function () {
+        Route::get('/', [ColorController::class, 'index'])->name('index');
+        Route::post('/store', [ColorController::class, 'store'])->name('store');
+        Route::get('/edit', [ColorController::class, 'edit'])->name('edit');
+        Route::post('/update', [ColorController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [ColorController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('contact')->name('contact.')->group(function () {
