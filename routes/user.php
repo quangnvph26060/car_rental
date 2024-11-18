@@ -27,7 +27,5 @@ Route::name('frontend.')->group(function () {
 
     route::get('mau-sac/{slug}', [NewsController::class, 'color'])->name('color');
 
-    Route::get('/load-more-cars', [ProductController::class, 'loadMoreCars'])->name('load_more_cars');
-
-
+    Route::post('/load-more-cars', [ProductController::class, 'loadMoreCars'])->name('loadMoreCars');
 });

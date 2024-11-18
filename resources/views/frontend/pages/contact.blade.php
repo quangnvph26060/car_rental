@@ -9,7 +9,7 @@
             <div class="title">
                 <h2 class="hd">Liên Hệ</h2>
                 <div class="pos-nav">
-                    <a href="https://xecuoiluxury.com">Trang chủ</a>
+                    <a href="/">Trang chủ</a>
                     -
                     <span class="current">Liên Hệ</span>
                 </div>

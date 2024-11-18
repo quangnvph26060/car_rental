@@ -22,26 +22,26 @@
 
         <div class="advantages">
             <div class="all">
-                    <ul class="list-adv clear">
-                        @foreach ($benefits as $benefit)
-                            <li class="adv__item">
-                                <div class="advantage-block">
-                                    <div class="front">
-                                        <div class="img">
-                                            <img width="68" height="70" src="{{ showImage($benefit->icon) }}"
-                                                class="attachment-thumbnail size-thumbnail" alt="{{ $benefit->title }}" />
-                                        </div>
-                                        <p class="hd">{{ $benefit->title }}</p>
+                <ul class="list-adv clear">
+                    @foreach ($benefits as $benefit)
+                        <li class="adv__item">
+                            <div class="advantage-block">
+                                <div class="front">
+                                    <div class="img">
+                                        <img width="68" height="70" src="{{ showImage($benefit->icon) }}"
+                                            class="attachment-thumbnail size-thumbnail" alt="{{ $benefit->title }}" />
                                     </div>
-                                    <div class="back" style="background-image: url({{ showImage($benefit->image) }});">
-                                        <p>
-                                            {{ $benefit->description }}
-                                        </p>
-                                    </div>
+                                    <p class="hd">{{ $benefit->title }}</p>
                                 </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                                <div class="back" style="background-image: url({{ showImage($benefit->image) }});">
+                                    <p>
+                                        {{ $benefit->description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
 
@@ -105,7 +105,7 @@
                     <div class="col75 right">
                         <ul class="list-product clear" id="mona-home-list">
                             @foreach ($cars as $car)
-                                <li class="product__item" src-popup=".mona-popup-1417">
+                                <li class="product__item" id="car-item" style="height: 450px">
                                     <div class="product-block">
                                         <div class="img">
                                             <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}">
@@ -122,7 +122,7 @@
                                             <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
                                             <div class="mona-except">
                                                 <p>
-                                                    {!! Str::limit($car->description, 100, ' [...]') !!}
+                                                    {!! Str::limit($car->description, 120, '[...]') !!}
                                                 </p>
 
                                             </div>
@@ -135,14 +135,13 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <div id="mona-data-query" class="mona-hiden"
+                        {{-- <div id="mona-data-query" class="mona-hiden"
                             data-query='{"notin":[1417,1414,1411,1408,1405,1402,1399,1396,1393,1390,1387,1384,1382,1379,1376,1373,1370,1367,1364,1361,1359,1357,1355,1352,1349,1347,1345,1343,1341,1339,1337,1335,1333],"category":2,"nextload":9}'>
-                        </div>
+                        </div> --}}
                         <div class="more-button">
-                            <a href="https://xecuoiluxury.com/xe-cuoi/" data-max="2" data-page="0" class="mn-btn btn-1"
-                                id="mona-home-more-product">Xem thêm xe
+                            <button class="mn-btn btn-1" data-offset="6" id="mona-home-more-car">Xem thêm xe
                                 <i class="fa fa-caret-down"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -175,8 +174,7 @@
                                                 <p>
                                                     {{ $commitment->description }}
                                                 </p>
-                                                <a href="#" class="more"><i
-                                                        class="fa fa-long-arrow-right"></i></a>
+                                                <a href="#" class="more"><i class="fa fa-long-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </li>
@@ -228,12 +226,6 @@
                     <img width="1214" height="271"
                         src="https://xecuoiluxury.com/wp-content/uploads/2019/01/xe-limouisne.png"
                         class="attachment-slider-full size-slider-full" alt=""
-                        srcset="
-            https://xecuoiluxury.com/wp-content/uploads/2019/01/xe-limouisne.png          1214w,
-            https://xecuoiluxury.com/wp-content/uploads/2019/01/xe-limouisne-300x67.png    300w,
-            https://xecuoiluxury.com/wp-content/uploads/2019/01/xe-limouisne-768x171.png   768w,
-            https://xecuoiluxury.com/wp-content/uploads/2019/01/xe-limouisne-1024x229.png 1024w
-          "
                         sizes="(max-width: 1214px) 100vw, 1214px" />
                 </div>
             </div>
@@ -251,31 +243,22 @@
                                 <div class="ct">
                                     <div class="img">
                                         <span class="mona-rating-wrap">
+                                            <span class="ra-none">
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                            </span>
                                             <span class="ra">
-                                                <?php
-                                                $rate = $review->rate; // Lấy giá trị rate của review
-                                                $fullStars = floor($rate); // Số sao đầy
-                                                $halfStar = $rate - $fullStars >= 0.5; // Kiểm tra có sao nửa không
-                                                $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0); // Số sao rỗng, tính cả nửa sao
-                                                ?>
-
-                                                <!-- Vẽ sao đầy -->
-                                                @for ($i = 0; $i < $fullStars; $i++)
-                                                    <i class="fa fa-star" aria-hidden="true">
-                                                    </i>
-                                                @endfor
-
-                                                <!-- Vẽ sao nửa (nếu có) -->
-                                                @if ($halfStar)
-                                                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                                                @endif
-
-                                                <!-- Vẽ sao rỗng -->
-                                                @for ($i = 0; $i < $emptyStars; $i++)
-                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                @endfor
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
                                             </span>
                                         </span>
+
                                     </div>
                                     <p>{{ $review->comment }}</p>
                                 </div>
@@ -438,12 +421,7 @@
             <div class="float-img">
                 <img width="717" height="405"
                     src="https://xecuoiluxury.com/wp-content/uploads/2018/07/GIOI-THIEU.jpg" class="has-shadow"
-                    alt=""
-                    srcset="
-          https://xecuoiluxury.com/wp-content/uploads/2018/07/GIOI-THIEU.jpg         717w,
-          https://xecuoiluxury.com/wp-content/uploads/2018/07/GIOI-THIEU-300x169.jpg 300w
-        "
-                    sizes="(max-width: 717px) 100vw, 717px" />
+                    alt="" sizes="(max-width: 717px) 100vw, 717px" />
             </div>
             <div class="all">
                 <div class="abu-wrap">
@@ -531,6 +509,85 @@
         </div>
     </main>
 @endsection
+{{-- @push('scripts')
+    <script>
+        jQuery(document).ready(function() {
+            jQuery.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            jQuery('#mona-home-more-car').click(function() {
+                let offset = jQuery(this).data('offset');
+                jQuery.ajax({
+                    url: '/load-more-cars',
+                    type: 'POST',
+                    data: {
+                        offset: offset,
+                        _token: '{{ csrf_token() }}',
+                    },
+                    success: function(response) {
+                        if (response.products.length > 0) {
+                            response.products.forEach(function(product) {
+                                jQuery('.list-product').append(
+                                    ` <li class="product__item" id="car-item" style="height: 450px">
+                                    <div class="product-block">
+                                        <div class="img">
+                                            <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}">
+                                                <img width="670" height="446"
+                                                    src="{{ showImage(${product.image}) }}"
+                                                    class="attachment-full size-full wp-post-image" alt="Car Image" />
+                                            </a>
+                                        </div>
+                                        <div class="ct">
+                                            <p class="hd">
+                                                <a
+                                                    href="{{ route('frontend.product', ['slug' => $car->slug]) }}">${product.name}</a>
+                                            </p>
+                                            <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
+                                            <div class="mona-except">
+                                                <p>
+                                                    {!! Str::limit($car->description, 120, '[...]') !!}
+                                                </p>
+
+                                            </div>
+                                            <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}"
+                                                class="more">
+                                                <i class="fa fa-long-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>`
+                                );
+                            });
+
+                            // Cập nhật offset
+                            jQuery('#load-more').data('offset', offset + response.products
+                                .length);
+
+                            // Disable button nếu hết sản phẩm
+                            if (!response.hasMore) {
+                                jQuery('#load-more').prop('disabled', true).text(
+                                    'Hết sản phẩm');
+                            }
+                        }
+                    },
+                    error: function() {
+                        alert('Có lỗi xảy ra!');
+                    },
+                });
+            });
+        });
+    </script>
+@endpush --}}
+
+
+
+
+
+
+
+
 @push('styles')
     <style>
         .mona-rating-wrap {
