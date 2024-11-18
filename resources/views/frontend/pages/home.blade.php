@@ -155,6 +155,7 @@
                     </div>
                 </div>
             </li>
+
             @foreach ($types as $type)
             <li class="serv__item">
                 <div class="serv-block">
@@ -195,7 +196,7 @@
                         <li class="product__item" src-popup=".mona-popup-1417">
                             <div class="product-block">
                                 <div class="img">
-                                    <a href="https://xecuoiluxury.com/san-pham/gia-cho-thue-xe-cuoi-mercedes-c200/">
+                                    <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}">
                                         <img width="670" height="446"
                                             src="{{ file_exists(public_path('storage/' . $car->image)) ? asset('storage/' . $car->image) : asset('frontend/assets/images/no-photo.jpg') }}"
                                             class="attachment-full size-full wp-post-image" alt="Car Image" />
@@ -203,17 +204,17 @@
                                 </div>
                                 <div class="ct">
                                     <p class="hd">
-                                        <a href="https://xecuoiluxury.com/san-pham/gia-cho-thue-xe-cuoi-mercedes-c200/">{{
+                                        <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}">{{
                                             $car->name }}</a>
                                     </p>
                                     <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
                                     <div class="mona-except">
-                                        <p>
-                                            {!! \Illuminate\Support\Str::limit($car->description, 45, '...') !!}
+                                        <p >
+                                            {!! Str::limit($car->description, 100, ' [...]') !!}
                                         </p>
 
                                     </div>
-                                    <a href="https://xecuoiluxury.com/san-pham/gia-cho-thue-xe-cuoi-mercedes-c200/"
+                                    <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}"
                                         class="more">
                                         <i class="fa fa-long-arrow-right"></i>
                                     </a>
@@ -377,82 +378,7 @@
         </div>
     </div>
 
-    <div class="gallery">
-        <ul class="list-gallery clear">
-            <li>
-                <div class="img-wrap" style="
-            background-image: url(https://xecuoiluxury.com/wp-content/uploads/2018/07/IMG_0395-476x286.jpg);
-          ">
-                    <div class="hv-ct">
-                        <a href="https://xecuoiluxury.com/thu-vien-anh/" class="view-btn">Xem thêm ảnh</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="img-wrap" style="
-            background-image: url(https://xecuoiluxury.com/wp-content/uploads/2018/07/IMG_0165-476x286.jpg);
-          ">
-                    <div class="hv-ct">
-                        <a href="https://xecuoiluxury.com/thu-vien-anh/" class="view-btn">Xem thêm ảnh</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="img-wrap" style="
-            background-image: url(https://xecuoiluxury.com/wp-content/uploads/2018/11/xecuoiluxury1-476x286.jpg);
-          ">
-                    <div class="hv-ct">
-                        <a href="https://xecuoiluxury.com/thu-vien-anh/" class="view-btn">Xem thêm ảnh</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="img-wrap" style="
-            background-image: url(https://xecuoiluxury.com/wp-content/uploads/2018/07/IMG_4729-476x286.jpg);
-          ">
-                    <div class="hv-ct">
-                        <a href="https://xecuoiluxury.com/thu-vien-anh/" class="view-btn">Xem thêm ảnh</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="img-wrap" style="
-            background-image: url(https://xecuoiluxury.com/wp-content/uploads/2019/01/IMG_4942-476x286.jpg);
-          ">
-                    <div class="hv-ct">
-                        <a href="https://xecuoiluxury.com/thu-vien-anh/" class="view-btn">Xem thêm ảnh</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="img-wrap" style="
-            background-image: url(https://xecuoiluxury.com/wp-content/uploads/2019/01/IMG_4718-476x286.jpg);
-          ">
-                    <div class="hv-ct">
-                        <a href="https://xecuoiluxury.com/thu-vien-anh/" class="view-btn">Xem thêm ảnh</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="img-wrap" style="
-            background-image: url(https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-audi-rs5-mui-tran-2-476x286.png);
-          ">
-                    <div class="hv-ct">
-                        <a href="https://xecuoiluxury.com/thu-vien-anh/" class="view-btn">Xem thêm ảnh</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="img-wrap" style="
-            background-image: url(https://xecuoiluxury.com/wp-content/uploads/2019/07/ANHDEP-21-476x286.jpg);
-          ">
-                    <div class="hv-ct">
-                        <a href="https://xecuoiluxury.com/thu-vien-anh/" class="view-btn">Xem thêm ảnh</a>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+    @include('frontend.pages.image.gallery')
     <div class="home-news">
         <div class="all">
             <div class="sec-title2">

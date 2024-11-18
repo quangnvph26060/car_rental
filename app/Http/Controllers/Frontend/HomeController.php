@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $search = request()->input('s');
         $types = Type::all();
-        $cars = Car::where('status', 1)->get();
+        $cars = Car::all();
         $reviews = Review::all();
         if ($search) {
             $cars = Car::where('name', 'like', '%' . $search . '%')->paginate(9);
