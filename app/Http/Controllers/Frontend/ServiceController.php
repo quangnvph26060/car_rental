@@ -10,25 +10,24 @@ class ServiceController extends Controller
 {
     public function service(string $slug = null)
     {
-            $types = Type::with('brands')->get();
-            if($slug == null){
-                $title = 'Dịch vụ';
+        $types = Type::withCount('brands')
+            ->orderBy('brands_count', 'desc')
+            ->get();
+        if ($slug == null) {
+            $title = 'Dịch vụ';
+        } else {
+            $type = Type::where('slug', $slug)->first();
 
-            }else {
-                $type = Type::where('slug', $slug)->first();
+            if ($type == null) {
+                $title = 'không có';
+            } else {
 
-                if ($type == null) {
-                    $title = 'không có';
-                } else {
-
-                    $title = $type->title;
-                }
-
-                return view('frontend.pages.service', compact('title', 'slug', 'type', 'types'));
+                $title = $type->title;
             }
 
-            return view('frontend.pages.service', compact('title', 'slug', 'types'));
+            return view('frontend.pages.service', compact('title', 'slug', 'type', 'types'));
+        }
 
-
+        return view('frontend.pages.service', compact('title', 'slug', 'types'));
     }
 }
