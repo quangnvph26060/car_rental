@@ -28,8 +28,8 @@ class BrandCarController extends Controller
         $request->validate([
             'name' => 'required|min:6|unique:sgo_brands,name',
             'title' => 'nullable|min:6|unique:sgo_brands,title',
-            'short_description' => 'nullable|min:20',
-            'long_description' => 'nullable|min:30',
+            'described_above' => 'nullable|min:20',
+            'described_below' => 'nullable|min:30',
             'type_id' => 'nullable',
             'images' => 'required|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -37,8 +37,8 @@ class BrandCarController extends Controller
             'name' => 'Tên hãng xe',
             'title' => 'Tiêu đề giới thiệu',
             'type_id' => 'Hãng xe',
-            'short_description' => 'Mô tả ngắn',
-            'long_description' => 'Mô tả dài',
+            'described_above' => 'Mô tả trên',
+            'described_below' => 'Mô tả dưới',
             'images' => 'Hình ảnh'
         ]);
 
@@ -70,15 +70,15 @@ class BrandCarController extends Controller
         $request->validate([
             'name' => 'required|min:6|unique:sgo_brands,name,' . $id,
             'title' => 'nullable|min:6',
-            'short_description' => 'nullable|min:20',
-            'long_description' => 'nullable|min:30',
+            'described_above' => 'nullable|min:20',
+            'described_below' => 'nullable|min:30',
             'type_id' => 'nullable',
         ], __('request.messages'), [
             'name' => 'Tên hãng xe',
             'title' => 'Tiêu đề giới thiệu',
             'type_id' => 'Hãng xe',
-            'short_description' => 'Mô tả ngắn',
-            'long_description' => 'Mô tả dài'
+            'described_above' => 'Mô tả trên',
+            'described_below' => 'Mô tả dưới'
         ]);
         $data = $request->except('_token', '_method');
         $data['slug'] =  Str::of($data['name'])->slug('-');

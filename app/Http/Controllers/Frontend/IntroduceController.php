@@ -7,9 +7,7 @@ use App\Models\Benefit;
 use App\Models\Car;
 use App\Models\Review;
 use App\Models\ServiceCommitment;
-use App\Models\SgoContact;
 use App\Models\Type;
-use Illuminate\Http\Request;
 
 class IntroduceController extends Controller
 {
@@ -26,6 +24,7 @@ class IntroduceController extends Controller
         $cars = Car::all();
         $benefits = Benefit::where('status', 1)->latest()->take(4)->get();
         $commitments = ServiceCommitment::latest()->take(3)->get();
-        return view('frontend.pages.introduce', compact('reviews', 'commitments', 'use_service', 'cars', 'benefits'));
+        $carsGallery = Car::take(8)->get();
+        return view('frontend.pages.introduce', compact('reviews', 'commitments', 'use_service', 'cars', 'benefits','carsGallery'));
     }
 }

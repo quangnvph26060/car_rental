@@ -75,18 +75,18 @@
                             <div class="row">
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
-                                        <label for="comment">Mô tả ngắn <code>(Không bắt buộc)</code></label>
-                                        <textarea class="form-control ckeditor" name="short_description" id="content" rows="4">{{ old('short_description') }}</textarea>
-                                        @error('short_description')
+                                        <label for="comment">Mô tả trên <code>(Không bắt buộc)</code></label>
+                                        <textarea class="form-control ckeditor" name="described_above" id="content" rows="4">{{ old('described_above') }}</textarea>
+                                        @error('described_above')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
-                                        <label for="comment">Mô tả dài <code>(Không bắt buộc)</code></label>
-                                        <textarea class="form-control ckeditor" name="long_description" id="content" rows="5">{{ old('long_description') }}</textarea>
-                                        @error('long_description')
+                                        <label for="comment">Mô tả dưới <code>(Không bắt buộc)</code></label>
+                                        <textarea class="form-control ckeditor" name="described_below" id="content" rows="5">{{ old('described_below') }}</textarea>
+                                        @error('described_below	')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>

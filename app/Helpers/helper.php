@@ -89,3 +89,23 @@ function isActiveRoute(array $routes, $output = "active")
         return $output;
     }
 }
+function isActiveRouteWithParams(array $routes, $output = "current-menu-parent")
+{
+    $currentRouteName = Route::currentRouteName();
+    $currentRouteParams = request()->route()->parameters();
+
+    foreach ($routes as $route) {
+        if (is_array($route)) {
+            $routeName = $route['name'] ?? null;
+            $routeParams = $route['params'] ?? [];
+
+            if ($routeName === $currentRouteName && $routeParams == $currentRouteParams) {
+                return $output;
+            }
+        } else if ($route === $currentRouteName) {
+            return $output;
+        }
+    }
+
+    return '';
+}

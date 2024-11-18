@@ -47,7 +47,7 @@
                     </a>
 
                     <div class="form-search">
-                        <form method="get" id="searchform" class="searchform" action="{{route('frontend.home')}}">
+                        <form method="get" id="searchform" class="searchform" action="{{ route('frontend.home') }}">
                             <input type="search" class="search-field f-control" name="s" value=""
                                 id="s" placeholder="Search …" />
                             <button type="submit" class="mn-btn submit-btn">
@@ -74,28 +74,28 @@
                 <ul id="menu-main" class="mona-main-menu nav-ul">
                     {{-- @dd(request()->route()->getName()) --}}
                     <li id="menu-item-131"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home {{request()->routeIs('frontend.home') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}} menu-item-131">
-                        <a href="{{route('frontend.home')}}">Trang chủ</a>
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home {{ request()->routeIs('frontend.home') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-131">
+                        <a href="{{ route('frontend.home') }}">Trang chủ</a>
                     </li>
                     <li id="menu-item-2224"
-                        class="menu-item menu-item-type-post_type menu-item-object-page {{request()->routeIs('frontend.introduce') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}} menu-item-2224">
-                        <a href="{{route('frontend.introduce')}}">Giới thiệu</a>
+                        class="menu-item menu-item-type-post_type menu-item-object-page {{ request()->routeIs('frontend.introduce') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2224">
+                        <a href="{{ route('frontend.introduce') }}">Giới thiệu</a>
                     </li>
                     <li id="menu-item-1940"
-                        class="menu-item menu-item-type-post_type menu-item-object-page {{request()->is('dich-vu') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}} menu-item-1940">
-                        <a href="{{route('frontend.service')}}">Dịch vụ</a>
+                        class="menu-item menu-item-type-post_type menu-item-object-page {{ request()->is('dich-vu') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-1940">
+                        <a href="{{ route('frontend.service') }}">Dịch vụ</a>
                     </li>
                     <li id="menu-item-1943"
-                        class="menu-item menu-item-type-custom menu-item-object-custom {{\Request::is('dich-vu/xe-cuoi-dep') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}}  menu-item-1943">
-                        <a href="{{route('frontend.service', 'xe-cuoi-dep')}}">Xe Cưới</a>
+                        class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/xe-cuoi-dep') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }}  menu-item-1943">
+                        <a href="{{ route('frontend.service', 'xe-cuoi-dep') }}">Xe Cưới</a>
                     </li>
                     <li id="menu-item-2445"
-                        class="menu-item menu-item-type-custom menu-item-object-custom {{\Request::is('dich-vu/hoa-cuoi') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}} menu-item-2445">
-                        <a href="{{route('frontend.service', 'hoa-cuoi')}}">Hoa Cưới</a>
+                        class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/hoa-cuoi') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2445">
+                        <a href="{{ route('frontend.service', 'hoa-xe-cuoi') }}">Hoa Cưới</a>
                     </li>
                     <li id="menu-item-2426"
-                        class="menu-item menu-item-type-post_type menu-item-object-page {{request()->routeIs('frontend.contact') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}} menu-item-2426">
-                        <a href="{{route('frontend.contact')}}">Liên Hệ</a>
+                        class="menu-item menu-item-type-post_type menu-item-object-page {{ request()->routeIs('frontend.contact') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2426">
+                        <a href="{{ route('frontend.contact') }}">Liên Hệ</a>
                     </li>
                 </ul>
                 <div class="mona-top-social">
@@ -118,7 +118,7 @@
                         </li>
                     </ul>
                     <div class="last">
-                        <a href="{{route('frontend.booking')}}">YÊU CẦU BÁO GIÁ</a>
+                        <a href="{{ route('frontend.booking') }}">YÊU CẦU BÁO GIÁ</a>
                     </div>
                 </div>
             </div>
