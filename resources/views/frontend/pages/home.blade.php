@@ -135,13 +135,12 @@
                                 </li>
                             @endforeach
                         </ul>
-                        {{-- <div id="mona-data-query" class="mona-hiden"
-                            data-query='{"notin":[1417,1414,1411,1408,1405,1402,1399,1396,1393,1390,1387,1384,1382,1379,1376,1373,1370,1367,1364,1361,1359,1357,1355,1352,1349,1347,1345,1343,1341,1339,1337,1335,1333],"category":2,"nextload":9}'>
-                        </div> --}}
+
                         <div class="more-button">
-                            <button class="mn-btn btn-1" data-offset="6" id="mona-home-more-car">Xem thêm xe
+                            <a href="https://xecuoiluxury.com/xe-cuoi/" data-max="2" data-page="1" class="mn-btn btn-1"
+                                id="mona-home-more-product">Xem thêm xe
                                 <i class="fa fa-caret-down"></i>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -509,83 +508,84 @@
         </div>
     </main>
 @endsection
-{{-- @push('scripts')
+
+@push('scripts')
     <script>
-        jQuery(document).ready(function() {
-            jQuery.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            jQuery('#mona-home-more-car').click(function() {
-                let offset = jQuery(this).data('offset');
-                jQuery.ajax({
-                    url: '/load-more-cars',
-                    type: 'POST',
-                    data: {
-                        offset: offset,
-                        _token: '{{ csrf_token() }}',
-                    },
-                    success: function(response) {
-                        if (response.products.length > 0) {
-                            response.products.forEach(function(product) {
-                                jQuery('.list-product').append(
-                                    ` <li class="product__item" id="car-item" style="height: 450px">
+        jQuery('.more-button a').on('click', function(e) {
+            e.preventDefault();
+
+            const app_url = '{{ env('APP_URL') }}';
+
+
+            const $this = jQuery(this); // Truy cập chính thẻ <a>
+
+            // Lấy giá trị hiện tại của `data-page`
+            let currentPage = parseInt($this.data('page'), 10); // Chuyển sang số nguyên
+
+            // Tăng giá trị `data-page` lên 1
+            currentPage++;
+
+            // Cập nhật lại thuộc tính `data-page`
+            $this.data('page', currentPage);
+
+            jQuery.ajax({
+                url: '{{ route('frontend.ajax') }}',
+                type: 'POST',
+                data: {
+                    action: 'mona_load_more',
+                    page: currentPage
+                },
+                beforeSend: function() {
+                    // Thay đổi nội dung nút thành "Loading..." khi đang tải
+                    $this.html('<i class="fa fa-spinner fa-spin"></i> Đang tải...');
+                },
+                success: function(data) {
+                    if (data.cars && data.cars.length > 0) {
+                        data.cars.forEach(car => {
+                            jQuery('#mona-home-list').append(`
+                                <li class="product__item" id="car-item" style="height: 450px">
                                     <div class="product-block">
                                         <div class="img">
-                                            <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}">
+                                            <a href="${app_url}/san-pham/${car.slug}"> <!-- Link tới hình ảnh lớn -->
                                                 <img width="670" height="446"
-                                                    src="{{ showImage(${product.image}) }}"
-                                                    class="attachment-full size-full wp-post-image" alt="Car Image" />
+                                                    src="${app_url+'/storage/'+car.image}" <!-- URL ảnh nhỏ hiển thị -->
+                                                    class="attachment-full size-full wp-post-image" alt="${car.name}" />
                                             </a>
                                         </div>
                                         <div class="ct">
                                             <p class="hd">
-                                                <a
-                                                    href="{{ route('frontend.product', ['slug' => $car->slug]) }}">${product.name}</a>
+                                                <a href="${app_url}/san-pham/${car.slug}">${car.name}</a>
                                             </p>
-                                            <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
+                                            <p class="price mona-text-label">${car.price} VND</p>
                                             <div class="mona-except">
-                                                <p>
-                                                    {!! Str::limit($car->description, 120, '[...]') !!}
-                                                </p>
-
+                                                <p>${car.description}</p>
                                             </div>
-                                            <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}"
-                                                class="more">
+                                            <a href="${app_url}/san-pham/${car.slug}" class="more">
                                                 <i class="fa fa-long-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
-                                </li>`
-                                );
-                            });
+                                </li>
+                            `);
+                        });
 
-                            // Cập nhật offset
-                            jQuery('#load-more').data('offset', offset + response.products
-                                .length);
+                        // Cập nhật lại nút "Xem thêm xe" sau khi hoàn tất
+                        $this.html('Xem thêm xe');
+                    } else {
+                        // Nếu không còn dữ liệu, ẩn nút
+                        $this.html('Hết xe').prop('disabled', true).addClass('disabled');
+                    }
+                },
 
-                            // Disable button nếu hết sản phẩm
-                            if (!response.hasMore) {
-                                jQuery('#load-more').prop('disabled', true).text(
-                                    'Hết sản phẩm');
-                            }
-                        }
-                    },
-                    error: function() {
-                        alert('Có lỗi xảy ra!');
-                    },
-                });
+                error: function() {
+                    // Nếu có lỗi, khôi phục lại trạng thái nút
+                    $this.html('Xem thêm xe');
+                    alert('Đã xảy ra lỗi, vui lòng thử lại!');
+                }
             });
         });
     </script>
-@endpush --}}
-
-
-
-
-
-
+@endpush
 
 
 @push('styles')

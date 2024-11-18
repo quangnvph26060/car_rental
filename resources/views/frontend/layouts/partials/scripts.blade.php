@@ -11,5 +11,11 @@
 <script src="{{asset('frontend/assets/js/wp-embed.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/wp-emoji-release.min.js')}}"></script>
 
-
+<script>
+    jQuery.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    })
+</script>
 @stack('scripts')

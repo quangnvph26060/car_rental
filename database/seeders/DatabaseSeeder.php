@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Car;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +19,21 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        // `name`, `introductory_title`, `slug`, `price`, `promotion_details`, `number_of_seats`, `color_id`, `description`,
+
+        for ($i = 0; $i < 1000; $i++) {
+            Car::create([
+                'name' => fake()->name(),
+                'introductory_title' => fake()->name(),
+                'slug' => fake()->name(),
+                'price' => fake()->randomNumber(),
+                'promotion_details' => fake()->name(),
+                'number_of_seats' => fake()->randomNumber(),
+                'color_id' => fake()->randomNumber(),
+                'description' => fake()->name(),
+                'status' => fake()->numberBetween(0, 1),
+                'image' => fake()->imageUrl(),
+            ]);
+        }
     }
 }
