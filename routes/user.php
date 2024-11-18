@@ -21,4 +21,6 @@ Route::name('frontend.')->group(function () {
     route::get('dat-xe', [BookingController::class, 'booking'])->name('booking');
     route::get('san-pham/{slug?}', [ProductController::class, 'product'])->name('product');
     route::get('tin-tuc/{slug?}', [NewsController::class, 'blog'])->name('blog');
+
+    route::post('booking', [BookingController::class, 'store'])->name('booking.store');
 });
