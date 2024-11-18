@@ -511,6 +511,14 @@
 
 @push('scripts')
     <script>
+        function limitText(text, limit = 120, suffix = '[...]') {
+            if (text.length > limit) {
+                return text.substring(0, limit) + suffix;
+            }
+            return text;
+        }
+
+
         jQuery('.more-button a').on('click', function(e) {
             e.preventDefault();
 
@@ -558,7 +566,7 @@
                                             </p>
                                             <p class="price mona-text-label">${car.price} VND</p>
                                             <div class="mona-except">
-                                                <p>${car.description}</p>
+                                                <p>${limitText(car.description, 120, '[...]')}</p>
                                             </div>
                                             <a href="${app_url}/san-pham/${car.slug}" class="more">
                                                 <i class="fa fa-long-arrow-right"></i>
