@@ -133,6 +133,12 @@
                                 <p><strong>Chi tiết khuyến mãi:</strong></p>
                                 <span class="hl">
                                     {!! $product->promotion_details !!}
+
+                                    <a
+                                    href="{{route('frontend.booking')}}?xe={{$product->id}}"
+                                    class="mn-btn btn-1"
+                                    >Đặt xe</a
+                                  >
                                 </span>
                             </div>
                         </div>
