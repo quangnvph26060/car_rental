@@ -24,13 +24,14 @@ class BrandCarController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|min:6|unique:sgo_brands,name',
             'title' => 'nullable|min:6|unique:sgo_brands,title',
             'short_description' => 'nullable|min:20',
             'long_description' => 'nullable|min:30',
             'type_id' => 'nullable',
-            'images' => 'array',
+            'images' => 'required|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], __('request.messages'), [
             'name' => 'Tên hãng xe',

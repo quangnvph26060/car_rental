@@ -90,8 +90,8 @@
                         <a href="{{route('frontend.service', 'xe-cuoi-dep')}}">Xe Cưới</a>
                     </li>
                     <li id="menu-item-2445"
-                        class="menu-item menu-item-type-custom menu-item-object-custom {{\Request::is('dich-vu/trang-tri-hoa-xe-cuoi-dep') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}} menu-item-2445">
-                        <a href="{{route('frontend.service', 'trang-tri-hoa-xe-cuoi-dep')}}">Hoa Cưới</a>
+                        class="menu-item menu-item-type-custom menu-item-object-custom {{\Request::is('dich-vu/hoa-cuoi') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}} menu-item-2445">
+                        <a href="{{route('frontend.service', 'hoa-cuoi')}}">Hoa Cưới</a>
                     </li>
                     <li id="menu-item-2426"
                         class="menu-item menu-item-type-post_type menu-item-object-page {{request()->routeIs('frontend.contact') ? 'current-menu-item page_item page-item-2 current_page_item' : ''}} menu-item-2426">

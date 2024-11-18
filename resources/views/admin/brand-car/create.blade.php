@@ -21,7 +21,7 @@
                     <div class="card-header">
                         <div class="card-title">Thêm hãng xe</div>
                     </div>
-                    <form action="{{ route('admin.brand-car.store') }}" method="post" autocomplete="off">
+                    <form action="{{ route('admin.brand-car.store') }}" method="post" autocomplete="off"  enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">

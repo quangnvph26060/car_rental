@@ -27,6 +27,7 @@ class CarController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request->all());
         $validated = $request->validate([
             'name' => 'required|min:6|unique:sgo_cars,name',
             'introductory_title' => 'nullable|min:6',
