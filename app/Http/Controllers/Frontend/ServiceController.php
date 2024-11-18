@@ -30,4 +30,7 @@ class ServiceController extends Controller
 
         return view('frontend.pages.service', compact('title', 'slug', 'types'));
     }
+    public function brand(string $slug = null){
+        
+    }
 }

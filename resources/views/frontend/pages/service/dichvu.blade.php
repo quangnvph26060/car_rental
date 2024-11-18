@@ -1,43 +1,47 @@
-@isset( $type)
-<div class="side-right">
-    <div id="nav-ct1">
-        <div class="content-entry">
-            <div class="mn-content">
+@isset($type)
+    <div class="side-right">
+        <div id="nav-ct1">
+            <div class="content-entry">
+                <div class="mn-content">
 
-                {!! $type->described_above !!}
+                    {!! $type->described_above !!}
+                </div>
             </div>
         </div>
-    </div>
-    <ul class="list-product clear" id="mona-items-content">
+        <ul class="list-product clear" id="mona-items-content">
+            @if ($type->cars->count() > 0)
+                @foreach ($type->cars as $item)
+                    <li class="product__item" src-popup="{{ $item->name }}">
+                        <div class="product-block">
+                            <div class="img">
+                                <a href="{{ route('frontend.product', ['slug' => $item->slug]) }}">
+                                    <img width="670" height="446"
+                                        src="{{ showImage($item->image) }}"
+                                        class="attachment-full size-full wp-post-image" alt=""
+                                     >
+                                </a>
+                            </div>
+                            <div class="ct">
+                                <p class="hd">
+                                    <a href="{{ route('frontend.product', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
+                                </p>
+                                <p class="price mona-text-label">{{ number_format($item->price) }} VND</p>
+                                <div class="mona-except">
+                                    {!! Str::limit($item->description, 120, '[...]') !!}
+                                </div>
+                                <a href="{{ route('frontend.product', ['slug' => $item->slug]) }}"
+                                    class="more">
+                                    <i class="fa fa-long-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+            @else
+            @endif
 
-        <li class="product__item" src-popup=".mona-popup-1417">
-            <div class="product-block">
 
-                <div class="img">
-                    <a href="https://xecuoiluxury.com/san-pham/gia-cho-thue-xe-cuoi-mercedes-c200/">
-                        <img width="670" height="446"
-                            src="https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-mercedes-c200-7-670x446-1.png"
-                            class="attachment-full size-full wp-post-image" alt=""
-                            srcset="https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-mercedes-c200-7-670x446-1.png 670w, https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-mercedes-c200-7-670x446-1-300x200.png 300w, https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-mercedes-c200-7-670x446-1-210x140.png 210w, https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-mercedes-c200-7-670x446-1-105x70.png 105w"
-                            sizes="(max-width: 670px) 100vw, 670px">
-                    </a>
-                </div>
-                <div class="ct">
-                    <p class="hd">
-                        <a href="https://xecuoiluxury.com/san-pham/gia-cho-thue-xe-cuoi-mercedes-c200/">Xe Cưới
-                            Mercedes C200</a>
-                    </p>
-                    <p class="price mona-text-label">1,200,000 VND</p>
-                    <div class="mona-except">
-                        <p>CHO THUÊ XE CƯỚI MERCEDES C200 TẠI HÀ NỘI Nếu […]</p>
-                    </div>
-                    <a href="https://xecuoiluxury.com/san-pham/gia-cho-thue-xe-cuoi-mercedes-c200/" class="more">
-                        <i class="fa fa-long-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="product__item" src-popup=".mona-popup-1414">
+            {{-- <li class="product__item" src-popup=".mona-popup-1414">
             <div class="product-block">
 
                 <div class="img">
@@ -250,16 +254,14 @@
                     </a>
                 </div>
             </div>
-        </li>
-    </ul>
-    <div class="more-button">
-        <a href="" data-tax-id="2" data-tax="product_cat" data-page="1" data-max="5"
-            class="mn-btn btn-1 mona-load-button" id="mona-load-more-items">Xem thêm<i
-                class="fa fa-caret-down"></i></a>
+        </li> --}}
+        </ul>
+        <div class="more-button">
+            <a href="" data-tax-id="2" data-tax="product_cat" data-page="1" data-max="5"
+                class="mn-btn btn-1 mona-load-button" id="mona-load-more-items">Xem thêm<i class="fa fa-caret-down"></i></a>
+        </div>
+        <div class="pinfo-detail mn-content">
+            {!! $type->described_below !!}
+        </div>
     </div>
-    <div class="pinfo-detail mn-content">
-        {!! $type->described_below !!}
-    </div>
-</div>
 @endisset
-

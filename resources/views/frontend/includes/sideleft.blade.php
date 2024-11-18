@@ -8,15 +8,16 @@
                 <ul id="menu-product" class="menu">
                     @foreach ($types as $type)
                         <li id="menu-item-1082" {{-- current-menu-ancestor current-menu-parent --}}
-                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor menu-item-has-children has-dropdown menu-item-1082">
-                            <a href="">{{ strtoupper($type->name) }}<i class="fa fa-angle-right"></i></a>
+                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor {{ isActiveRouteWithParams([['name' => 'frontend.service', 'params' => ['slug' => $type->slug]]]) }} menu-item-has-children has-dropdown menu-item-1082">
+                            <a href="{{ route('frontend.service', $type->slug) }}">{{ strtoupper($type->name) }}<i
+                                    class="fa fa-angle-right"></i></a>
                             @if ($type->brands->count() > 0)
                                 <ul class="sub-menu">
                                     @foreach ($type->brands as $brand)
-                                        <li id="menu-item-1086"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1086">
+                                        <li id="{{ $brand->slug }}"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom {{ $brand->slug }}">
                                             <a
-                                                href="http://xecuoiluxury.com/hang-xe/thue-xe-cuoi-mercedes/">{{ $brand->name }}</a>
+                                                href="{{ route('frontend.brand' , $brand->slug) }}">{{ $brand->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
