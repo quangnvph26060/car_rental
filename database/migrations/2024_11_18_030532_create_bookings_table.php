@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('car_id');
-            $table->unsignedBigInteger('car_type_id');
+            $table->unsignedBigInteger('type_id');
             $table->dateTime('start_date');
             $table->unsignedBigInteger('rental_days');
             $table->string('name');

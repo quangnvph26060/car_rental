@@ -14,19 +14,19 @@ class BookingController extends Controller
     public function booking()
     {
 
-        $query = Type::query()->select('id', 'name');
+        $query = Car::query();
 
         if (request()->ajax()) {
-            $cars = $query->where('id', request()->type_id)->with('cars:name,id')->first();
+            $typeCars = $query->where('id', request()->car_id)->with('types:name,id')->first();
 
             return response()->json([
-                'cars' => $cars->cars ?? [],
+                'types' => $typeCars->types ?? [],
             ]);
         }
 
-        $typecars = $query->get();
+        $cars = $query->pluck('name', 'id')->toArray();
 
-        return view('frontend.pages.booking', compact('typecars'));
+        return view('frontend.pages.booking', compact('cars'));
     }
 
     public function store(Request $request)
@@ -36,18 +36,28 @@ class BookingController extends Controller
             [
                 'car_id' => 'required|exists:sgo_cars,id',
                 'type_id' => 'required|exists:sgo_types,id',
-                'start_date' => 'required',
-                'rental_days' => 'required',
+                'start_date' => 'required|date|after_or_equal:now',
+                'rental_days' => 'required|numeric|min:1',
                 'name' => 'required',
-                'phone' => 'required',
+                'phone' => [
+                    'required',
+                    'regex:/^0[0-9]{9}$/'],
             ],
-            __('request.messages')
+            __('request.messages'),
+            [
+                'car_id' => 'Xe',
+                'type_id' => 'Loại xe',
+                'start_date' => 'Ngày thuê',
+                'rental_days' => 'Số ngày thuê',
+                'name' => 'Tên khách hàng',
+                'phone' => 'Số diện thoại'
+            ]
         );
 
         if ($credentials->fails()) {
             return response()->json([
-                'status' => 'error',
-                'validation_errors' => $credentials->errors()
+                'status' => false,
+                'message' => $credentials->errors()->first()
             ], 422);
         }
 
@@ -55,7 +65,7 @@ class BookingController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Vui lòng chú ý điện thoại, Chúng tôi sẽ liên hệ với qúy khách trong thời gian sắp tới.'
+            'message' => 'Chúng tôi sẽ liên hệ với qúy khách trong thời gian sắp tới.'
         ]);
     }
 }
