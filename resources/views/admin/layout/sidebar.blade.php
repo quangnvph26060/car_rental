@@ -92,10 +92,22 @@
                         <p>Liên hệ</p>
                     </a>
                 </li>
+
                 <li class="nav-item {{ isActiveRoute(['admin.booking.request']) }}">
                     <a href="{{ route('admin.booking.request') }}">
                         <i class="fa-solid fa-truck"></i>
                         <p>Yêu cầu đặt xe</p>
+                <li class="nav-item {{ isActiveRoute(['admin.config.index']) }}">
+                    <a href="{{ route('admin.config.index') }}">
+                        <i class="fa-solid fa-gear"></i>
+                        <p>Cấu hình</p>
+                    </a>
+                </li>
+                {{-- <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarLayouts">
+                        <i class="fas fa-th-list"></i>
+                        <p>Sidebar Layouts</p>
+                        <span class="caret"></span>
                     </a>
                 </li>
             </ul>

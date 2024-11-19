@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BrandCarController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryPostController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImageCarController;
 use App\Http\Controllers\Admin\PostController;
@@ -79,6 +80,11 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
         Route::get('/contact-info', [SgoContactController::class, 'getContactInfo'])->name('getContactInfo');
         Route::post('/update-contact-info', [SgoContactController::class, 'updateContactInfo'])->name('updateContactInfo');
     });
+    Route::prefix('config')->name('config.')->group(function () {
+        Route::get('/config', [ConfigController::class, 'index'])->name('index');
+        Route::post('/update-config', [ConfigController::class, 'update'])->name('update');
+    });
+
 
     route::get('/booking/request', [SgoContactController::class, 'bookingRequest'])->name('booking.request');
     route::post('/booking/request', [SgoContactController::class, 'bookingEmail'])->name('booking.email');

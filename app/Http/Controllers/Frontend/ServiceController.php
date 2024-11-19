@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,22 @@ class ServiceController extends Controller
 
         return view('frontend.pages.service', compact('title', 'slug', 'types'));
     }
-    public function brand(string $slug = null){
-        
+    public function brand(string $slug = null)
+    {
+        $types = Type::withCount('brands')
+            ->orderBy('brands_count', 'desc')
+            ->get();
+        if ($slug == null) {
+            $title = 'Dịch vụ';
+        } else {
+            $brand = Brand::where('slug', $slug)->first();
+            if ($brand == null) {
+                $title = 'Không có';
+            } else {
+                $title = $brand->name;
+            }
+            return view('frontend.pages.service', compact('title', 'slug', 'brand', 'types'));
+        }
+        return view('frontend.pages.service', compact('title', 'slug', 'types'));
     }
 }
