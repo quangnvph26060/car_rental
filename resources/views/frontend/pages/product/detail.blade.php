@@ -161,214 +161,41 @@
                             </div>
                         </div>
                         <div class="col75 right">
-                            <ul class="list-product clear" id="mona-sticky-content">
-                                <li class="product__item" src-popup=".mona-popup-2586">
-                                    <div class="product-block">
-                                        <div class="img">
-                                            <a href="https://xecuoiluxury.com/san-pham/mau-xe-hoa-hcl-039/">
-                                                <img width="902" height="1026"
-                                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-1.png"
-                                                    class="attachment-full size-full wp-post-image" alt=""
-                                                    srcset="
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-1.png          902w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-1-264x300.png  264w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-1-768x874.png  768w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-1-900x1024.png 900w
-                          "
-                                                    sizes="(max-width: 902px) 100vw, 902px" />
-                                            </a>
-                                        </div>
-                                        <div class="ct">
-                                            <p class="hd">
-                                                <a href="https://xecuoiluxury.com/san-pham/mau-xe-hoa-hcl-039/">Hoa Xe Cưới
-                                                    – HCL: 039</a>
-                                            </p>
-                                            <p class="price mona-text-label">1,600,000 VND</p>
-                                            <div class="mona-except">
-                                                <p>
-                                                    Khuyến Mại: Tặng Hoa Cầm Tay Cô Dâu + Hoa Cài Áo Chủ
-                                                    Rể
-                                                </p>
+                            <ul class="list-product clear" id="mona-home-list">
+                                @foreach ($productFavorite as $car)
+                                    <li class="product__item" src-popup=".mona-popup-{{ $car->id }}">
+                                        <div class="product-block">
+
+                                            <div class="img">
+                                                <a href="{{ route('frontend.product', $car->slug) }}">
+                                                    <img width="800" height="600" src="{{ showImage($car->image) }}"
+                                                        class="attachment-full size-full wp-post-image"
+                                                        alt="{{ $car->name }}">
+                                                </a>
                                             </div>
-                                            <a href="https://xecuoiluxury.com/san-pham/mau-xe-hoa-hcl-039/" class="more">
-                                                <i class="fa fa-long-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product__item" src-popup=".mona-popup-2583">
-                                    <div class="product-block">
-                                        <div class="img">
-                                            <a href="https://xecuoiluxury.com/san-pham/mau-hoa-xe-cuoi-dep-hcl-038/">
-                                                <img width="900" height="855"
-                                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-3.png"
-                                                    class="attachment-full size-full wp-post-image" alt=""
-                                                    srcset="
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-3.png         900w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-3-300x285.png 300w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-3-768x730.png 768w
-                          "
-                                                    sizes="(max-width: 900px) 100vw, 900px" />
-                                            </a>
-                                        </div>
-                                        <div class="ct">
-                                            <p class="hd">
-                                                <a href="https://xecuoiluxury.com/san-pham/mau-hoa-xe-cuoi-dep-hcl-038/">Hoa
-                                                    Xe Cưới – HCL: 038</a>
-                                            </p>
-                                            <p class="price mona-text-label">1,700,000 VND</p>
-                                            <div class="mona-except">
-                                                <p>
-                                                    Khuyến Mại: Tặng Hoa Cầm Tay Cô Dâu + Hoa Cài Áo Chủ
-                                                    Rể
+                                            <div class="ct">
+                                                <p class="hd">
+                                                    <a
+                                                        href="{{ route('frontend.product', $car->slug) }}">{{ $car->name }}</a>
                                                 </p>
+                                                <p class="price mona-text-label">
+                                                    {{ number_format($car->price, 0, '.', '.') }}VND</p>
+                                                <div class="mona-except">
+                                                    {!! \Str::words($car->description, 20, '[...]') !!}
+                                                </div>
+                                                <a href="{{ route('frontend.product', $car->slug) }}" class="more">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                </a>
                                             </div>
-                                            <a href="https://xecuoiluxury.com/san-pham/mau-hoa-xe-cuoi-dep-hcl-038/"
-                                                class="more">
-                                                <i class="fa fa-long-arrow-right"></i>
-                                            </a>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="product__item" src-popup=".mona-popup-2580">
-                                    <div class="product-block">
-                                        <div class="img">
-                                            <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-giua-hcl-037/">
-                                                <img width="900" height="675"
-                                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-2.png"
-                                                    class="attachment-full size-full wp-post-image" alt=""
-                                                    srcset="
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-2.png         900w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-2-300x225.png 300w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/10/hoa-cuoi-luxury-2-768x576.png 768w
-                          "
-                                                    sizes="(max-width: 900px) 100vw, 900px" />
-                                            </a>
-                                        </div>
-                                        <div class="ct">
-                                            <p class="hd">
-                                                <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-giua-hcl-037/">Hoa
-                                                    Xe Cưới – HCL: 037</a>
-                                            </p>
-                                            <p class="price mona-text-label">1,800,000 VND</p>
-                                            <div class="mona-except">
-                                                <p>
-                                                    Khuyến Mại: Tặng Hoa Cầm Tay Cô Dâu + Hoa Cài Áo Chủ
-                                                    Rể
-                                                </p>
-                                            </div>
-                                            <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-giua-hcl-037/"
-                                                class="more">
-                                                <i class="fa fa-long-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product__item" src-popup=".mona-popup-2369">
-                                    <div class="product-block">
-                                        <div class="img">
-                                            <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-hcl-036/">
-                                                <img width="640" height="480"
-                                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-3.png"
-                                                    class="attachment-full size-full wp-post-image" alt=""
-                                                    srcset="
-                            https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-3.png         640w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-3-300x225.png 300w
-                          "
-                                                    sizes="(max-width: 640px) 100vw, 640px" />
-                                            </a>
-                                        </div>
-                                        <div class="ct">
-                                            <p class="hd">
-                                                <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-hcl-036/">Hoa Xe
-                                                    Cưới – HCL: 036</a>
-                                            </p>
-                                            <p class="price mona-text-label">2,300,000 VND</p>
-                                            <div class="mona-except">
-                                                <p>
-                                                    Khuyến Mại: Tặng Hoa Cầm Tay Cô Dâu + Hoa Cài Áo Chủ
-                                                    Rể
-                                                </p>
-                                            </div>
-                                            <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-hcl-036/"
-                                                class="more">
-                                                <i class="fa fa-long-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product__item" src-popup=".mona-popup-2365">
-                                    <div class="product-block">
-                                        <div class="img">
-                                            <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-dep-hcl-035/">
-                                                <img width="900" height="675"
-                                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-2.png"
-                                                    class="attachment-full size-full wp-post-image" alt=""
-                                                    srcset="
-                            https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-2.png         900w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-2-300x225.png 300w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-2-768x576.png 768w
-                          "
-                                                    sizes="(max-width: 900px) 100vw, 900px" />
-                                            </a>
-                                        </div>
-                                        <div class="ct">
-                                            <p class="hd">
-                                                <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-dep-hcl-035/">Hoa Xe
-                                                    Cưới – HCL: 035</a>
-                                            </p>
-                                            <p class="price mona-text-label">2,300,000 VND</p>
-                                            <div class="mona-except">
-                                                <p>
-                                                    Khuyến Mại: Tặng Hoa Cầm Tay Cô Dâu + Hoa Cài Áo Chủ
-                                                    Rể
-                                                </p>
-                                            </div>
-                                            <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-dep-hcl-035/"
-                                                class="more">
-                                                <i class="fa fa-long-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product__item" src-popup=".mona-popup-2362">
-                                    <div class="product-block">
-                                        <div class="img">
-                                            <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-hcl-034/">
-                                                <img width="900" height="675"
-                                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-1.png"
-                                                    class="attachment-full size-full wp-post-image" alt=""
-                                                    srcset="
-                            https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-1.png         900w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-1-300x225.png 300w,
-                            https://xecuoiluxury.com/wp-content/uploads/2019/09/hoa-xe-cuoi-dep-1-768x576.png 768w
-                          "
-                                                    sizes="(max-width: 900px) 100vw, 900px" />
-                                            </a>
-                                        </div>
-                                        <div class="ct">
-                                            <p class="hd">
-                                                <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-hcl-034/">Hoa Xe
-                                                    Cưới – HCL: 034</a>
-                                            </p>
-                                            <p class="price mona-text-label">2,300,000 VND</p>
-                                            <div class="mona-except">
-                                                <p>
-                                                    Khuyến Mại: Tặng Hoa Cầm Tay Cô Dâu + Hoa Cài Áo Chủ
-                                                    Rể
-                                                </p>
-                                            </div>
-                                            <a href="https://xecuoiluxury.com/san-pham/hoa-xe-cuoi-hcl-034/"
-                                                class="more">
-                                                <i class="fa fa-long-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                             <div class="more-button">
-                                <a href="" data-page="1" data-max="14" class="mn-btn btn-1 mona-load-button"
-                                    id="mona-load-more-sticky">Xem thêm xe<i class="fa fa-caret-down"></i></a>
+                                <a href="https://xecuoiluxury.com/xe-cuoi/" data-max="2" data-page="1"
+                                    class="mn-btn btn-1" id="mona-home-more-product">Xem thêm xe
+                                    <i class="fa fa-caret-down"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -404,6 +231,90 @@
                         slidesToShow: 3,
                     },
                 }, ],
+            });
+        });
+    </script>
+
+    <script>
+        function limitText(text, limit = 120, suffix = '[...]') {
+            if (text.length > limit) {
+                return text.substring(0, limit) + suffix;
+            }
+            return text;
+        }
+
+
+        jQuery('.more-button a').on('click', function(e) {
+            e.preventDefault();
+
+            const app_url = '{{ env('APP_URL') }}';
+
+
+            const $this = jQuery(this); // Truy cập chính thẻ <a>
+
+            // Lấy giá trị hiện tại của `data-page`
+            let currentPage = parseInt($this.data('page'), 10); // Chuyển sang số nguyên
+
+            // Tăng giá trị `data-page` lên 1
+            currentPage++;
+
+            // Cập nhật lại thuộc tính `data-page`
+            $this.data('page', currentPage);
+
+            jQuery.ajax({
+                url: '{{ route('frontend.ajax') }}',
+                type: 'POST',
+                data: {
+                    action: 'mona_load_more',
+                    page: currentPage
+                },
+                beforeSend: function() {
+                    // Thay đổi nội dung nút thành "Loading..." khi đang tải
+                    $this.html('<i class="fa fa-spinner fa-spin"></i> Đang tải...');
+                },
+                success: function(data) {
+                    if (data.cars && data.cars.length > 0) {
+                        data.cars.forEach(car => {
+                            jQuery('#mona-home-list').append(`
+                                <li class="product__item" id="car-item" style="height: 450px">
+                                    <div class="product-block">
+                                        <div class="img">
+                                            <a href="${app_url}/san-pham/${car.slug}"> <!-- Link tới hình ảnh lớn -->
+                                                <img width="670" height="446"
+                                                    src="${app_url+'/storage/'+car.image}" <!-- URL ảnh nhỏ hiển thị -->
+                                                    class="attachment-full size-full wp-post-image" alt="${car.name}" />
+                                            </a>
+                                        </div>
+                                        <div class="ct">
+                                            <p class="hd">
+                                                <a href="${app_url}/san-pham/${car.slug}">${car.name}</a>
+                                            </p>
+                                            <p class="price mona-text-label">${car.price} VND</p>
+                                            <div class="mona-except">
+                                                <p>${limitText(car.description, 120, '[...]')}</p>
+                                            </div>
+                                            <a href="${app_url}/san-pham/${car.slug}" class="more">
+                                                <i class="fa fa-long-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            `);
+                        });
+
+                        // Cập nhật lại nút "Xem thêm xe" sau khi hoàn tất
+                        $this.html('Xem thêm xe');
+                    } else {
+                        // Nếu không còn dữ liệu, ẩn nút
+                        $this.html('Hết xe').prop('disabled', true).addClass('disabled');
+                    }
+                },
+
+                error: function() {
+                    // Nếu có lỗi, khôi phục lại trạng thái nút
+                    $this.html('Xem thêm xe');
+                    alert('Đã xảy ra lỗi, vui lòng thử lại!');
+                }
             });
         });
     </script>

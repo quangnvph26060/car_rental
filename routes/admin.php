@@ -32,6 +32,7 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resources($objs);
     Route::post('car/change-status', [CarController::class, 'changeStatus'])->name('car.change.status');
+    Route::post('car/change-is-favorite', [CarController::class, 'activeFavorite'])->name('car.change.favorite');
 
     Route::get('/benefits', [BenefitController::class, 'index'])->name('benefits.index');
     Route::post('/benefits/store', [BenefitController::class, 'store'])->name('benefits.store');

@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\IntroduceController;
 Route::name('frontend.')->group(function () {
 
     route::post('ajax', [HomeController::class, 'ajax'])->name('ajax');
+    route::post('load-more-car' , [ProductController::class , 'loadMoreCarBySlug'])->name('load.car.by.slug');
 
     route::get('/', [HomeController::class, 'home'])->name('home');
     route::get('gioi-thieu', [IntroduceController::class, 'introduce'])->name('introduce');
