@@ -103,15 +103,7 @@
                         <p>Cấu hình</p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarLayouts">
-                        <i class="fas fa-th-list"></i>
-                        <p>Sidebar Layouts</p>
-                        <span class="caret"></span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
 </div>
-
