@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\SgoContact;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class SgoContactController extends Controller
 {
@@ -35,5 +37,28 @@ class SgoContactController extends Controller
     {
         $bookingRequests = Booking::with(['car', 'type'])->latest()->get();
         return view('admin/booking/booking-request', compact('bookingRequests'));
+    }
+
+    public function bookingEmail(Request $request)
+    {
+        $credentials = Validator::make(
+            $request->all(),
+            [
+                'email' => 'required|email',
+            ],
+            __('request.messages'),
+            [
+                'email' => 'Email',
+            ]
+        );
+
+        $envFile = base_path('.env');
+        $envContent = file_get_contents($envFile);
+
+        $envContent = preg_replace("/^MAIL_TO=.*/m", "MAIL_TO={$credentials->validated()['email']}", $envContent);
+
+        File::put($envFile, $envContent);
+
+        return response()->json(['status' => true, 'message' => 'Cập nhật thành công']);
     }
 }

@@ -45,6 +45,7 @@ class BookingController extends Controller
                     'required',
                     'regex:/^0[0-9]{9}$/'
                 ],
+                'note' => 'nullable'
             ],
             __('request.messages'),
             [
@@ -53,7 +54,8 @@ class BookingController extends Controller
                 'start_date' => 'Ngày thuê',
                 'rental_days' => 'Số ngày thuê',
                 'name' => 'Tên khách hàng',
-                'phone' => 'Số diện thoại'
+                'phone' => 'Số diện thoại',
+                'note' => 'Ghi chú'
             ]
         );
 

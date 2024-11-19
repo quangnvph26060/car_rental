@@ -81,6 +81,7 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
     });
 
     route::get('/booking/request', [SgoContactController::class, 'bookingRequest'])->name('booking.request');
+    route::post('/booking/request', [SgoContactController::class, 'bookingEmail'])->name('booking.email');
 
 
     Route::get('/images/car/{slug?}', [ImageCarController::class, 'index'])->name('images.car.index');

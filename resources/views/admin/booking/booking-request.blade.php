@@ -9,6 +9,13 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h4 class="card-title">Danh sách yêu cầu đặt xe</h4>
+                        <form action="" method="post" style="width: 300px" id="email-form">
+                            <div class="input-group d-flex">
+                                <input type="text" name="email" id="email" value="{{ env('MAIL_TO') }}"
+                                    placeholder="Nhập email nhận thông báo" class="form-control">
+                                <button type="submit" class="btn btn-primary btn-sm">Lưu</button>
+                            </div>
+                        </form>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -58,9 +65,32 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('frontend/assets/js/toastr.js') }}"></script>
     <script>
         $(document).ready(function() {
             dataTableRental([0, 1, 2, 3, 4, 5, 7])
         });
+
+        $('#email-form').submit(function(e) {
+            e.preventDefault();
+            var email = $('#email').val();
+            $.ajax({
+                url: '{{ route('admin.booking.email') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    email
+                },
+                success: function(response) {
+                    toastr.success(response.message);
+                },
+                error: function(error) {
+                    toastr.error(error.responseJSON.message);
+                }
+            })
+        });
     </script>
+@endpush
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/toastr.min.css') }}">
 @endpush
