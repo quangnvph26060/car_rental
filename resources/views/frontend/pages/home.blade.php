@@ -179,44 +179,7 @@
                                     </li>
                                 @endforeach
 
-                                {{-- <li class="feat__item">
-                                <div class="feat-block">
-                                    <div class="img">
-                                        <img width="70" height="70"
-                                            src="https://xecuoiluxury.com/wp-content/uploads/2018/07/feature-icon-2.png"
-                                            class="attachment-medium size-medium" alt="" />
-                                    </div>
-                                    <div class="ct">
-                                        <p class="hd">Cam Kết Giá Rẻ Nhất</p>
-                                        <p>
-                                            Mùa Cưới 2019 chúng Tôi còn áp dụng chính sách khuyến
-                                            mãi và giảm giá cho những khách hàng liên hệ và đặt thuê
-                                            xe sớm. Cam kết mang đến giá thuê xe cưới tốt nhất trên
-                                            thị trường Hà Nội.
-                                        </p>
-                                        <a href="#" class="more"><i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="feat__item">
-                                <div class="feat-block">
-                                    <div class="img">
-                                        <img width="70" height="70"
-                                            src="https://xecuoiluxury.com/wp-content/uploads/2018/07/feature-icon-3.png"
-                                            class="attachment-medium size-medium" alt="" />
-                                    </div>
-                                    <div class="ct">
-                                        <p class="hd">Cam Kết 100% Hài Lòng</p>
-                                        <p>
-                                            Ngày cưới là một công việc hệ trọng, Vì vậy Xe Cưới
-                                            Luxury luôn thận trọng, chu đáo trong từng khâu nhỏ
-                                            nhất. Nhằm mang đến sự yên tâm, hài lòng cho khách hàng
-                                            thuê xe cưới.
-                                        </p>
-                                        <a href="#" class="more"><i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </li> --}}
+
                             </ul>
                         @endif
                     </div>
@@ -319,95 +282,7 @@
                         </li>
                     @empty
                     @endforelse
-                    {{-- <li class="news__item">
-                    <div class="news-block1">
-                        <div class="img">
-                            <a href="https://xecuoiluxury.com/gia-thue-xe-cuoi-duoc-tinh-nhu-the-nao/">
-                                <img width="800" height="599"
-                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-audi-4.png"
-                                    class="attachment-full size-full wp-post-image" alt="" srcset="
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-audi-4.png         800w,
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-audi-4-300x225.png 300w,
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-audi-4-768x575.png 768w
-                  " sizes="(max-width: 800px) 100vw, 800px" />
-                            </a>
-                        </div>
-                        <div class="ct">
-                            <p class="hd">
-                                <a href="https://xecuoiluxury.com/gia-thue-xe-cuoi-duoc-tinh-nhu-the-nao/">Giá
-                                    Thuê Xe Cưới Tính Như Thế Nào?</a>
-                            </p>
-                            <p class="date">Đăng ngày 21 Tháng Chín, 2019</p>
-                            <div class="mona-except">
-                                <p>CÁCH TÍNH GIÁ XE CƯỚI RA SAO ? Giá thuê [&hellip;]</p>
-                            </div>
 
-                            <a href="https://xecuoiluxury.com/gia-thue-xe-cuoi-duoc-tinh-nhu-the-nao/"
-                                class="mn-btn btn-right"><i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </li>
-                <li class="news__item">
-                    <div class="news-block1">
-                        <div class="img">
-                            <a href="https://xecuoiluxury.com/thu-tuc-dat-thue-xe-cuoi-luxury/">
-                                <img width="800" height="507"
-                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-bentley-9.png"
-                                    class="attachment-full size-full wp-post-image" alt="" srcset="
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-bentley-9.png         800w,
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-bentley-9-300x190.png 300w,
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-bentley-9-768x487.png 768w
-                  " sizes="(max-width: 800px) 100vw, 800px" />
-                            </a>
-                        </div>
-                        <div class="ct">
-                            <p class="hd">
-                                <a href="https://xecuoiluxury.com/thu-tuc-dat-thue-xe-cuoi-luxury/">Thủ Tục Đặt
-                                    Thuê Xe Cưới Ra Sao</a>
-                            </p>
-                            <p class="date">Đăng ngày 21 Tháng Chín, 2019</p>
-                            <div class="mona-except">
-                                <p>
-                                    HƯỚNG DẪN THỦ TỤC ĐẶT THUÊ XE TẠI XECUOILUXURY.COM Cảm
-                                    [&hellip;]
-                                </p>
-                            </div>
-
-                            <a href="https://xecuoiluxury.com/thu-tuc-dat-thue-xe-cuoi-luxury/"
-                                class="mn-btn btn-right"><i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </li>
-                <li class="news__item">
-                    <div class="news-block1">
-                        <div class="img">
-                            <a href="https://xecuoiluxury.com/huong-dan-cach-lua-chon-xe-cuoi-phu-hop/">
-                                <img width="800" height="600"
-                                    src="https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-roll-royce-5.png"
-                                    class="attachment-full size-full wp-post-image" alt="" srcset="
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-roll-royce-5.png         800w,
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-roll-royce-5-300x225.png 300w,
-                    https://xecuoiluxury.com/wp-content/uploads/2019/01/thue-xe-cuoi-roll-royce-5-768x576.png 768w
-                  " sizes="(max-width: 800px) 100vw, 800px" />
-                            </a>
-                        </div>
-                        <div class="ct">
-                            <p class="hd">
-                                <a href="https://xecuoiluxury.com/huong-dan-cach-lua-chon-xe-cuoi-phu-hop/">Hưỡng
-                                    Dẫn Cách Lựa Chọn Xe Cưới</a>
-                            </p>
-                            <p class="date">Đăng ngày 25 Tháng Bảy, 2019</p>
-                            <div class="mona-except">
-                                <p>
-                                    NÊN THUÊ XE CƯỚI LOẠI NÀO MÙA CƯỚI 2020 Hiện [&hellip;]
-                                </p>
-                            </div>
-
-                            <a href="https://xecuoiluxury.com/huong-dan-cach-lua-chon-xe-cuoi-phu-hop/"
-                                class="mn-btn btn-right"><i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </li> --}}
                 </ul>
                 <div class="all-button">
                     <a href="https://xecuoiluxury.com/tin-tuc/">Xem tất cả tin tức<i

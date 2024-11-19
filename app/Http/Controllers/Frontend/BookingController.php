@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Booking;
 use App\Models\Car;
 use App\Models\Type;
+use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Mail\BookingNotification;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
@@ -41,7 +43,8 @@ class BookingController extends Controller
                 'name' => 'required',
                 'phone' => [
                     'required',
-                    'regex:/^0[0-9]{9}$/'],
+                    'regex:/^0[0-9]{9}$/'
+                ],
             ],
             __('request.messages'),
             [
@@ -61,7 +64,11 @@ class BookingController extends Controller
             ], 422);
         }
 
-        Booking::create($credentials->validated());
+        $result = Booking::create($credentials->validated());
+
+        $data = Booking::with('car', 'type')->find($result->id);
+
+        Mail::send(new BookingNotification($data->car->name, $data->type->name, $data->start_date, $data->rental_days, $data->name, $data->phone, $data->note));
 
         return response()->json([
             'status' => true,

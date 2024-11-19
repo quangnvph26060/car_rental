@@ -80,6 +80,8 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
         Route::post('/update-contact-info', [SgoContactController::class, 'updateContactInfo'])->name('updateContactInfo');
     });
 
+    route::get('/booking/request', [SgoContactController::class, 'bookingRequest'])->name('booking.request');
+
 
     Route::get('/images/car/{slug?}', [ImageCarController::class, 'index'])->name('images.car.index');
     Route::post('/images/car/store', [ImageCarController::class, 'store'])->name('images.car.store');

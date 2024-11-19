@@ -15,7 +15,7 @@ class CarController extends Controller
 {
     public function index()
     {
-        $cars  = Car::select('id', 'name', 'price', 'status', 'slug', 'image')->with('types', 'brands', 'carImages', 'color')->get();
+        $cars  = Car::select('id', 'name', 'price', 'status', 'slug', 'image')->with('types', 'brands', 'carImages', 'color')->paginate(10);
         return view('admin.cars.index', compact('cars'));
     }
     public function create()
@@ -27,7 +27,6 @@ class CarController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->all());
         $validated = $request->validate([
             'name' => 'required|min:6|unique:sgo_cars,name',
             'introductory_title' => 'nullable|min:6',

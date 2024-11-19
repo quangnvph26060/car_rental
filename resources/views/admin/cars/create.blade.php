@@ -109,16 +109,11 @@
                                         <label>Loại xe</label><br />
                                         <div class="d-flex flex-wrap">
                                             @if ($types->isNotEmpty())
-                                                @foreach ($types as $key => $type)
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="type_ids[]"
-                                                            multiple value="{{ $type->id }}"
-                                                            id="type_id_{{ $key + 1 }}" />
-                                                        <label class="form-check-label" for="type_id_{{ $key + 1 }}">
-                                                            {{ $type->name }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
+                                                <select class="form-control select2-brands" name="brand_ids[]" multiple>
+                                                    @foreach ($brands as $brand)
+                                                        <option value="{{ $brand->id }}" @selected(in_array($brand->id, old('brand_ids', [])))>{{ $brand->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             @else
                                                 <p>Chưa có loại xe nào (Hãy thêm để thêm được xe)</p>
                                             @endif
@@ -135,17 +130,11 @@
                                         <label>Hãng xe</label><br />
                                         <div class="d-flex flex-wrap">
                                             @if ($types->isNotEmpty())
-                                                @foreach ($brands as $keyBrand => $brand)
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="brand_ids[]"
-                                                            multiple value="{{ $brand->id }}"
-                                                            id="brand_id_{{ $keyBrand + 1 }}" />
-                                                        <label class="form-check-label"
-                                                            for="brand_id_{{ $keyBrand + 1 }}">
-                                                            {{ $brand->name }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
+                                                <select class="form-control select2-types" name="type_ids[]" multiple>
+                                                    @foreach ($types as $type)
+                                                        <option value="{{ $type->id }}" @selected(in_array($type->id, old('type_ids', [])))>{{ $type->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             @else
                                                 <p>Chưa có hãng xe nào (Hãy thêm để thêm được xe)</p>
                                             @endif
@@ -214,34 +203,25 @@
 @endsection
 
 @push('scripts')
-    {{-- <script>
-    const priceInput = document.getElementById("price");
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    priceInput.addEventListener("input", function (e) {
-        // Lấy giá trị từ input và xóa các ký tự không phải số
-        let value = e.target.value.replace(/[^0-9]/g, "");
+    <script>
+        $(document).ready(function() {
+            // Select2 for brands
+            $('.select2-brands').select2({
+                placeholder: "Select brands",
+                allowClear: true
+            });
 
-        // Kiểm tra xem có giá trị nào được nhập vào hay không
-        if (value) {
-            // Định dạng giá trị theo kiểu VND với dấu chấm
-            value = new Intl.NumberFormat("vi-VN").format(value);
-            e.target.value = value + " ₫";
-        } else {
-            e.target.value = "";
-        }
-    });
+            // Select2 for types
+            $('.select2-types').select2({
+                placeholder: "Select types",
+                allowClear: true
+            });
+        });
+    </script>
+@endpush
 
-    // Xóa ký tự "₫" khi focus vào input để người dùng dễ nhập
-    priceInput.addEventListener("focus", function (e) {
-        e.target.value = e.target.value.replace(" ₫", "");
-    });
-
-    // Định dạng lại với "₫" khi blur khỏi input
-    priceInput.addEventListener("blur", function (e) {
-        if (e.target.value) {
-            let value = e.target.value.replace(/[^0-9]/g, "");
-            e.target.value = new Intl.NumberFormat("vi-VN").format(value) + " ₫";
-        }
-    });
-</script> --}}
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush

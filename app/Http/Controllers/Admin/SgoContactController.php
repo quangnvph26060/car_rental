@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use App\Models\SgoContact;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,12 @@ class SgoContactController extends Controller
         $contactInfo->fill($request->all());
         $contactInfo->save();
 
-        return redirect()->back()->with('success','Cập nhật thông tin liên hệ thành công');
+        return redirect()->back()->with('success', 'Cập nhật thông tin liên hệ thành công');
+    }
+
+    public function bookingRequest()
+    {
+        $bookingRequests = Booking::with(['car', 'type'])->latest()->get();
+        return view('admin/booking/booking-request', compact('bookingRequests'));
     }
 }
