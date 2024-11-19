@@ -53,4 +53,8 @@ class HomeController extends Controller
             'hasMore' => $hasMore, // Để kiểm tra còn xe hay không
         ]);
     }
+
+    public function gallery(){
+        return view('frontend.pages.album');
+    }
 }

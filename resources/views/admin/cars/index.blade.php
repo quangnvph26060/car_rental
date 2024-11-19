@@ -83,10 +83,10 @@
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href="{{ route('admin.car.edit', $car->id) }}"
-                                                            class=" m-1 d-block btn btn-primary"><i
+                                                            class=" m-1 d-block btn btn-primary btn-sm"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="{{ route('admin.car.destroy', $car->id) }}"
-                                                            class=" m-1 d-block btn btn-danger delete-item"><i
+                                                            class=" m-1 d-block btn btn-danger btn-sm delete-item"><i
                                                                 class="fa-solid fa-trash"></i></a>
                                                     </div>
                                                 </td>

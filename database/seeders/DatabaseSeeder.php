@@ -21,8 +21,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         // `name`, `introductory_title`, `slug`, `price`, `promotion_details`, `number_of_seats`, `color_id`, `description`,
 
-        for ($i = 0; $i < 1000; $i++) {
-            Car::create([
+        $arr = [];
+        for ($i = 0; $i < 100000; $i++) {
+            $arr[] = [
                 'name' => fake()->name(),
                 'introductory_title' => fake()->name(),
                 'slug' => fake()->name(),
@@ -33,7 +34,12 @@ class DatabaseSeeder extends Seeder
                 'description' => fake()->name(),
                 'status' => fake()->numberBetween(0, 1),
                 'image' => fake()->imageUrl(),
-            ]);
+            ];
+
+            if ($i % 1000 == 0) {
+                Car::insert($arr);
+                $arr = [];
+            }
         }
     }
 }

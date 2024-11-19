@@ -18,4 +18,14 @@ class Booking extends Model
         'phone',
         'note'
     ];
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }

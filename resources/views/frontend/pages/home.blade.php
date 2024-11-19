@@ -282,6 +282,7 @@
                         </li>
                     @empty
                     @endforelse
+
                 </ul>
                 <div class="all-button">
                     <a href="{{ route('frontend.blog') }}">Xem tất cả tin tức<i class="fa fa-long-arrow-right"></i></a>

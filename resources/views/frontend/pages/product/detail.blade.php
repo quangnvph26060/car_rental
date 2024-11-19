@@ -106,8 +106,6 @@
                                                         <a href="https://xecuoiluxury.com/dich-vu/xe-cuoi-dep/"
                                                             rel="tag">{{ $product->brands->first()->name }}</a>
                                                     @endif
-
-
                                                 </td>
                                             </tr>
                                             <tr>
@@ -130,7 +128,8 @@
                                     <p><strong>Chi tiết khuyến mãi:</strong></p>
                                     <span class="hl">
                                         {!! $product->promotion_details !!}
-                                        <a href="{{ route('frontend.booking') }}" class="mn-btn btn-1">Đặt xe</a>
+                                        <a href="{{ route('frontend.booking') }}?xe={{ $product->id }}"
+                                            class="mn-btn btn-1">Đặt xe</a>
                                         <a href="tel:{{ $contact->phone_number }}"
                                             class="btn-phone">{{ $contact->phone_number }}</a>
                                     </span>
@@ -191,8 +190,7 @@
                                                     Rể
                                                 </p>
                                             </div>
-                                            <a href="https://xecuoiluxury.com/san-pham/mau-xe-hoa-hcl-039/"
-                                                class="more">
+                                            <a href="https://xecuoiluxury.com/san-pham/mau-xe-hoa-hcl-039/" class="more">
                                                 <i class="fa fa-long-arrow-right"></i>
                                             </a>
                                         </div>
