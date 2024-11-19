@@ -15,7 +15,7 @@ class CarController extends Controller
 {
     public function index()
     {
-        $cars  = Car::select('id', 'name', 'price', 'status', 'slug', 'image')->with('types', 'brands', 'carImages', 'color')->paginate(10);
+        $cars  = Car::select('id', 'name', 'price', 'status', 'slug', 'image','is_favorite')->with('types', 'brands', 'carImages', 'color')->get();
         return view('admin.cars.index', compact('cars'));
     }
     public function create()
@@ -40,7 +40,8 @@ class CarController extends Controller
             'type_ids.*' => 'exists:sgo_types,id',
             'brand_ids' => 'required|array',
             'brand_ids.*' => 'exists:sgo_brands,id',
-            'status' => 'required'
+            'status' => 'required',
+            'is_favorite' => 'required'
         ], __('request.messages'), [
             'name' => 'Tên xe',
             'introductory_title' => 'Tiêu đề giới thiệu xe',
@@ -95,7 +96,8 @@ class CarController extends Controller
             'type_ids.*' => 'exists:sgo_types,id',
             'brand_ids' => 'required|array',
             'brand_ids.*' => 'exists:sgo_brands,id',
-            'status' => 'required'
+            'status' => 'required',
+            'is_favorite' => 'required'
         ], __('request.messages'), [
             'name' => 'Tên xe',
             'introductory_title' => 'Tiêu đề giới thiệu xe',
@@ -144,5 +146,15 @@ class CarController extends Controller
         $car->status = $request->status;
         $car->save();
         return response()->json(['success' => 'Cập nhật trạng thái thành công!']);
+    }
+
+    public function activeFavorite(Request $request){
+        $car = Car::find($request->carId);
+        if (!$car) {
+            return response()->json(['error' => 'Không tìm thấy xe này!']);
+        }
+        $car->is_favorite = $request->is_favorite;
+        $car->save();
+        return response()->json(['success' => 'Cập nhật thành xe yêu thích thành công!']);
     }
 }

@@ -21,20 +21,33 @@ class ProductController extends Controller
         if ($slug) {
             $product = Car::where('slug', $slug)->with('types', 'brands', 'carImages', 'color')->first();
             $contact = SgoContact::first();
-            return view('frontend.pages.product.detail', compact('slug', 'product', 'totalCars', 'maxPages', 'contact'));
+            $productFavorite = Car::where('status', 1)->where('is_favorite', 1)->take(6)->get();
+            return view('frontend.pages.product.detail', compact('slug', 'product', 'totalCars', 'maxPages', 'contact', 'productFavorite'));
         }
 
         return view('frontend.pages.product.list', compact('slug'));
     }
 
-    public function loadMoreCars(Request $request)
+    public function loadMoreCarBySlug(Request $request)
     {
-        $offset = $request->offset ?? 0;
-        $limit = 6;
-        $products = Car::skip($offset)->take($limit)->get();
-        $hasMore = Car::count() > ($offset + $limit);
+        $slug = $request->slug;
+        $types = Type::where('slug', $slug)->first();
+        $brands = Brand::where('slug', $slug)->first();
+        if ($types) {
+            $cars = $types->cars()->where('status', 1); 
+        } elseif ($brands) {
+            $cars = $brands->cars()->where('status', 1); 
+        }
+        $perPage = 6;
+        $page = $request->input('page', 2); 
+        $offset = ($page - 1) * $perPage;
+        $totalCars = $cars->count();
+        $listCars = $cars->skip($offset)->take($perPage)->get();
+        // dd($listCars);
+        $hasMore = $totalCars > ($offset + $perPage);
+
         return response()->json([
-            'products' => $products,
+            'cars' => $listCars,
             'hasMore' => $hasMore,
         ]);
     }

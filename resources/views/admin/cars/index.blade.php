@@ -23,6 +23,7 @@
                                         <th>Loại</th>
                                         <th>Hãng</th>
                                         <th>Trạng thái</th>
+                                        <th>Yêu thích</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
@@ -33,6 +34,7 @@
                                         <th>Loại</th>
                                         <th>Hãng</th>
                                         <th>Trạng thái</th>
+                                        <th>Yêu thích</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </tfoot>
@@ -40,7 +42,8 @@
                                     @if ($cars->isNotEmpty())
                                         @foreach ($cars as $car)
                                             <tr>
-                                                <td><a href="{{ route('admin.images.car.index' , $car->slug) }}">{{ $car->name }}</a>
+                                                <td><a
+                                                        href="{{ route('admin.images.car.index', $car->slug) }}">{{ $car->name }}</a>
                                                 </td>
 
                                                 <td>{{ $car->price }}đ</td>
@@ -73,10 +76,22 @@
                                                 <td>
                                                     <select name="status" data-id="{{ $car->id }}"
                                                         class="form-control change-status-car">
-                                                        <option {{ $car->status === 1 ? 'selected' : '' }} value="1">
+                                                        <option {{ $car->status == 1 ? 'selected' : '' }} value="1">
                                                             Công khai</option>
-                                                        <option {{ $car->status === 0 ? 'selected' : '' }} value="0">
+                                                        <option {{ $car->status == 0 ? 'selected' : '' }} value="0">
                                                             Không công khai</option>
+                                                    </select>
+
+                                                </td>
+                                                <td>
+                                                    <select name="is_favorite" data-id="{{ $car->id }}"
+                                                        class="form-control change-is-favorite-car">
+                                                        <option {{ $car->is_favorite == 1 ? 'selected' : '' }}
+                                                            value="1">
+                                                            Có</option>
+                                                        <option {{ $car->is_favorite == 0 ? 'selected' : '' }}
+                                                            value="0">
+                                                            Không</option>
                                                     </select>
 
                                                 </td>
@@ -118,6 +133,25 @@
                     _token: '{{ csrf_token() }}',
                     carId,
                     status
+                },
+                success: function(response) {
+                    alert(response.success);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            })
+        })
+        $(document).on('change', '.change-is-favorite-car', function() {
+            var carId = $(this).data('id');
+            var is_favorite = $(this).find(":selected").val()
+            $.ajax({
+                url: '{{ route('admin.car.change.favorite') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    carId,
+                    is_favorite
                 },
                 success: function(response) {
                     alert(response.success);

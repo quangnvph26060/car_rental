@@ -44,7 +44,7 @@
                                         <label for="">Hình ảnh <code>*</code></label>
                                         <input type="hidden" name="old_image" value="{{ $car->image }}">
                                         <input type="file" name="image" class="form-control"
-                                            onchange="loadFile(event,'output')">
+                                            onchange="loadFile(event , 'output')">
                                         <img id="output" src="{{ showImage($car->image) }}" width="100" height="100"
                                             class="mt-3 border" />
                                         @error('image')
@@ -106,23 +106,40 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
+                                <div class="col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>Hãng xe</label><br />
+                                        <div class="d-flex flex-wrap">
+                                            @if ($types->isNotEmpty())
+                                                <select class="form-control select2-types" name="type_ids[]" multiple>
+                                                    @foreach ($types as $type)
+                                                        <option value="{{ $type->id }}" @selected(in_array($type->id, old('type_ids', $car->types->pluck('id')->toArray())))>
+                                                            {{ $type->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            @else
+                                                <p>Chưa có hãng xe nào (Hãy thêm để thêm được xe)</p>
+                                            @endif
+
+                                        </div>
+                                        @error('brand_ids')
+                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <label>Loại xe</label><br />
                                         <div class="d-flex flex-wrap">
                                             @if ($types->isNotEmpty())
-                                                @foreach ($types as $key => $type)
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            {{ in_array($type->id, $car->types->pluck('id')->toArray()) ? 'checked' : '' }}
-                                                            name="type_ids[]" multiple value="{{ $type->id }}"
-                                                            id="type_id_{{ $key + 1 }}" />
-                                                        <label class="form-check-label" for="type_id_{{ $key + 1 }}">
-                                                            {{ $type->name }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
+                                                <select class="form-control select2-brands" name="brand_ids[]" multiple>
+                                                    @foreach ($brands as $brand)
+                                                        <option value="{{ $brand->id }}" @selected(in_array($brand->id, old('brand_ids', $car->brands->pluck('id')->toArray())))>
+                                                            {{ $brand->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             @else
                                                 <p>Chưa có loại xe nào (Hãy thêm để thêm được xe)</p>
                                             @endif
@@ -134,33 +151,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                        <label>Hãng xe</label><br />
-                                        <div class="d-flex flex-wrap">
-                                            @if ($types->isNotEmpty())
-                                                @foreach ($brands as $keyBrand => $brand)
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            {{ in_array($brand->id, $car->brands->pluck('id')->toArray()) ? 'checked' : '' }}
-                                                            name="brand_ids[]" multiple value="{{ $brand->id }}"
-                                                            id="brand_id_{{ $keyBrand + 1 }}" />
-                                                        <label class="form-check-label"
-                                                            for="brand_id_{{ $keyBrand + 1 }}">
-                                                            {{ $brand->name }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
-                                            @else
-                                                <p>Chưa có hãng xe nào (Hãy thêm để thêm được xe)</p>
-                                            @endif
 
-                                        </div>
-                                        @error('brand_ids')
-                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-lg-12">
@@ -181,6 +172,29 @@
                                         @error('promotion_details')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>Là xe được yêu thích</label><br />
+                                        <div class="d-flex">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="is_favorite"
+                                                    value="1" id="checkFavorite1" {{ $car->is_favorite === 1 ? 'checked' : '' }} />
+                                                <label class="form-check-label" for="checkFavorite1">
+                                                     Có
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="is_favorite"
+                                                    value="0" id="checkFavorite2" {{ $car->is_favorite === 0 ? 'checked' : '' }}  />
+                                                <label class="form-check-label" for="checkFavorite2">
+                                                    Không
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -219,3 +233,26 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Select2 for brands
+            $('.select2-brands').select2({
+                placeholder: "Chọn hãng xe",
+                allowClear: true
+            });
+
+            // Select2 for types
+            $('.select2-types').select2({
+                placeholder: "Chọn loại xe",
+                allowClear: true
+            });
+        });
+    </script>
+@endpush
+
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
