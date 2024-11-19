@@ -3,27 +3,27 @@
         <ul id="menu-main-1" class="mona-main-menu ft-nav">
             <li
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-131">
-                <a href="https://xecuoiluxury.com/">Trang chủ</a>
+                <a href="/">Trang chủ</a>
             </li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2224">
-                <a href="https://xecuoiluxury.com/gioi-thieu/">Giới thiệu</a>
+                <a href="{{ route('frontend.introduce') }}">Giới thiệu</a>
             </li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1940">
-                <a href="https://xecuoiluxury.com/dichvu/">Dịch vụ</a>
+                <a href="{{ route('frontend.service') }}">Dịch vụ</a>
             </li>
             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1943">
-                <a href="http://xecuoiluxury.com/dich-vu/xe-cuoi-dep/">Xe Cưới</a>
+                <a href="{{ route('frontend.service', 'xe-cuoi-dep') }}">Xe Cưới</a>
             </li>
             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2445">
-                <a href="http://xecuoiluxury.com/dich-vu/trang-tri-hoa-xe-cuoi-dep/">Hoa Cưới</a>
+                <a href="{{ route('frontend.service', 'hoa-xe-cuoi') }}">Hoa Cưới</a>
             </li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2426">
-                <a href="https://xecuoiluxury.com/lien-he/">Liên Hệ</a>
+                <a href="{{ route('frontend.contact') }}">Liên Hệ</a>
             </li>
         </ul>
         <ul class="ft-media clear">
             <li>
-                <a href="#" target="_blank" class="square-30fa"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="{{ $configWebsite->fanpage }}" target="_blank" class="square-30fa"><i class="fa-brands fa-facebook-f"></i></a>
             </li>
             <li>
                 <a href="#" target="_blank" class="square-30fa"><i class="fa-brands fa-google"></i></a>

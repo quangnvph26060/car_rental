@@ -19,7 +19,7 @@
         <div class="ele-wrap" style="background-color: #f8f8f8">
             <div class="about-us">
                 <div class="float-img">
-                    <img class="has-shadow" src="https://xecuoiluxury.com/wp-content/uploads/2018/07/GIOI-THIEU.jpg"
+                    <img class="has-shadow" src="{{ showImage($configWebsite->about_us_image) }}"
                         alt="" />
                 </div>
 
@@ -28,28 +28,9 @@
                         <div class="ab-ct">
                             <h2 class="hd">GIỚI THIỆU</h2>
                             <p style="text-align: justify">
-                                <a href="http://xecuoiluxury.com/"><strong><span style="color: #3366ff">THUÊ XE CƯỚI
-                                            LUXURY</span></strong></a>
-                                là địa chỉ cho thuê xe hoa đi đón dâu uy tín và chuyên nghiệp
-                                tại Hà Nội. Công ty chúng tôi sở hữu và cho thuê tất cả các
-                                dòng xe sang làm xe cưới. Cam kết toàn bộ xe cho thuê là xe
-                                đời mới. Đội ngũ lái xe của chúng tôi được đào tạo bài bản đáp
-                                ứng các tiêu chí: Đúng giờ, lịch sự, vui vẻ. Đội ngũ nhân viên
-                                tư vấn nhiệt tình, chu đáo. Đảm bảo mang đến sự cẩn trọng,
-                                chuyên nghiệp từ khâu nhỏ nhất. Giá thuê xe cưới luôn cạnh
-                                tranh và hợp lý hơn các đơn vị khác do đang được ưu đãi và
-                                khuyến mãi. <strong><br /> </strong>
+                                  {{ $configWebsite->about_us }}
                             </p>
-                            <p style="text-align: justify">
-                                Đó là lý do vì sao hơn 69.000 cô dâu chú rể đã hài lòng về
-                                dịch vụ
-                                <span style="color: #3366ff"><strong>thuê xe cưới</strong></span>
-                                của chúng tôi. Mùa cưới 2020 Xe Cưới Luxury áp dụng chính sách
-                                khuyến mãi và giảm giá, cho tất cả khách hàng
-                                <strong>ký hợp đồng xe</strong> sớm trước từ 10 &#8211; 15
-                                ngày và đặt dịch vụ<strong> trang trí hoa xe cưới</strong> của
-                                chúng tôi.
-                            </p>
+                        
                         </div>
                     </div>
                 </div>
@@ -76,7 +57,7 @@
                                     <p class="truncate-description">
                                         {{ $item->short_description }}
                                     </p>
-                                    <a href="http://xecuoiluxury.com/dich-vu/xe-cuoi-dep/" class="mn-btn btn-1">XEM THÊM</a>
+                                    <a href="{{ route('frontend.service') }}" class="mn-btn btn-1">XEM THÊM</a>
                                 </div>
                             </div>
                         </li>

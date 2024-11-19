@@ -92,6 +92,12 @@
                         <p>Liên hệ</p>
                     </a>
                 </li>
+                <li class="nav-item {{ isActiveRoute(['admin.config.index']) }}">
+                    <a href="{{ route('admin.config.index') }}">
+                        <i class="fa-solid fa-gear"></i>
+                        <p>Cấu hình</p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>

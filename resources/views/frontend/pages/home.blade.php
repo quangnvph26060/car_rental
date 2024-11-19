@@ -7,7 +7,7 @@
             <ul class="banner-slider">
                 <li class="banner__bg"
                     style="
-          background-image: url(https://xecuoiluxury.com/wp-content/uploads/2019/10/thue-xe-cuoi-luxury.png);
+          background-image: url({{ showImage($configWebsite->banner) }});
         ">
                     <div class="flex-center">
                         <div class="all">
@@ -83,7 +83,7 @@
                                         <p>
                                             {{ $type->short_description }}
                                         </p>
-                                        <a href="{{ route('frontend.service' , $type->slug) }}" class="color1">Xem thêm</a>
+                                        <a href="{{ route('frontend.service', $type->slug) }}" class="color1">Xem thêm</a>
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@
                                     </li>
                                 @endforeach
 
-                                
+
                             </ul>
                         @endif
                     </div>
@@ -284,17 +284,15 @@
                     @endforelse
                 </ul>
                 <div class="all-button">
-                    <a href="{{ route('frontend.blog') }}">Xem tất cả tin tức<i
-                            class="fa fa-long-arrow-right"></i></a>
+                    <a href="{{ route('frontend.blog') }}">Xem tất cả tin tức<i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="about-us">
             <div class="float-img">
-                <img width="717" height="405"
-                    src="https://xecuoiluxury.com/wp-content/uploads/2018/07/GIOI-THIEU.jpg" class="has-shadow"
-                    alt="" sizes="(max-width: 717px) 100vw, 717px" />
+                <img width="717" height="405" src="{{ showImage($configWebsite->about_us_image) }}"
+                    class="has-shadow" alt="" sizes="(max-width: 717px) 100vw, 717px" />
             </div>
             <div class="all">
                 <div class="abu-wrap">
@@ -302,29 +300,9 @@
                         <h2 class="hd">GIỚI THIỆU VỀ XE CƯỚI LUXURY</h2>
                         <div class="mona-content">
                             <p style="text-align: justify">
-                                Nếu Bạn đang tìm một địa chỉ<strong> thuê xe cưới VIP </strong>mới đẹp, uy tín, giá tốt
-                                nhất tại Hà Nội<strong>,</strong>
-                                <span style="color: #3366ff"><strong>XeCuoiLuxury.com</strong></span>
-                                chắc chắn sẽ làm Bạn hài lòng. Chúng tôi cho thuê tất cả các
-                                dòng xe cưới hạng sang và đáp ứng mọi yêu cầu về
-                                <strong>thuê xe đám cưới</strong> của bạn. Cam kết toàn bộ xe
-                                cho thuê là xe đời mới. Đội ngũ lái xe được đào tạo bài bản,
-                                luôn vui vẻ, lịch sự và đúng giờ. Dịch vụ chu đáo, chuyên
-                                nghiệp, uy tín từ khâu nhỏ nhất.
-                                <strong>Giá thuê xe cưới</strong> của chúng tôi cam kết luôn
-                                tốt nhất trên thị trường.
-                            </p>
-                            <p style="text-align: justify">
-                                Đó là lý do vì sao hơn 69.000 cô dâu chú rể đã
-                                <strong>thuê xe hoa đi đón dâu</strong> và hài lòng về dịch vụ
-                                <strong>thuê xe cưới</strong> của chúng tôi. Mùa cưới 2019,
-                                <span style="color: #3366ff"><strong>Xe Cưới Luxury</strong></span>
-                                áp dụng chính sách khuyến mãi và giảm giá cho tất cả khách
-                                hàng <strong>thuê xe cưới</strong> <strong>hỏi</strong> và đặt
-                                dịch vụ<strong> trang trí hoa cưới.</strong>
-                            </p>
+                                {{ $configWebsite->about_us }}
                         </div>
-                        <a href="http://www.xecuoiluxury.com/gioi-thieu/" class="mn-btn btn-1">Xem thêm</a>
+                        <a href="{{ route('frontend.introduce') }}" class="mn-btn btn-1">Xem thêm</a>
                     </div>
                 </div>
             </div>
@@ -374,9 +352,8 @@
             </div>
             <div class="google-map" style="margin-top: 130px;">
                 <div class="map">
-                    <iframe style="width: 100%; height: 100%"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14898.338307598791!2d105.8237589!3d21.0092832!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9bb6c31e0b4147e!2sViet%20Tower!5e0!3m2!1svi!2s!4v1570088327782!5m2!1svi!2s"
-                        width="" height="" frameborder="0" style="border: 0" allowfullscreen></iframe>
+                    <iframe style="width: 100%; height: 100%" src="{{ $configWebsite->map }}" width=""
+                        height="" frameborder="0" style="border: 0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
