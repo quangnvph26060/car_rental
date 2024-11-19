@@ -50,10 +50,10 @@
                         </li>
                     </ul>
                 </div>
-                <div class="google-map">
+                <div class="google-map" style="margin-top: 130px;">
                     <div class="map">
                         <iframe style="width: 100%; height: 100%"
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14898.338307598791!2d105.8237589!3d21.0092832!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9bb6c31e0b4147e!2sViet%20Tower!5e0!3m2!1svi!2s!4v1570088327782!5m2!1svi!2s"
+                            src="{{ $configWebsite->map }}"
                             width="" height="" frameborder="0" style="border: 0" allowfullscreen></iframe>
                     </div>
                 </div>

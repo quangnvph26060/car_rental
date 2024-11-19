@@ -1,8 +1,8 @@
 <div class="hd-top">
     <div class="all">
         <div class="hdt-logo">
-            <a href="https://xecuoiluxury.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="209"
-                    height="49" src="https://xecuoiluxury.com/wp-content/uploads/2018/07/logo-header.png"
+            <a href="/" class="custom-logo-link" rel="home" itemprop="url"><img width="209"
+                    height="49" src="{{ showImage($configWebsite->logo) }}"
                     class="custom-logo" alt="" itemprop="logo" /></a>
         </div>
         <div class="hdt-right">
@@ -12,10 +12,11 @@
                         <img src="https://xecuoiluxury.com/template/images/header-top-icon1.png" alt="" />
                     </div>
                     <div class="ct">
-                        Địa Chỉ Công Ty:
+                        {{-- Địa Chỉ Công Ty:
                         <span class="hl"><strong> </strong>
                             <p><strong>Tầng 4 - 01 Thái Hà - Hà Nội</strong></p>
-                        </span>
+                        </span> --}}
+                        {!! $contactWebsite->headquarters !!}
                     </div>
                 </div>
                 <div class="info__child">
@@ -23,11 +24,12 @@
                         <img src="https://xecuoiluxury.com/template/images/header-top-icon2.png" alt="" />
                     </div>
                     <div class="ct">
-                        <p>Thời Gian Làm Việc:</p>
+                        {{-- <p>Thời Gian Làm Việc:</p>
                         <p>
                             Thứ 2 đến thứ 7:
                             <span class="hl"><strong>8h00 - 17h30</strong></span>
-                        </p>
+                        </p> --}}
+                        {!! $contactWebsite->working_hours !!}
                     </div>
                 </div>
                 <div class="info__child">
@@ -37,7 +39,7 @@
                     <div class="ct">
                         <p>Hotline:</p>
                         <p>
-                            <a href="" class="hl"><strong>094.8888.438</strong></a>
+                            <a href="" class="hl"><strong>{{ $contactWebsite->phone_number }}</strong></a>
                         </p>
                     </div>
                 </div>
@@ -101,7 +103,7 @@
                 <div class="mona-top-social">
                     <ul class="ft-media clear">
                         <li>
-                            <a href="#" target="_blank" class="square-30fa"><i
+                            <a href="{{ $configWebsite->fanpage }}" target="_blank" class="square-30fa"><i
                                     class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li>
