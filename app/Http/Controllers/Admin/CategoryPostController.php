@@ -28,7 +28,7 @@ class CategoryPostController extends Controller
             ], 422);
         }
 
-        CategoryPost::create(['name' => $request->name]);
+        CategoryPost::create(['name' => $request->name, 'slug' => \Str::slug($request->name)]);
         return response()->json([
             'status' => 200,
         ]);
@@ -53,7 +53,7 @@ class CategoryPostController extends Controller
                 'validation_errors' => $validator->errors()
             ], 422);
         }
-        CategoryPost::where('id', $request->categories_post_id)->update(['name' => $request->name]);
+        CategoryPost::where('id', $request->categories_post_id)->update(['name' => $request->name, 'slug' => \Str::slug($request->name)]);
         return response()->json([
             'status' => 200,
         ]);
@@ -61,6 +61,9 @@ class CategoryPostController extends Controller
     public function destroy($id)
     {
         $categoryPost = CategoryPost::find($id);
+        if ($categoryPost->posts->count() > 0) {
+            return response(['status' =>  'error', 'message' => 'Không thể xóa thể loại này vì nó liên quan đến các bài viết khác , bạn cần xóa các bài viết liên quan đến danh mục này']);
+        }
         $categoryPost->delete();
         return response(['status' => 'success', 'message' => 'Xóa thành công']);
     }

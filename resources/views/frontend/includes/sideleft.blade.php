@@ -8,7 +8,7 @@
                 <ul id="menu-product" class="menu">
                     @foreach ($types as $type)
                         <li id="menu-item-1082" {{-- current-menu-ancestor current-menu-parent --}}
-                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor {{ isActiveRouteWithParams([['name' => 'frontend.service', 'params' => ['slug' => $type->slug]]]) }} menu-item-has-children has-dropdown menu-item-1082">
+                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor {{ isActiveRouteWithParams([['name' => 'frontend.service', 'params' => ['slug' => $type->slug]]] , 'current-menu-parent') }} menu-item-has-children has-dropdown menu-item-1082">
                             <a href="{{ route('frontend.service', $type->slug) }}">{{ strtoupper($type->name) }}<i
                                     class="fa fa-angle-right"></i></a>
                             @if ($type->brands->count() > 0)
