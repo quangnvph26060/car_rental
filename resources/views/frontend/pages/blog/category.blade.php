@@ -10,7 +10,7 @@
                 <div class="pos-nav">
                     <a href="/">Trang chủ</a>
                     -
-                    <a href="{{ route('frontend.blog') }}" class="current">Tin tức</a>
+                    <a href="" class="current">{{ $category->name }}</a>
                 </div>
             </div>
         </div>
@@ -30,7 +30,8 @@
                                         <li
                                             class="nav__item {{ isActiveRouteWithParams([['name' => 'frontend.category.blog', 'params' => ['slug' => $category->slug]]], 'active') }}">
                                             <a href="{{ route('frontend.category.blog', $category->slug) }}">{{ $category->name }}<i
-                                                    class="fa fa-chevron-right"></i></a></li>
+                                                    class="fa fa-chevron-right"></i></a>
+                                        </li>
                                     @endforeach
                                 @endif
 
@@ -43,8 +44,8 @@
                         <div class="side-right">
                             <div id="nav-ct1">
                                 <ul class="list-news clear">
-                                    @if ($posts->isNotEmpty())
-                                        @foreach ($posts as $post)
+                                    @if ($category->posts->isNotEmpty())
+                                        @foreach ($category->posts as $post)
                                             <li class="news__item">
                                                 <div class="news-block1">
                                                     <div class="img"><a href="{{ route('frontend.blog', $post->slug) }}">
