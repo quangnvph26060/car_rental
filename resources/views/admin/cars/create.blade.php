@@ -42,7 +42,7 @@
                                     <div class="form-group">
                                         <label for="">Hình ảnh <code>*</code></label>
                                         <input type="file" name="image" class="form-control"
-                                            onchange="loadFile(event)">
+                                            onchange="loadFile(event,'output')">
                                         <img id="output" src="{{ asset('backend/assets/img/no-image.jpg') }}"
                                             width="100" height="100" class="mt-3 border" />
                                         @error('image')
