@@ -121,4 +121,6 @@ return [
         ],
     ],
 
+    'to' => env('MAIL_TO', 'dnguyentien145@gmail.com'),
+
 ];
