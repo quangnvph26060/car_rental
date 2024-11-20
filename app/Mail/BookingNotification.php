@@ -49,9 +49,9 @@ class BookingNotification extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $email = env('MAIL_TO');
+
         return $this->from('sgovietnam.dev@gmail.com')
-            ->to($email)
+            ->to(config('mail.to'))
             ->subject('Yêu cầu đặt xe mới')
             ->view('emails.user_phone_notification');
     }
