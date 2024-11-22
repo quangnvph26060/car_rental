@@ -122,7 +122,7 @@
                                             <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
                                             <div class="mona-except">
                                                 <p>
-                                                    {!! Str::limit($car->description, 120, '[...]') !!}
+                                                    {!! \Str::words($car->description, 5, '[...]') !!}
                                                 </p>
 
                                             </div>

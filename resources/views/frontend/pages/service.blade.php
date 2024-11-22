@@ -38,7 +38,7 @@
                                     </p>
                                     <a href="{{ route('frontend.service' , $item->slug) }}" class="mn-btn btn-1">Xem
                                         thêm</a>
-                                    <a href="https://xecuoiluxury.com/dat-xe/?dich-vu=2" class="mn-btn btn-1">Đặt xe</a>
+                                    <a href="{{ route('frontend.booking') }}" class="mn-btn btn-1">Đặt xe</a>
                                 </div>
                             </div>
                             @empty
