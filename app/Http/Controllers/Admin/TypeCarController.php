@@ -78,18 +78,18 @@ class TypeCarController extends Controller
             'image_front' => 'Hình ảnh trước',
             'image_back' => 'Hình ảnh sau',
         ]);
+        $type = Type::find($id);
+        if (!empty($data['image_front'])) {
+            deleteImage($type->image_front);
+            $imageFront = saveImages($request, 'image_front', 'type', 640, 370);
+            $data['image_front'] = $imageFront;
+        }
+        if (!empty($data['image_back'])) {
+            deleteImage($type->image_back);
+            $imageBack = saveImages($request, 'image_back', 'type', 640, 370);
+            $data['image_back'] = $imageBack;
+        }
         try {
-            $type = Type::find($id);
-            if (!empty($data['image_front'])) {
-                deleteImage($type->image_front);
-                $imageFront = saveImages($request, 'image_front', 'type', 640, 370);
-                $data['image_front'] = $imageFront;
-            }
-            if (!empty($data['image_back'])) {
-                deleteImage($type->image_back);
-                $imageBack = saveImages($request, 'image_back', 'type', 640, 370);
-                $data['image_back'] = $imageBack;
-            }
             $data['slug'] =   Str::slug($data['name'], '-');
             $type->update($data);
             toastr()->success('Cập nhật loại xe thành công');
