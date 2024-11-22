@@ -23,6 +23,7 @@
                                     <tr>
                                         <th>Tên loại</th>
                                         <th>Tiêu đề giới thiệu</th>
+                             
                                         <th>Mô tả ngắn</th>
                                         <th>Hành động</th>
                                     </tr>
@@ -31,6 +32,7 @@
                                     <tr>
                                         <th>Tên loại</th>
                                         <th>Tiêu đề giới thiệu</th>
+                         
                                         <th>Mô tả ngắn</th>
                                         <th>Hành động</th>
                                     </tr>
@@ -40,6 +42,7 @@
                                         <tr>
                                             <td>{{ $typeCar->name }}</td>
                                             <td>{{ $typeCar->title }}</td>
+                                    
                                             <td>{{ \Str::limit(strip_tags(html_entity_decode($typeCar->short_description)), 100) }}
                                             </td>
 
