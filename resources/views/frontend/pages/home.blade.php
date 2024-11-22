@@ -186,7 +186,7 @@
                 </div>
                 <div class="car-img">
                     <img width="1214" height="271"
-                        src="https://xecuoiluxury.com/wp-content/uploads/2019/01/xe-limouisne.png"
+                        src="{{ asset('frontend/assets/images/xe-limouisne.png') }}"
                         class="attachment-slider-full size-slider-full" alt=""
                         sizes="(max-width: 1214px) 100vw, 1214px" />
                 </div>

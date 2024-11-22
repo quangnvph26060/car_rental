@@ -97,13 +97,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="description_seo">Mô tả seo</label>
-                                        <textarea class="form-control @error('description_seo') is-invalid @enderror" id="description_seo"
+                                        <textarea style="resize: vertical;" class="form-control @error('description_seo') is-invalid @enderror" id="description_seo"
                                             name="description_seo" placeholder="Nhập mô tả seo">{{ old('description_seo', $config->description_seo ?? '') }}</textarea>
                                         @error('description_seo')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
+                            
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
