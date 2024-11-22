@@ -89,11 +89,11 @@
                     </li>
                     <li id="menu-item-1943"
                         class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/xe-cuoi-dep') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }}  menu-item-1943">
-                        <a href="{{ route('frontend.service', 'xe-cuoi-dep') }}">Xe Cưới</a>
+                        <a href="{{ route('frontend.service', $typeCarWebsite[0]->slug) }}">Xe Cưới</a>
                     </li>
                     <li id="menu-item-2445"
-                        class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/hoa-cuoi') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2445">
-                        <a href="{{ route('frontend.service', 'hoa-xe-cuoi') }}">Hoa Cưới</a>
+                        class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/hoa-xe-cuoi') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2445">
+                        <a href="{{ route('frontend.service', $typeCarWebsite[6]->slug ?? $typeCarWebsite[1]->slug) }}">Hoa Cưới</a>
                     </li>
                     <li id="menu-item-2426"
                         class="menu-item menu-item-type-post_type menu-item-object-page {{ request()->routeIs('frontend.contact') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2426">

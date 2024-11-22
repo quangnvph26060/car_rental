@@ -71,13 +71,13 @@
                         <li class="serv__item">
                             <div class="serv-block">
                                 <div class="front"
-                                    style="background-image: url({{ isset($type->images[0]) ? asset('storage/' . $type->images[0]) : asset('frontend/assets/images/no-photo.jpg') }});">
+                                    style="background-image: url({{ showImage($type->image_front) }});">
                                     <div class="bl-content">
                                         <h3 class="hd">{{ $type->name }}</h3>
                                     </div>
                                 </div>
                                 <div class="back"
-                                    style="background-image: url({{ isset($type->images[1]) ? asset('storage/' . $type->images[1]) : (isset($type->images[0]) ? asset('storage/' . $type->images[0]) : asset('frontend/assets/images/no-photo.jpg')) }});">
+                                    style="background-image: url({{ showImage($type->image_back) }});">
                                     <div class="bl-content">
                                         <h3 class="hd">{{ $type->name }}</h3>
                                         <p>

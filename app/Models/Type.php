@@ -9,7 +9,7 @@ class Type extends Model
 {
     use HasFactory;
     protected $table = 'sgo_types';
-    protected $fillable = ['name', 'slug', 'title', 'short_description', 'described_above', 'described_below', 'images'];
+    protected $fillable = ['name', 'slug', 'title', 'short_description', 'described_above', 'described_below', 'image_front', 'image_back'];
     public function cars()
     {
         return $this->belongsToMany(Car::class, 'sgo_car_type');
@@ -19,5 +19,4 @@ class Type extends Model
     {
         return $this->hasMany(Brand::class);
     }
-    protected $casts = ['images' => 'array'];
 }
