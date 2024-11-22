@@ -28,18 +28,15 @@
                     <div class="side-right">
                         <div id="nav-ct1">
                             @forelse ($types as $item)
-                            @php
-                                $images = is_string($item->images) ? json_decode($item->images, true) : $item->images;
-                            @endphp
                             <div class="serv-block2"
-                                style="background-image: url({{ isset($images[0]) ? asset('storage/' . $images[0]) : asset('frontend/assets/images/no-photo.jpg') }})
+                                style="background-image: url({{ showImage($item->image_front) }})
                                 ">
                                 <div class="detail right">
-                                    <h4 class="hd"><a href="https://xecuoiluxury.com/dich-vu/xe-cuoi-dep/">{{ $item->name }}</a></h4>
+                                    <h4 class="hd"><a href="{{ route('frontend.service' , $item->slug) }}">{{ $item->name }}</a></h4>
                                     <p>
                                         {{ $item->short_description }}
                                     </p>
-                                    <a href="https://xecuoiluxury.com/dich-vu/xe-cuoi-dep/" class="mn-btn btn-1">Xem
+                                    <a href="{{ route('frontend.service' , $item->slug) }}" class="mn-btn btn-1">Xem
                                         thêm</a>
                                     <a href="https://xecuoiluxury.com/dat-xe/?dich-vu=2" class="mn-btn btn-1">Đặt xe</a>
                                 </div>
