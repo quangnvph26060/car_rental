@@ -111,7 +111,7 @@
             </div>
             <div class="float-img"
                 style="
-          background-image: url(https://xecuoiluxury.com/wp-content/uploads/2018/07/gioithieu-float-img.png);
+          background-image: url({{ asset('frontend/assets/images/gioithieu-float-img.png') }});
         ">
             </div>
         </div>
