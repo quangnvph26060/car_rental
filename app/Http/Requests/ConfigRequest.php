@@ -23,8 +23,8 @@ class ConfigRequest extends FormRequest
     {
         return [
             'title' => 'required|min:10',
-            'logo' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
-            'favicon' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'favicon' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'website' => 'nullable',
             'script'  => 'nullable',
             'title_seo' => 'nullable',
@@ -33,8 +33,8 @@ class ConfigRequest extends FormRequest
             'keywords_seo' => 'nullable',
             'map' => 'nullable',
             'about_us' => 'required',
-            'banner' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
-            'about_us_image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'about_us_image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
         ];
     }
     public function messages()

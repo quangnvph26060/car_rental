@@ -1,7 +1,7 @@
 <div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">
         <!-- Logo Header -->
-        <div class="logo-header" data-background-color="dark">
+        <div class="logo-header" data-background-color="white">
             <a href="index.html" class="logo">
                 <img src="{{ asset('backend/assets/img/logo_sgo.png') }}" alt="navbar brand"
                     class="navbar-brand" height="60" />
@@ -97,6 +97,9 @@
                     <a href="{{ route('admin.booking.request') }}">
                         <i class="fa-solid fa-truck"></i>
                         <p>Yêu cầu đặt xe</p>
+                    </a>
+                </li>
+
                 <li class="nav-item {{ isActiveRoute(['admin.config.index']) }}">
                     <a href="{{ route('admin.config.index') }}">
                         <i class="fa-solid fa-gear"></i>

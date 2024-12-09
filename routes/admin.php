@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BenefitController;
 use App\Http\Controllers\Admin\BrandCarController;
 use App\Http\Controllers\Admin\CarController;
@@ -21,11 +22,15 @@ $objs = [
     'brand-car' =>  BrandCarController::class,
     'car' => CarController::class,
 ];
-Route::get('/login', function () {
-    return view('login.index');
-})->name('form_login');
+// Route::get('/login', function () {
+//     return view('login.index');
+// })->name('form_login');
 
-Route::post('', [AuthController::class, 'login'])->name('login');
+// Route::post('', [AuthController::class, 'login'])->name('login');
+route::middleware('guest')->group(function () {
+    route::get('login', [AuthController::class, 'login'])->name('login');
+    route::post('login', [AuthController::class, 'authenticate']);
+});
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(function () use ($objs) {
@@ -82,8 +87,9 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
         Route::post('/update-contact-info', [SgoContactController::class, 'updateContactInfo'])->name('updateContactInfo');
     });
     Route::prefix('config')->name('config.')->group(function () {
-        Route::get('/config', [ConfigController::class, 'index'])->name('index');
+        Route::get('/', [ConfigController::class, 'index'])->name('index');
         Route::post('/update-config', [ConfigController::class, 'update'])->name('update');
+        Route::post('/maintenance', [ConfigController::class, 'maintenance'])->name('maintenance');
     });
 
 
@@ -94,4 +100,8 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
     Route::get('/images/car/{slug?}', [ImageCarController::class, 'index'])->name('images.car.index');
     Route::post('/images/car/store', [ImageCarController::class, 'store'])->name('images.car.store');
     Route::delete('/delete-file/car/{id}', [ImageCarController::class, 'destroy'])->name('images.car.destroy');
+
+     Route::get('account', [AdminController::class, 'index'])->name('admin.config');
+     Route::post('account', [AdminController::class, 'update'])->name('admin.update');
+
 });

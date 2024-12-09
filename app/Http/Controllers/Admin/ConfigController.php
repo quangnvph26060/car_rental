@@ -52,4 +52,16 @@ class ConfigController extends Controller
             Log::info($e->getMessage());
         }
     }
+
+    public function maintenance(Request $request){
+        $config = Config::first();
+       if($config->maintenance == 1){
+         $config->maintenance = 0;
+       }else{
+         $config->maintenance = 1;
+        }
+
+        $config->save();
+        return redirect()->back()->with('success', 'Cập nhật cấu hình thành công');
+    }
 }
