@@ -4,8 +4,13 @@
 @endsection
 @section('content')
     <div class="page-inner">
-        <div class="page-header">
+        <div class="page-header" style="display: flex; justify-content: space-between">
             <h3 class="fw-bold mb-3">Cấu hình website</h3>
+            <form id="maintenance-form" action="{{ route('admin.config.maintenance') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary">{{ $config->maintenance == 0 ? 'Hoàn tất bảo trì' : 'Bảo trì' }}</button>
+            </form>
+
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -104,7 +109,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                            
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6">

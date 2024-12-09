@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Config;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewsController;
@@ -10,7 +11,7 @@ use App\Http\Controllers\Frontend\ServiceController;
 use App\Http\Controllers\Frontend\IntroduceController;
 
 
-Route::name('frontend.')->group(function () {
+Route::middleware(['maintenance'])->name('frontend.')->group(function () {
 
     route::post('ajax', [HomeController::class, 'ajax'])->name('ajax');
     route::post('load-more-car' , [ProductController::class , 'loadMoreCarBySlug'])->name('load.car.by.slug');
@@ -33,3 +34,13 @@ Route::name('frontend.')->group(function () {
 
     route::get('thu-vien-anh', [HomeController::class, 'gallery'])->name('gallery');
 });
+
+Route::get('/maintenance', function () {
+    $config = Config::first();
+
+    if ($config->maintenance == 0) {
+        return view('maintenance');
+    }
+    return redirect('/');
+})->name('maintenance');
+
