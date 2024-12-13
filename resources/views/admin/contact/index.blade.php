@@ -28,14 +28,7 @@
                             <div class="row">
                                 <!-- Trụ sở chính -->
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="headquarters">Trụ sở chính <code>*</code></label>
-                                        <textarea class="form-control @error('headquarters') is-invalid @enderror" id="headquarters"
-                                            name="headquarters" placeholder="Nhập trụ sở chính">{{ old('headquarters', $contact->headquarters ?? '') }}</textarea>
-                                        @error('headquarters')
-                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
+                                    
                                 </div>
 
                                 <!-- Thời gian làm việc -->

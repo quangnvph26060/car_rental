@@ -22,6 +22,10 @@ class Config extends Model
         'map',
         'about_us',
         'banner',
-        'about_us_image'
+        'about_us_image',
+        'working_hours',
+        'booking_procedure',
+        'advisory',
+        'headquarters'
     ];
 }

@@ -185,8 +185,7 @@
                     </div>
                 </div>
                 <div class="car-img">
-                    <img width="1214" height="271"
-                        src="https://xecuoiluxury.com/wp-content/uploads/2019/01/xe-limouisne.png"
+                    <img width="1214" height="271" src="{{ asset('frontend/assets/image/xe-limouisne.png') }}"
                         class="attachment-slider-full size-slider-full" alt=""
                         sizes="(max-width: 1214px) 100vw, 1214px" />
                 </div>
@@ -351,10 +350,16 @@
                     </li>
                 </ul>
             </div>
+            <style>
+                .map iframe {
+                    width: 100%;
+                    height: 100%
+                }
+            </style>
             <div class="google-map" style="margin-top: 130px;">
                 <div class="map">
-                    <iframe style="width: 100%; height: 100%" src="{{ $configWebsite->map }}" width=""
-                        height="" frameborder="0" style="border: 0" allowfullscreen></iframe>
+                 
+                    {!! $configWebsite->map !!}
                 </div>
             </div>
         </div>

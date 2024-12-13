@@ -20,10 +20,10 @@ class ConfigController extends Controller
     public function update(ConfigRequest $request)
     {
         $data = $request->validated();
-        $logo = saveImages($request, 'logo', 'config', 209, 49);
-        $favicon = saveImages($request, 'favicon', 'config', 40, 40);
-        $banner = saveImages($request, 'banner', 'config', 1306, 638);
-        $about_us_image = saveImages($request, 'about_us_image', 'config', 570, 322);
+        $logo = saveImage($request, 'logo', 'config');
+        $favicon = saveImage($request, 'favicon', 'config');
+        $banner = saveImage($request, 'banner', 'config');
+        $about_us_image = saveImage($request, 'about_us_image', 'config');
         try {
             $config = Config::first();
             if (!is_null($logo)) {
@@ -42,6 +42,8 @@ class ConfigController extends Controller
                 deleteImage($config->about_us_image);
                 $data['about_us_image'] = $about_us_image;
             }
+
+            // dd($data);
             $config->update($data);
             return redirect()->back()->with('success', 'Cập nhật cấu hình thành công');
         } catch (\Exception $e) {
