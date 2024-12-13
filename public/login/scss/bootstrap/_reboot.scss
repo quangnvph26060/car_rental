@@ -392,7 +392,7 @@ input[type="month"] {
 textarea {
   overflow: auto; // Remove the default vertical scrollbar in IE.
   // Textareas should really only resize vertically so they don't break their (horizontal) containers.
-  resize: vertical;
+//   resize: vertical;
 }
 
 fieldset {
