@@ -33,7 +33,7 @@
                     class="nav-item {{ isActiveRoute(['admin.type-car.index', 'admin.type-car.create', 'admin.type-car.edit']) }}">
                     <a href="{{ route('admin.type-car.index') }}">
                         <i class="fas fa-layer-group"></i>
-                        <p>Dịch vụ</p>
+                        <p>Loại xe</p>
                     </a>
                 </li>
                 <li

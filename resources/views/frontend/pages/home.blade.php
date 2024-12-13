@@ -45,8 +45,6 @@
 
         <div class="services">
             <ul class="list-serv clear">
-
-
                 @foreach ($types as $type)
                     @if ($loop->iteration == 1)
                         <li class="serv__item">
@@ -55,12 +53,6 @@
                                     <h3 class="hd">{{ $type->name }}</h3>
                                     <p style="text-align: justify">
                                         {{ $type->short_description }}
-                                    </p>
-                                    <p style="text-align: justify">
-                                        Chúng tôi cho thuê tất cả các dòng xe cưới hạng sang đang được
-                                        yêu thích nhất như:<strong>
-                                            Mercedes, Audi, BMW, Lexus, Bentley, Porscher, Jaguar, Rolls
-                                            Royce.</strong>
                                     </p>
                                 </div>
                             </div>
@@ -74,6 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="back" style="background-image: url({{ showImage($type->image_back) }});">
+                                    <div class="black-overlay"></div> <!-- Lớp phủ -->
                                     <div class="bl-content">
                                         <h3 class="hd">{{ $type->name }}</h3>
                                         <p>
@@ -82,6 +75,7 @@
                                         <a href="{{ route('frontend.service', $type->slug) }}" class="color1">Xem thêm</a>
                                     </div>
                                 </div>
+
                             </div>
                         </li>
                     @endif
@@ -95,7 +89,7 @@
                 <div class="row100">
                     <div class="col25 left">
                         <div class="sec-title1">
-                            <h2 class="hd">BẢNG GIÁ CHO THUÊ XE CƯỚI TẠI HÀ NỘI</h2>
+                            <h2 class="hd">BẢNG GIÁ CHO THUÊ XE CƯỚI</h2>
                         </div>
                     </div>
                     <div class="col75 right">
@@ -117,7 +111,7 @@
                                             </p>
                                             <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
                                             <div class="mona-except">
-                                                {{\Str::words($car->short_description, 8, '[...]')}}
+                                                {{ \Str::words($car->short_description, 8, '[...]') }}
                                                 {{-- <p>
                                                 </p> --}}
 
@@ -133,7 +127,7 @@
                         </ul>
 
                         <div class="more-button">
-                            <a href="{{url('/')}}" data-max="2" data-page="1" class="mn-btn btn-1"
+                            <a href="{{ url('/') }}" data-max="2" data-page="1" class="mn-btn btn-1"
                                 id="mona-home-more-product">Xem thêm xe
                                 <i class="fa fa-caret-down"></i>
                             </a>
@@ -467,6 +461,33 @@
             color: #f39c12;
             /* Màu sao */
             margin-bottom: 10px
+        }
+
+        .back {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            overflow: hidden;
+            /* Đảm bảo lớp phủ không tràn ra ngoài */
+        }
+
+        .black-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Màu đen bán trong suốt */
+            z-index: 1;
+        }
+
+        .bl-content {
+            position: relative;
+            z-index: 2;
+            /* Nội dung ở trên lớp phủ */
+            text-align: center;
         }
     </style>
 @endpush
