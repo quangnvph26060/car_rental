@@ -17,7 +17,7 @@ class CheckLogin
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('form_login')->with('message', 'Bạn cần đăng nhập để truy cập trang này.');
+            return redirect()->route('login')->with('message', 'Bạn cần đăng nhập để truy cập trang này.');
         }
 
         return $next($request);
