@@ -156,6 +156,16 @@
                             <div class="row">
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
+                                        <label for="comment">Mô tả ngắn</label>
+                                        <textarea class="form-control" name="short_description" id="" rows="5"
+                                            placeholder="Nhập mô tả ngắn">{{ old('short_description', $car->short_description) }}</textarea>
+                                        @error('short_description')
+                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-12">
+                                    <div class="form-group">
                                         <label for="comment">Mô tả<code>(Không bắt buộc)</code></label>
                                         <textarea class="form-control ckeditor" name="description" id="content" rows="5"
                                             placeholder="Nhập mô tả chiếc xe">{{ $car->description }}</textarea>
@@ -182,14 +192,16 @@
                                         <div class="d-flex">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="is_favorite"
-                                                    value="1" id="checkFavorite1" {{ $car->is_favorite === 1 ? 'checked' : '' }} />
+                                                    value="1" id="checkFavorite1"
+                                                    {{ $car->is_favorite === 1 ? 'checked' : '' }} />
                                                 <label class="form-check-label" for="checkFavorite1">
-                                                     Có
+                                                    Có
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="is_favorite"
-                                                    value="0" id="checkFavorite2" {{ $car->is_favorite === 0 ? 'checked' : '' }}  />
+                                                    value="0" id="checkFavorite2"
+                                                    {{ $car->is_favorite === 0 ? 'checked' : '' }} />
                                                 <label class="form-check-label" for="checkFavorite2">
                                                     Không
                                                 </label>
