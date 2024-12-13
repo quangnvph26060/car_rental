@@ -57,7 +57,7 @@ class CarController extends Controller
             'status' => 'Trạng thái'
         ]);
 
-        $image = saveImages($request, 'image', 'cars', 670, 446);
+        $image = saveImage($request, 'image', 'cars');
 
         try {
             $validated['slug'] = Str::slug($validated['name'], '-');
@@ -117,7 +117,7 @@ class CarController extends Controller
             $car = Car::find($id);
             if (!empty($validated['image'])) {
                 deleteImage($request->old_image);
-                $image = saveImages($request, 'image', 'cars', 670, 446);
+                $image = saveImage($request, 'image', 'cars');
                 $validated['image'] = $image;
             }
             $validated['slug'] = Str::slug($validated['name'], '-');
