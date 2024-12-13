@@ -2289,6 +2289,7 @@ textarea.f-control {
     }
 }
 .serv-block .bl-content p {
+    text-align: left;
     margin-bottom: 25px;
 }
 .serv-block .bl-content a:hover {
