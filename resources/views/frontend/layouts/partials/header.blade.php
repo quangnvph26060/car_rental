@@ -20,7 +20,7 @@
                 </div>
                 <div class="info__child">
                     <div class="img">
-                        <img src="" alt="{{ asset('frontend/assets/image/header-top-icon2.png') }}" />
+                        <img src="{{ asset('frontend/assets/image/header-top-icon2.png') }}" alt="" />
                     </div>
                     <div class="ct">
                         {!! $configWebsite->working_hours !!}
