@@ -65,9 +65,9 @@
                                         <h3 class="hd">{{ $type->name }}</h3>
                                     </div>
                                 </div>
-                                <div style="position: relative">
-                                    <div class="black-overlay"></div>
+
                                     <div class="back" style="background-image: url({{ showImage($type->image_back) }});">
+                                        <div class="black-overlay"></div>
                                         <div class="bl-content">
                                             <h3 class="hd">{{ $type->name }}</h3>
                                             <p>
@@ -77,7 +77,6 @@
                                                 thêm</a>
                                         </div>
                                     </div>
-                                </div>
 
 
                             </div>
