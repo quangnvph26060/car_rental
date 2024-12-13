@@ -32,6 +32,7 @@ class ConfigRequest extends FormRequest
             'description_seo' => 'nullable',
             'keywords_seo' => 'nullable',
             'map' => 'nullable',
+
             'about_us' => 'nullable',
             'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'about_us_image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
@@ -39,6 +40,7 @@ class ConfigRequest extends FormRequest
             'booking_procedure' => 'nullable',
             'advisory' => 'nullable',
             'headquarters' => 'nullable',
+
         ];
     }
     public function messages()

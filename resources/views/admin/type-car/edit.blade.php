@@ -53,13 +53,30 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-4">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
                                     <div class="form-group">
-                                        <label for="">Ảnh <code>(Tối đa 2 ảnh)</code></label>
-                                        <input type="file" class="form-control" name="images[]" multiple />
-                                        @error('images')
+                                        <label for="">Ảnh chính<code>(Trước)</code></label>
+                                        <input type="file" class="form-control" name="image_front"
+                                            onchange="loadFile(event ,'outputImageFront')" />
+                                        @error('image_front')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
+                                        <img id="outputImageFront" src="{{ showImage($type->image_front) }}"
+                                            width="545" height="260" class="mt-3 border" /> <br>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="">Ảnh nền<code>(Sau)</code></label>
+                                        <input type="file" class="form-control" name="image_back"
+                                            onchange="loadFile(event ,'outputImageBack')" />
+                                        @error('image_back')
+                                            <p class="form-text text-muted text-danger">{{ $message }}</p>
+                                        @enderror
+                                        <img id="outputImageBack" src="{{ showImage($type->image_back) }}"
+                                            width="545" height="260" class="mt-3 border" /> <br>
                                     </div>
                                 </div>
                             </div>

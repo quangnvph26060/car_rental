@@ -23,9 +23,13 @@ class Config extends Model
         'about_us',
         'banner',
         'about_us_image',
+
         'working_hours',
         'booking_procedure',
         'advisory',
         'headquarters'
+
+        'maintenance'
+
     ];
 }

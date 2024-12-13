@@ -4,8 +4,13 @@
 @endsection
 @section('content')
     <div class="page-inner">
-        <div class="page-header">
+        <div class="page-header" style="display: flex; justify-content: space-between">
             <h3 class="fw-bold mb-3">Cấu hình website</h3>
+            <form id="maintenance-form" action="{{ route('admin.config.maintenance') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary">{{ $config->maintenance == 0 ? 'Hoàn tất bảo trì' : 'Bảo trì' }}</button>
+            </form>
+
         </div>
         <form method="POST" action="{{ route('admin.config.update') }}" autocomplete="off" enctype="multipart/form-data">
             @csrf
@@ -118,7 +123,9 @@
                         <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
                             <div class="card">
 
+
                                 <div class="card-body">
+
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label for="title_seo"> Tiêu đề seo</label>

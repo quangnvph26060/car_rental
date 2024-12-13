@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Config;
 use App\Models\SgoContact;
+use App\Models\Type;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,10 +25,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $contactWebsite = SgoContact::first();
         $configWebsite = Config::first();
-        View::composer('*', function ($view) use ($contactWebsite, $configWebsite) {
+        $typeCarWebsite = Type::select('id', 'name', 'slug')->get();
+        View::composer('*', function ($view) use ($contactWebsite, $configWebsite, $typeCarWebsite) {
             $view->with([
                 'contactWebsite' => $contactWebsite,
-                'configWebsite' => $configWebsite
+                'configWebsite' => $configWebsite,
+                'typeCarWebsite' => $typeCarWebsite
             ]);
         });
     }

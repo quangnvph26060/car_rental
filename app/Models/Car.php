@@ -19,7 +19,8 @@ class Car extends Model
         'color_id',
         'description',
         'status',
-        'image'
+        'image',
+        'is_favorite'
     ];
     public function types()
     {
