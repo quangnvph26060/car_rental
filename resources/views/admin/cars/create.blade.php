@@ -162,9 +162,8 @@
                                 </div>
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
-                                        <label for="comment">Mô tả<code>*</code></label>
-                                        <textarea class="form-control ckeditor" name="description" id="content" rows="5"
-                                            placeholder="Nhập mô tả chiếc xe">{{ old('description') }}</textarea>
+                                        <label for="comment">Mô tả chi tiết<code>*</code></label>
+                                        <textarea class="form-control" name="description" id="content" rows="5" placeholder="Nhập mô tả chiếc xe">{{ old('description') }}</textarea>
                                         @error('description')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
@@ -174,7 +173,7 @@
                                     <div class="form-group">
                                         <label for="comment">Chi tiết chương trình giảm giá <code>(Không bắt
                                                 buộc)</code></label>
-                                        <textarea class="form-control ckeditor" name="promotion_details" id="content" rows="5">{{ old('promotion_details') }}</textarea>
+                                        <textarea class="form-control" name="promotion_details" id="content" rows="5">{{ old('promotion_details') }}</textarea>
                                         @error('promotion_details')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
@@ -254,9 +253,30 @@
                 placeholder: "Chọn loại xe",
                 allowClear: true
             });
+
+        });
+    </script>
+
+    <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckfinder_2/ckfinder.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace('promotion_details', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+
+        CKEDITOR.replace('description', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
         });
     </script>
 @endpush
+
 
 @push('styles')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

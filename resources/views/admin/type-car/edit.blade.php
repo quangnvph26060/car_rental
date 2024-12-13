@@ -26,7 +26,7 @@
                     <div class="card-header">
                         <div class="card-title">Cập nhật loại xe</div>
                     </div>
-                    <form action="{{ route('admin.type-car.update', $type->id) }}" method="post" autocomplete="off" enctype="multipart/form-data"> 
+                    <form action="{{ route('admin.type-car.update', $type->id) }}" method="post" autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card-body">
@@ -117,4 +117,22 @@
 @endsection
 
 @push('scripts')
+    <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckfinder_2/ckfinder.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace('described_above', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+
+        CKEDITOR.replace('short_description', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+    </script>
 @endpush

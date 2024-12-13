@@ -116,8 +116,7 @@
                         </div>
                         <div class="my-2">
                             <label for="description">Mô tả</label> <br>
-                            <textarea name="description" class="form-control ckeditor" id="content1" cols="10" rows="10"
-                                placeholder="Nhập mô tả"></textarea>
+                            <textarea name="description" class="form-control" id="content1" cols="10" rows="10" placeholder="Nhập mô tả"></textarea>
                             <span class="text-danger error-text description_error" style="color: red"></span>
                         </div>
                         <div class="my-2">
@@ -241,11 +240,29 @@
 
 @push('scripts')
     <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckfinder_2/ckfinder.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace('content1', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+
+        CKEDITOR.replace('content2', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+    </script>
+    <script>
         $(document).ready(function() {
             dataTableRental([0])
             $('#add_post_form').submit(function(e) {
                 e.preventDefault();
-                CKEDITOR.instances['content1'].updateElement();
+                // CKEDITOR.instances['content1'].updateElement();
                 const fd = new FormData(this);
                 $("#add_post_btn").text('Đang thêm...');
                 $("#add_post_btn").prop('disabled', true);
@@ -287,6 +304,7 @@
                 $('#edit_post_form')[0].reset();
                 $(".error-text").text('');
             });
+
             function printErrorMsg(msg) {
                 $(".error-text").text('');
                 $.each(msg, function(key, value) {
@@ -344,7 +362,7 @@
 
             $("#edit_post_form").submit(function(e) {
                 e.preventDefault();
-                CKEDITOR.instances['content2'].updateElement();
+                // CKEDITOR.instances['content2'].updateElement();
                 const fd = new FormData(this);
                 $("#edit_post_btn").text('Đang thêm...');
                 $("#edit_post_btn").prop('disabled', true);

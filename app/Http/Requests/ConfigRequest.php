@@ -34,12 +34,15 @@ class ConfigRequest extends FormRequest
             'map' => 'nullable',
 
             'about_us' => 'nullable',
+            'commit_img' => 'nullable',
             'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'about_us_image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'about_us_content' => 'nullable',
             'working_hours' => 'nullable',
             'booking_procedure' => 'nullable',
             'advisory' => 'nullable',
             'headquarters' => 'nullable',
+            'about_us_title' => 'nullable',
 
         ];
     }

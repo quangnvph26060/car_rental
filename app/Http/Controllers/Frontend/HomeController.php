@@ -54,7 +54,12 @@ class HomeController extends Controller
         ]);
     }
 
-    public function gallery(){
-        return view('frontend.pages.album');
+    public function gallery()
+    {
+        $cateCars = Type::query()->latest()->with(['cars.carImages'])->take(7)->get();
+
+        // dd($cateCars);
+
+        return view('frontend.pages.album', compact('cateCars'));
     }
 }

@@ -4,12 +4,12 @@
     <main class="gioithieu">
         <div class="page-position"
             style="
-        background-image: url(https://xecuoiluxury.com/wp-content/uploads/2018/07/childpage-bg-1.jpg);
+         background-image: url({{asset('frontend/assets/image/childpage-bg-1.jpg')}});
       ">
             <div class="title">
                 <h2 class="hd">Giới thiệu</h2>
                 <div class="pos-nav">
-                    <a href="https://xecuoiluxury.com">Trang chủ</a>
+                    <a href="{{url('/')}}">Trang chủ</a>
                     -
                     <span class="current">Giới thiệu</span>
                 </div>
@@ -26,11 +26,10 @@
                 <div class="all">
                     <div class="abu-wrap">
                         <div class="ab-ct">
-                            <h2 class="hd">GIỚI THIỆU</h2>
-                            <p style="text-align: justify">
-                                  {{ $configWebsite->about_us }}
-                            </p>
-                        
+                            <h2 class="hd">{{ $configWebsite->about_us_title }}</h2>
+
+                                  {!! $configWebsite->about_us_content !!}
+
                         </div>
                     </div>
                 </div>

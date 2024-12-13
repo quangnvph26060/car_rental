@@ -22,7 +22,7 @@ class ImageCarController extends Controller
         // dd($request->all());
         $validator = Validator::make($request->all(), [
             'image_path' => 'required|array',
-            'image_path.*' => 'image|mimes:jpeg,jpg,png,gif|max:2048',
+            'image_path.*' => 'image|mimes:jpeg,jpg,png,gif,webp|max:2048',
         ], __('request.messages'), [
             'image_path' => 'Hình ảnh'
         ]);
@@ -32,9 +32,15 @@ class ImageCarController extends Controller
                 'validation_errors' => $validator->errors()
             ], 422);
         }
-        $images = saveImages($request, 'image_path', 'cars', 670, 446, true);
+
+        // $images = collect($request->image_path)->map(function ($item) use ($request) {
+        //     return saveImagesWithoutResize($request, 'image_path', 'cars', true);
+        // })->toArray();
+
+        $images = saveImagesWithoutResize($request, 'image_path', 'cars', true);
+
         try {
-            foreach ((array) $images as $image) {
+            foreach ($images as $image) {
                 CarImage::create([
                     'car_id' => $request->carId,
                     'image_path' => $image
@@ -44,7 +50,7 @@ class ImageCarController extends Controller
                 'status' => 200,
             ]);
         } catch (\Exception $e) {
-            foreach ((array) $images as $image) {
+            foreach ($images as $image) {
                 deleteImage($image);
             }
             Log::info($e->getMessage());

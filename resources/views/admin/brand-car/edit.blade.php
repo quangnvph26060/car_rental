@@ -21,7 +21,7 @@
                     <div class="card-header">
                         <div class="card-title">Cập nhật hãng xe</div>
                     </div>
-                    <form action="{{ route('admin.brand-car.update' , $brand->id) }}" method="post" autocomplete="off">
+                    <form action="{{ route('admin.brand-car.update', $brand->id) }}" method="post" autocomplete="off">
                         @csrf
                         @method('PUT')
                         <div class="card-body">
@@ -43,7 +43,8 @@
                                         <select name="type_id" class="form-control" id="">
                                             <option value="" selected>- - Chọn loại xe - -</option>
                                             @foreach ($types as $type)
-                                                <option {{ $brand->type_id === $type->id ? 'selected' : '' }} value="{{ $type->id }}">{{ $type->name }}</option>
+                                                <option {{ $brand->type_id === $type->id ? 'selected' : '' }}
+                                                    value="{{ $type->id }}">{{ $type->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('type_id')
@@ -68,7 +69,7 @@
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <label for="comment">Mô tả ngắn <code>(Không bắt buộc)</code></label>
-                                        <textarea class="form-control ckeditor" name="described_above" id="content" rows="4">{{ $brand->described_above }}</textarea>
+                                        <textarea class="form-control" name="described_above" id="content" rows="4">{{ $brand->described_above }}</textarea>
                                         @error('described_above')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
@@ -77,7 +78,7 @@
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <label for="comment">Mô tả dài <code>(Không bắt buộc)</code></label>
-                                        <textarea class="form-control ckeditor" name="described_below" id="content" rows="5">{{ $brand->described_below }}</textarea>
+                                        <textarea class="form-control" name="described_below" id="content" rows="5">{{ $brand->described_below }}</textarea>
                                         @error('described_below')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
@@ -96,4 +97,22 @@
 @endsection
 
 @push('scripts')
+    <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckfinder_2/ckfinder.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace('described_below', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+
+        CKEDITOR.replace('described_above', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+    </script>
 @endpush

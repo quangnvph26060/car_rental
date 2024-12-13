@@ -26,11 +26,6 @@
                 <h4 class="hd">
                     <a href="https://xecuoiluxury.com/dich-vu/xe-hang-sang/">XE HẠNG SANG</a>
                 </h4>
-                <p>
-                    Bảng giá các mẫu xe cưới VIP sang trọng như: Mercedes,
-                    Audi, Lexus, BMW. Click vào xem thêm để xem hình ảnh và
-                    giá thuê xe.
-                </p>
                 <a href="https://xecuoiluxury.com/dich-vu/xe-hang-sang/" class="mn-btn btn-1">Xem
                     thêm</a>
                 <a href="https://xecuoiluxury.com/dat-xe/?dich-vu=4" class="mn-btn btn-1">Đặt xe</a>
