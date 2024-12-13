@@ -65,16 +65,20 @@
                                         <h3 class="hd">{{ $type->name }}</h3>
                                     </div>
                                 </div>
-                                <div class="back" style="background-image: url({{ showImage($type->image_back) }});">
-                                    <div class="black-overlay"></div> <!-- Lớp phủ -->
-                                    <div class="bl-content">
-                                        <h3 class="hd">{{ $type->name }}</h3>
-                                        <p>
-                                            {{ $type->short_description }}
-                                        </p>
-                                        <a href="{{ route('frontend.service', $type->slug) }}" class="color1">Xem thêm</a>
+                                <div style="position: relative">
+                                    <div class="black-overlay"></div>
+                                    <div class="back" style="background-image: url({{ showImage($type->image_back) }});">
+                                        <div class="bl-content">
+                                            <h3 class="hd">{{ $type->name }}</h3>
+                                            <p>
+                                                {{ $type->short_description }}
+                                            </p>
+                                            <a href="{{ route('frontend.service', $type->slug) }}" class="color1">Xem
+                                                thêm</a>
+                                        </div>
                                     </div>
                                 </div>
+
 
                             </div>
                         </li>
@@ -412,7 +416,7 @@
                                             </p>
                                             <p class="price mona-text-label">${car.price} VND</p>
                                             <div class="mona-except">
-                                                <p>${limitText(car.description, 120, '[...]')}</p>
+                                                <p>${limitText(car.short_description ?? '', 120, '[...]')}</p>
                                             </div>
                                             <a href="${app_url}/san-pham/${car.slug}" class="more">
                                                 <i class="fa fa-long-arrow-right"></i>
@@ -478,7 +482,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.8);
             /* Màu đen bán trong suốt */
             z-index: 1;
         }
