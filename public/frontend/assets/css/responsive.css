@@ -12,7 +12,7 @@
   min-height: 1px;
 }
 .banner .banner__bg .flex-center {
-  min-height: 530px;
+  min-height: 100vh;
 }
 .advantages .adv__item + .adv__item {
   border-left: solid 1px #e1e1e1;
