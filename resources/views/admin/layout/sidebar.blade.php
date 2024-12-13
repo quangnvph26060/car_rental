@@ -86,12 +86,12 @@
                         <p>Đánh giá</p>
                     </a>
                 </li>
-                <li class="nav-item {{ isActiveRoute(['admin.contact.getContactInfo']) }}">
+                {{-- <li class="nav-item {{ isActiveRoute(['admin.contact.getContactInfo']) }}">
                     <a href="{{ route('admin.contact.getContactInfo') }}">
                         <i class="fas fa-phone-alt"></i>
                         <p>Liên hệ</p>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item {{ isActiveRoute(['admin.booking.request']) }}">
                     <a href="{{ route('admin.booking.request') }}">

@@ -321,7 +321,7 @@
                             <p class="hd">
                                 <span style="color: #3366ff"><strong>ĐỊA CHỈ </strong></span>
                             </p>
-                            {!! $contact->headquarters !!}
+                            {!! $configWebsite->headquarters !!}
                         </div>
                     </li>
                     <li class="brand__item">
@@ -329,7 +329,7 @@
                             <p class="hd">
                                 <span style="color: #3366ff"><strong>THỜI GIAN LÀM VIỆC </strong></span>
                             </p>
-                            {!! $contact->working_hours !!}
+                            {!! $configWebsite->working_hours !!}
                         </div>
                     </li>
                     <li class="brand__item">
@@ -337,8 +337,7 @@
                             <p class="hd">
                                 <span style="color: #3366ff"><strong>TƯ VẤN THUÊ XE </strong></span>
                             </p>
-                            <p>Hotline:</p>
-                            <p><a href="tel:+">{{ $contact->advisory }}</a></p>
+                            <p><a href="tel:+">{{ $configWebsite->advisory }}</a></p>
                         </div>
                     </li>
                     <li class="brand__item">
@@ -346,8 +345,7 @@
                             <p class="hd">
                                 <span style="color: #3366ff"><strong>ĐẶT THUÊ XE </strong></span>
                             </p>
-                            <p>Hotline:</p>
-                            <p>{{ $contact->booking_procedure }}</p>
+                            <p>{{ $configWebsite->booking_procedure }}</p>
                         </div>
                     </li>
                 </ul>
@@ -360,7 +358,7 @@
             </style>
             <div class="google-map" style="margin-top: 130px;">
                 <div class="map">
-                 
+
                     {!! $configWebsite->map !!}
                 </div>
             </div>

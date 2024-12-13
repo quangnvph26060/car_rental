@@ -16,7 +16,7 @@
                         <span class="hl"><strong> </strong>
                             <p><strong>Tầng 4 - 01 Thái Hà - Hà Nội</strong></p>
                         </span> --}}
-                        {!! $contactWebsite->headquarters !!}
+                        {!! $configWebsite->headquarters !!}
                     </div>
                 </div>
                 <div class="info__child">
@@ -24,12 +24,7 @@
                         <img src="https://xecuoiluxury.com/template/images/header-top-icon2.png" alt="" />
                     </div>
                     <div class="ct">
-                        {{-- <p>Thời Gian Làm Việc:</p>
-                        <p>
-                            Thứ 2 đến thứ 7:
-                            <span class="hl"><strong>8h00 - 17h30</strong></span>
-                        </p> --}}
-                        {!! $contactWebsite->working_hours !!}
+                        {!! $configWebsite->working_hours !!}
                     </div>
                 </div>
                 <div class="info__child">
@@ -39,7 +34,7 @@
                     <div class="ct">
                         <p>Hotline:</p>
                         <p>
-                            <a href="" class="hl"><strong>{{ $contactWebsite->phone_number }}</strong></a>
+                            <a href="" class="hl"><strong>{{ $configWebsite->advisory }}</strong></a>
                         </p>
                     </div>
                 </div>
