@@ -11,7 +11,7 @@
                         ">
                     <div class="flex-center">
                         <div class="all">
-                           
+
                         </div>
                     </div>
                 </li>
@@ -117,9 +117,9 @@
                                             </p>
                                             <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
                                             <div class="mona-except">
-                                                <p>
-                                                    {!! \Str::words($car->description, 5, '[...]') !!}
-                                                </p>
+                                                {{\Str::words($car->short_description, 8, '[...]')}}
+                                                {{-- <p>
+                                                </p> --}}
 
                                             </div>
                                             <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}"
@@ -133,7 +133,7 @@
                         </ul>
 
                         <div class="more-button">
-                            <a href="https://xecuoiluxury.com/xe-cuoi/" data-max="2" data-page="1" class="mn-btn btn-1"
+                            <a href="{{url('/')}}" data-max="2" data-page="1" class="mn-btn btn-1"
                                 id="mona-home-more-product">Xem thêm xe
                                 <i class="fa fa-caret-down"></i>
                             </a>

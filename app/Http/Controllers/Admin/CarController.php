@@ -15,7 +15,7 @@ class CarController extends Controller
 {
     public function index()
     {
-        $cars  = Car::select('id', 'name', 'price', 'status', 'slug', 'image','is_favorite')->with('types', 'brands', 'carImages', 'color')->get();
+        $cars  = Car::select('id', 'name', 'price', 'status', 'slug', 'image', 'is_favorite')->with('types', 'brands', 'carImages', 'color')->get();
         return view('admin.cars.index', compact('cars'));
     }
     public function create()
@@ -33,7 +33,8 @@ class CarController extends Controller
             'price' => 'required|numeric|min:1',
             'promotion_details' => 'nullable|min:10',
             'color_id' => 'nullable',
-            'description' => 'nullable|min:50',
+            'description' => 'nullable',
+            'short_description' => 'nullable',
             'number_of_seats' => 'nullable|min:1|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'type_ids' => 'required|array',
@@ -89,7 +90,8 @@ class CarController extends Controller
             'price' => 'required|numeric|min:1',
             'promotion_details' => 'nullable|min:10',
             'color_id' => 'nullable',
-            'description' => 'nullable|min:50',
+            'description' => 'nullable',
+            'short_description' => 'nullable',
             'number_of_seats' => 'nullable|min:1|numeric',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'type_ids' => 'required|array',
@@ -148,7 +150,8 @@ class CarController extends Controller
         return response()->json(['success' => 'Cập nhật trạng thái thành công!']);
     }
 
-    public function activeFavorite(Request $request){
+    public function activeFavorite(Request $request)
+    {
         $car = Car::find($request->carId);
         if (!$car) {
             return response()->json(['error' => 'Không tìm thấy xe này!']);

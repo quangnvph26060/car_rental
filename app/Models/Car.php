@@ -18,6 +18,7 @@ class Car extends Model
         'number_of_seats',
         'color_id',
         'description',
+        'short_description',
         'status',
         'image',
         'is_favorite'
