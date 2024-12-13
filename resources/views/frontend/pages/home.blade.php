@@ -92,7 +92,7 @@
                 <div class="row100">
                     <div class="col25 left">
                         <div class="sec-title1">
-                            <h2 class="hd">BẢNG GIÁ CHO THUÊ XE CƯỚI</h2>
+                            <h2 class="hd">BẢNG GIÁ CHO THUÊ XE</h2>
                         </div>
                     </div>
                     <div class="col75 right">
