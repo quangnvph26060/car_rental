@@ -27,7 +27,7 @@ class Config extends Model
         'working_hours',
         'booking_procedure',
         'advisory',
-        'headquarters'
+        'headquarters',
 
         'maintenance'
 
