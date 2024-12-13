@@ -156,7 +156,7 @@
                             <ul class="list-feat clear">
                                 @foreach ($commitments as $commitment)
                                     <li class="feat__item">
-                                        <div class="feat-block">
+                                        <div class="feat-block dlex" style="">
                                             <div class="img">
                                                 <img width="70" height="70" src="{{ showImage($commitment->icon) }}"
                                                     class="attachment-medium size-medium" alt="{{ $commitment->title }}" />
@@ -179,7 +179,7 @@
                 </div>
                 <div class="car-img">
 
-                    <img width="1214" height="271" src="{{ asset('frontend/assets/image/xe-limouisne.png') }}"
+                    <img width="1214" height="271" src="{{ showImage($configWebsite->commit_img) }}"
                         class="attachment-slider-full size-slider-full" alt=""
                         sizes="(max-width: 1214px) 100vw, 1214px" />
                 </div>
@@ -291,10 +291,10 @@
             <div class="all">
                 <div class="abu-wrap">
                     <div class="ab-ct">
-                        <h2 class="hd">GIỚI THIỆU VỀ XE CƯỚI LUXURY</h2>
+                        <h2 class="hd">{{ $configWebsite->about_us_title }}</h2>
                         <div class="mona-content">
-                            <p style="text-align: justify">
-                                {{ $configWebsite->about_us }}
+
+                                {!! $configWebsite->about_us_content !!}
                         </div>
                         <a href="{{ route('frontend.introduce') }}" class="mn-btn btn-1">Xem thêm</a>
                     </div>

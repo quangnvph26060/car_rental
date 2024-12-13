@@ -109,3 +109,34 @@ function isActiveRouteWithParams(array $routes, $output)
 
     return '';
 }
+
+function saveImagesWithoutResize($request, string $inputName, string $directory = 'images', $isArray = false)
+{
+    $paths = [];
+
+    // Kiểm tra xem có file không
+    if ($request->hasFile($inputName)) {
+        // Lấy tất cả các file hình ảnh
+        $images = $request->file($inputName);
+
+        if (!is_array($images)) {
+            $images = [$images]; // Đưa vào mảng nếu chỉ có 1 ảnh
+        }
+
+        foreach ($images as $key => $image) {
+            // Tạo tên file duy nhất
+            $filename = time() . uniqid() . '.' . $image->getClientOriginalExtension();
+
+            // Lưu ảnh vào storage
+            Storage::disk('public')->putFileAs($directory, $image, $filename);
+
+            // Lưu đường dẫn vào mảng
+            $paths[$key] = $directory . '/' . $filename;
+        }
+
+        // Trả về danh sách các đường dẫn
+        return $isArray ? $paths : $paths[0];
+    }
+
+    return null;
+}

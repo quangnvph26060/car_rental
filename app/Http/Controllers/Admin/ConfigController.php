@@ -43,6 +43,10 @@ class ConfigController extends Controller
                 $data['about_us_image'] = $about_us_image;
             }
 
+            if ($request->hasFile('commit_img')) {
+                $data['commit_img'] = saveImage($request, 'commit_img', 'commit');
+            }
+
             // dd($data);
             $config->update($data);
             return redirect()->back()->with('success', 'Cập nhật cấu hình thành công');
@@ -55,12 +59,13 @@ class ConfigController extends Controller
         }
     }
 
-    public function maintenance(Request $request){
+    public function maintenance(Request $request)
+    {
         $config = Config::first();
-       if($config->maintenance == 1){
-         $config->maintenance = 0;
-       }else{
-         $config->maintenance = 1;
+        if ($config->maintenance == 1) {
+            $config->maintenance = 0;
+        } else {
+            $config->maintenance = 1;
         }
 
         $config->save();

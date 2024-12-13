@@ -263,6 +263,25 @@
             });
         });
     </script>
+
+    <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckfinder_2/ckfinder.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace('promotion_details', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+
+        CKEDITOR.replace('description', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+    </script>
 @endpush
 
 @push('styles')

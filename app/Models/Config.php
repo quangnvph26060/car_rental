@@ -23,6 +23,9 @@ class Config extends Model
         'about_us',
         'banner',
         'about_us_image',
+        'about_us_content',
+        'about_us_title',
+        'commit_img',
 
         'working_hours',
         'booking_procedure',

@@ -8,7 +8,8 @@
             <h3 class="fw-bold mb-3">Cấu hình website</h3>
             <form id="maintenance-form" action="{{ route('admin.config.maintenance') }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-primary">{{ $config->maintenance == 0 ? 'Hoàn tất bảo trì' : 'Bảo trì' }}</button>
+                <button type="submit"
+                    class="btn btn-primary">{{ $config->maintenance == 0 ? 'Hoàn tất bảo trì' : 'Bảo trì' }}</button>
             </form>
 
         </div>
@@ -32,11 +33,18 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image"
                                 type="button" role="tab" aria-controls="image" aria-selected="false">
-                                Cấu hình hình ảnh
+                                Cấu hình giới thiệu
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="commit-tab" data-bs-toggle="tab" data-bs-target="#commit"
+                                type="button" role="tab" aria-controls="commit" aria-selected="false">
+                                Cấu hình ảnh cam kết
                             </button>
                         </li>
                     </ul>
                     <div class="tab-content" id="configTabsContent">
+
                         <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
                             <div class="card">
                                 <div class="card-body">
@@ -54,7 +62,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="headquarters">Trụ sở chính <code>*</code></label>
                                                 <textarea class="form-control @error('headquarters') is-invalid @enderror" id="headquarters" name="headquarters"
@@ -65,7 +73,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="working_hours">Thời gian làm việc <code>*</code></label>
                                                 <textarea class="form-control @error('working_hours') is-invalid @enderror" id="working_hours" name="working_hours"
@@ -184,6 +192,9 @@
                                                 @enderror
                                             </div>
                                         </div>
+
+
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="about_us_image">Ảnh giới thiệu</label>
@@ -192,12 +203,47 @@
                                                 <img id="previewAboutUsImage"
                                                     src="{{ showImage($config->about_us_image) }}"
                                                     class="img-fluid mt-3 border" />
-                                                @error('about_us_image')
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="about_us_title">Tiêu đề</label>
+                                                <input type="text" placeholder="Nhập tiêu đề" class="form-control"
+                                                    name="about_us_title"
+                                                    value="{{ old('about_us_title', $config->about_us_title) }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="about_us_content">Giới thiệu</label>
+                                                <textarea name="about_us_content" id="about_us_content" cols="30" rows="10">{!! $config->about_us_content !!}</textarea>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="commit" role="tabpanel" aria-labelledby="commit-tab">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="commit_img">Ảnh nên cam kết</label>
+                                                <input type="file" name="commit_img" class="form-control"
+                                                    onchange="loadFile(event , 'commit_img')">
+                                                <img id="commit_img" src="{{ showImage($config->commit_img) }}"
+                                                    class=" img-fluid  mt-3 border" />
+                                                @error('commit_img')
                                                     <p class="form-text text-muted text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -252,21 +298,30 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
     <script>
-        // Khởi tạo CKEditor cho các trường textarea
-        ClassicEditor
-            .create(document.querySelector('#headquarters'))
-            .catch(error => {
-                console.error(error);
-            });
+        const BASE_URL = "{{ url('/') }}";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
 
-        ClassicEditor
-            .create(document.querySelector('#working_hours'))
-            .catch(error => {
-                console.error(error);
-            });
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckfinder_2/ckfinder.js') }}"></script>
+    <script>
+        CKEDITOR.replace('about_us_content', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+        CKEDITOR.replace('headquarters', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+            height: 100
+        });
+        CKEDITOR.replace('working_hours', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+            height: 100
+        });
+
+
 
         const input = document.querySelector('#keywords_seo');
         new Tagify(input);
@@ -274,6 +329,6 @@
 @endpush
 
 @push('styles')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs4.min.css">
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet">
 @endpush

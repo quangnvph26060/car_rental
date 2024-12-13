@@ -445,7 +445,7 @@ textarea.f-control {
 }
 
 .sec-title1 {
-    max-width: 200px;
+    max-width: 255px;
     padding-right: 5px;
     font-weight: 600;
     text-transform: uppercase;
@@ -1414,7 +1414,7 @@ textarea.f-control {
     border-color: rgba(112, 112, 112, 0.3);
 }
 .about-us .ab-ct {
-    // color: #707070;
+    color: #707070;
 }
 .about-us .ab-ct .hd {
     font-weight: 600;
@@ -1456,6 +1456,10 @@ textarea.f-control {
     pointer-events: none;
 }
 @media screen and (max-width: 780px) {
+    .dlex {
+        display: flex;
+        gap: 10px;
+    }
     .about-us .abu-wrap {
         float: none;
         width: 100%;
@@ -2267,7 +2271,6 @@ textarea.f-control {
     transition: all 0.3s ease-in-out;
     overflow-y: auto;
 }
-
 
 .serv-block .bl-content {
     max-width: 300px;

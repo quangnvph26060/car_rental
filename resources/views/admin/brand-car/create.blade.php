@@ -76,7 +76,7 @@
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <label for="comment">Mô tả trên <code>(Không bắt buộc)</code></label>
-                                        <textarea class="form-control ckeditor" name="described_above" id="content" rows="4">{{ old('described_above') }}</textarea>
+                                        <textarea class="form-control" name="described_above" id="content" rows="4">{{ old('described_above') }}</textarea>
                                         @error('described_above')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
@@ -85,7 +85,7 @@
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <label for="comment">Mô tả dưới <code>(Không bắt buộc)</code></label>
-                                        <textarea class="form-control ckeditor" name="described_below" id="content" rows="5">{{ old('described_below') }}</textarea>
+                                        <textarea class="form-control" name="described_below" id="content" rows="5">{{ old('described_below') }}</textarea>
                                         @error('described_below	')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
@@ -104,4 +104,22 @@
 @endsection
 
 @push('scripts')
+    <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckfinder_2/ckfinder.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace('described_below', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+
+        CKEDITOR.replace('described_above', {
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+    </script>
 @endpush

@@ -1,21 +1,23 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\BenefitController;
-use App\Http\Controllers\Admin\BrandCarController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Admin\CarController;
-use App\Http\Controllers\Admin\CategoryPostController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ConfigController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ImageCarController;
-use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ReviewController;
-use App\Http\Controllers\Admin\ServiceCommitmentController;
-use App\Http\Controllers\Admin\SgoContactController;
+use App\Http\Controllers\Admin\BenefitController;
 use App\Http\Controllers\Admin\TypeCarController;
-use App\Http\Controllers\Auth\AuthController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BrandCarController;
+use App\Http\Controllers\Admin\ImageCarController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SgoContactController;
+use App\Http\Controllers\Admin\CategoryPostController;
+use App\Http\Controllers\Admin\ServiceCommitmentController;
 
 $objs = [
     'type-car' => TypeCarController::class,
@@ -101,7 +103,21 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
     Route::post('/images/car/store', [ImageCarController::class, 'store'])->name('images.car.store');
     Route::delete('/delete-file/car/{id}', [ImageCarController::class, 'destroy'])->name('images.car.destroy');
 
-     Route::get('account', [AdminController::class, 'index'])->name('admin.config');
-     Route::post('account', [AdminController::class, 'update'])->name('admin.update');
-
+    Route::get('account', [AdminController::class, 'index'])->name('admin.config');
+    Route::post('account', [AdminController::class, 'update'])->name('admin.update');
 });
+
+
+Route::post('upload', function (Request $request) {
+    if ($request->hasFile('upload')) {
+        $image = $request->file('upload');
+        $filename = time() . uniqid() . '.' . $image->getClientOriginalExtension();
+        Storage::disk('public')->put('images' . '/' . $filename, file_get_contents($image->getPathName()));
+        $path = 'images' . '/' . $filename;
+        $url = Storage::url($path);
+        $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+        $msg = 'Image uploaded successfully';
+
+        return "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg');</script>";
+    }
+})->name('ckeditor.upload');

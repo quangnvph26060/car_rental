@@ -35,11 +35,11 @@
 
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="{{ asset('backend/assets/js/setting-demo.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/demo.js') }}"></script>
+    {{-- <script src="{{ asset('backend/assets/js/demo.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script> --}}
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-    <script>
+    {{-- <script>
         CKEDITOR.replace('content', {
             toolbar: [{
                     name: 'document',
@@ -104,7 +104,7 @@
             extraPlugins: 'font,colorbutton,justify',
             fontSize_sizes: '11px;12px;13px;14px;15px;16px;18px;20px;22px;24px;26px;28px;30px;32px;34px;36px',
         });
-    </script>
+    </script> --}}
     <script>
         $(document).ready(function() {
             $.ajaxSetup({
