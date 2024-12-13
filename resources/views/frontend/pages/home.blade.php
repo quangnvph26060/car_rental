@@ -7,13 +7,11 @@
             <ul class="banner-slider">
                 <li class="banner__bg"
                     style="
-          background-image: url({{ showImage($configWebsite->banner) }});
-        ">
+                        background-image: url({{ showImage($configWebsite->banner) }});
+                        ">
                     <div class="flex-center">
                         <div class="all">
-                            <div class="title">
-                                <h1 class="hd">XE CƯỚI LUXURY</h1>
-                            </div>
+                           
                         </div>
                     </div>
                 </li>
@@ -70,14 +68,12 @@
                     @else
                         <li class="serv__item">
                             <div class="serv-block">
-                                <div class="front"
-                                    style="background-image: url({{ showImage($type->image_front) }});">
+                                <div class="front" style="background-image: url({{ showImage($type->image_front) }});">
                                     <div class="bl-content">
                                         <h3 class="hd">{{ $type->name }}</h3>
                                     </div>
                                 </div>
-                                <div class="back"
-                                    style="background-image: url({{ showImage($type->image_back) }});">
+                                <div class="back" style="background-image: url({{ showImage($type->image_back) }});">
                                     <div class="bl-content">
                                         <h3 class="hd">{{ $type->name }}</h3>
                                         <p>
@@ -187,7 +183,6 @@
                 <div class="car-img">
 
                     <img width="1214" height="271" src="{{ asset('frontend/assets/image/xe-limouisne.png') }}"
-
                         class="attachment-slider-full size-slider-full" alt=""
                         sizes="(max-width: 1214px) 100vw, 1214px" />
                 </div>

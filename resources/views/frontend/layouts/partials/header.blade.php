@@ -1,15 +1,14 @@
 <div class="hd-top">
     <div class="all">
         <div class="hdt-logo">
-            <a href="/" class="custom-logo-link" rel="home" itemprop="url"><img width="209"
-                    height="49" src="{{ showImage($configWebsite->logo) }}"
-                    class="custom-logo" alt="" itemprop="logo" /></a>
+            <a href="/" class="custom-logo-link" rel="home" itemprop="url"><img width="209" height="49"
+                    src="{{ showImage($configWebsite->logo) }}" class="custom-logo" alt="" itemprop="logo" /></a>
         </div>
         <div class="hdt-right">
             <div class="hdt__infos clear">
                 <div class="info__child">
                     <div class="img">
-                        <img src="https://xecuoiluxury.com/template/images/header-top-icon1.png" alt="" />
+                        <img src="{{ asset('frontend/assets/image/header-top-icon1.png') }}" alt="" />
                     </div>
                     <div class="ct">
                         {{-- Địa Chỉ Công Ty:
@@ -21,7 +20,7 @@
                 </div>
                 <div class="info__child">
                     <div class="img">
-                        <img src="https://xecuoiluxury.com/template/images/header-top-icon2.png" alt="" />
+                        <img src="" alt="{{ asset('frontend/assets/image/header-top-icon2.png') }}" />
                     </div>
                     <div class="ct">
                         {!! $configWebsite->working_hours !!}
@@ -29,7 +28,7 @@
                 </div>
                 <div class="info__child">
                     <div class="img">
-                        <img src="https://xecuoiluxury.com/template/images/header-top-icon3.png" alt="" />
+                        <img src="{{ asset('frontend/assets/image/header-top-icon3.png') }}" alt="" />
                     </div>
                     <div class="ct">
                         <p>Hotline:</p>
@@ -88,7 +87,9 @@
                     </li>
                     <li id="menu-item-2445"
                         class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/hoa-xe-cuoi') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2445">
-                        <a href="{{ route('frontend.service', $typeCarWebsite[6]->slug ?? $typeCarWebsite[1]->slug) }}">Hoa Cưới</a>
+                        <a
+                            href="{{ route('frontend.service', $typeCarWebsite[6]->slug ?? $typeCarWebsite[1]->slug) }}">Hoa
+                            Cưới</a>
                     </li>
                     <li id="menu-item-2426"
                         class="menu-item menu-item-type-post_type menu-item-object-page {{ request()->routeIs('frontend.contact') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2426">

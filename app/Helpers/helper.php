@@ -73,7 +73,7 @@ function showImage($path)
         return $storage->url($path);
     }
 
-    return asset('default.jpg');
+    return asset('frontend/assets/images/no-image.jpg');
 }
 
 function deleteImage($path)
