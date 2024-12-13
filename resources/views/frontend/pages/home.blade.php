@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
 
-                                    <div class="back" style="background-image: url({{ showImage($type->image_back) }});">
+                                    <div class="back" style="background-image: url({{ asset('frontend/assets/image/services-bg-hv-640x370.jpg')}});">
                                         <div class="black-overlay"></div>
                                         <div class="bl-content">
                                             <h3 class="hd">{{ $type->name }}</h3>
@@ -466,13 +466,13 @@
             margin-bottom: 10px
         }
 
-        .back {
+        /* .back {
             position: relative;
             background-size: cover;
             background-position: center;
             color: white;
             overflow: hidden;
-            /* Đảm bảo lớp phủ không tràn ra ngoài */
+
         }
 
         .black-overlay {
@@ -482,15 +482,15 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
-            /* Màu đen bán trong suốt */
+
             z-index: 1;
         }
 
         .bl-content {
             position: relative;
             z-index: 2;
-            /* Nội dung ở trên lớp phủ */
+
             text-align: center;
-        }
+        } */
     </style>
 @endpush

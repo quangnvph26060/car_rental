@@ -123,10 +123,10 @@
     .banner .banner__bg .flex-center {
         min-height: 25vh;
     }
-    .black-overlay {
+    /* .black-overlay {
         top: 50% !important;
         height: 50% !important;
-    }
+    } */
     .most-favorite,
     .features,
     .feedbacks,
