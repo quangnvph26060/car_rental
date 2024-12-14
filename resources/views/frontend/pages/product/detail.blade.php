@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+
     <main class="sanpham-detail">
         <div class="page-position"
             style="
@@ -125,13 +126,14 @@
 
                                         </tbody>
                                     </table>
+
                                     <p><strong>Chi tiết khuyến mãi:</strong></p>
                                     <span class="hl">
                                         {!! $product->promotion_details !!}
                                         <a href="{{ route('frontend.booking') }}?xe={{ $product->id }}"
                                             class="mn-btn btn-1">Đặt xe</a>
-                                        <a href="tel:{{ $contact->phone_number }}"
-                                            class="btn-phone">{{ $contact->phone_number }}</a>
+                                        <a href="tel:{{ $configWebsite->advisory }}"
+                                            class="btn-phone">{{ $configWebsite->advisory }}</a>
                                     </span>
                                 </div>
 
@@ -139,15 +141,12 @@
                         </div>
                     </div>
                     <div class="prd-detail__descript">
-                        <!--                        <p class="hd">Chi tiết</p>-->
+                        <div class="tabs">
+                            <div class="tab-item active">Mô tả</div>
+                            <div class="tab-indicator"></div>
+                        </div>
                         <div class="mona-content">
-                            <h1 style="text-align: center">
-                                <span style="color: #3366ff; font-size: 18pt"><strong>CHO THUÊ XE CƯỚI {{ $product->name }}
-                                        TẠI HÀ
-                                        NỘI</strong></span>
-                            </h1>
                             {!! $product->description !!}
-
                         </div>
                     </div>
                 </div>
@@ -318,4 +317,42 @@
             });
         });
     </script>
+@endpush
+
+@push('styles')
+    <style>
+        .tabs {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .tab-item {
+            padding: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            color: black;
+            position: relative;
+        }
+
+        .tab-item.active {
+            color: #28a745;
+            /* Màu xanh lá */
+            font-weight: bold;
+        }
+
+        .tab-indicator {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            height: 2px;
+            width: 80px;
+            /* Độ rộng thanh gạch */
+            background-color: #28a745;
+            transition: all 0.3s ease;
+        }
+    </style>
 @endpush

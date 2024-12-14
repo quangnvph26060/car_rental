@@ -164,11 +164,13 @@
                                                     class="attachment-medium size-medium" alt="{{ $commitment->title }}" />
                                             </div>
                                             <div class="ct">
-                                                <p class="hd" style="font-weight: 600">{{ $commitment->title }}</p>
+                                                <p class="hd" style="font-weight: 600; text-align: center">
+                                                    {{ $commitment->title }}</p>
                                                 <p>
                                                     {{ $commitment->description }}
                                                 </p>
-                                                <a href="#" class="more"><i class="fa fa-long-arrow-right"></i></a>
+                                                <a href="#" style="text-align: center; display: block;"
+                                                    class="more"><i class="fa fa-long-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </li>
@@ -469,13 +471,13 @@
         }
 
         /* .back {
-                            position: relative;
-                            background-size: cover;
-                            background-position: center;
-                            color: white;
-                            overflow: hidden;
+                                position: relative;
+                                background-size: cover;
+                                background-position: center;
+                                color: white;
+                                overflow: hidden;
 
-                        } */
+                            } */
 
         .black-overlay {
             position: absolute;
