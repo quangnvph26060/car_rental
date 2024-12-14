@@ -346,12 +346,7 @@
                     </li>
                 </ul>
             </div>
-            <style>
-                .map iframe {
-                    width: 100%;
-                    height: 100%
-                }
-            </style>
+           
             <div class="google-map" style="margin-top: 130px;">
                 <div class="map">
 

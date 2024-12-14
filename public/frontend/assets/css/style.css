@@ -3140,6 +3140,11 @@ textarea.f-control {
     color: #959595;
 }
 
+.map iframe {
+    width: 100%;
+    height: 100%
+}
+
 /* ====== */
 
 /*# sourceMappingURL=style.css.map */
