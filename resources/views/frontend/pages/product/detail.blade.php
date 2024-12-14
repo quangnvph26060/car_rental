@@ -276,7 +276,7 @@
                     if (data.cars && data.cars.length > 0) {
                         data.cars.forEach(car => {
                             jQuery('#mona-home-list').append(`
-                                <li class="product__item" id="car-item" style="height: 450px">
+                                <li class="product__item" id="car-item" style="height: 380px">
                                     <div class="product-block">
                                         <div class="img">
                                             <a href="${app_url}/san-pham/${car.slug}"> <!-- Link tới hình ảnh lớn -->
@@ -291,7 +291,7 @@
                                             </p>
                                             <p class="price mona-text-label">${car.price} VND</p>
                                             <div class="mona-except">
-                                                <p>${limitText(car.description, 120, '[...]')}</p>
+                                                <p>${limitText(car.short_description, 120, '[...]')}</p>
                                             </div>
                                             <a href="${app_url}/san-pham/${car.slug}" class="more">
                                                 <i class="fa fa-long-arrow-right"></i>

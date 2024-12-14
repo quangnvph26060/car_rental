@@ -82,14 +82,13 @@
                         <a href="{{ route('frontend.service') }}">Dịch vụ</a>
                     </li>
                     <li id="menu-item-1943"
-                        class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/xe-cuoi-dep') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }}  menu-item-1943">
-                        <a href="{{ route('frontend.service', $typeCarWebsite[0]->slug) }}">Xe Cưới</a>
+                        class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/xe-sieu-sang') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }}  menu-item-1943">
+                        <a href="{{ route('frontend.service', $typeCarWebsite[0]->slug) }}">Xe Siêu Sang</a>
                     </li>
                     <li id="menu-item-2445"
-                        class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/hoa-xe-cuoi') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2445">
+                        class="menu-item menu-item-type-custom menu-item-object-custom {{ \Request::is('dich-vu/xe-mui-tran') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2445">
                         <a
-                            href="{{ route('frontend.service', $typeCarWebsite[6]->slug ?? $typeCarWebsite[1]->slug) }}">Hoa
-                            Cưới</a>
+                            href="{{ route('frontend.service', $typeCarWebsite[6]->slug ?? $typeCarWebsite[1]->slug) }}">XE MUI TRẦN</a>
                     </li>
                     <li id="menu-item-2426"
                         class="menu-item menu-item-type-post_type menu-item-object-page {{ request()->routeIs('frontend.contact') ? 'current-menu-item page_item page-item-2 current_page_item' : '' }} menu-item-2426">

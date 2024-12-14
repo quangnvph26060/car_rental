@@ -11,7 +11,7 @@
         <ul class="list-product clear" id="mona-items-content">
             @if ($type->cars->count() > 0)
                 @foreach ($type->cars->take(6) as $car)
-                    <li class="product__item" id="car-item" style="height: 450px">
+                    <li class="product__item" id="car-item" style="height: 380px">
                         <div class="product-block">
                             <div class="img">
                                 <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}">
@@ -28,7 +28,7 @@
                                 <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
                                 <div class="mona-except">
                                     <p>
-                                        {!! Str::words($car->description, 5, '[...]') !!}
+                                        {{-- {{ Str::words($car->short_description, 5, '[...]') }} --}}
                                     </p>
 
                                 </div>
@@ -67,7 +67,7 @@
         <ul class="list-product clear" id="mona-items-content">
             @if ($brand->cars->count() > 0)
                 @foreach ($brand->cars->take(6) as $car)
-                    <li class="product__item" id="car-item" style="height: 450px">
+                    <li class="product__item" id="car-item" style="height: 380px">
                         <div class="product-block">
                             <div class="img">
                                 <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}">
@@ -84,7 +84,7 @@
                                 <p class="price mona-text-label">{{ number_format($car->price) }} VND</p>
                                 <div class="mona-except">
                                     <p>
-                                        {!! Str::words($car->description, 5, '[...]') !!}
+                                        {{ Str::words($car->short_description, 5, '[...]') }}
                                     </p>
 
                                 </div>
@@ -154,7 +154,7 @@
                     if (data.cars && data.cars.length > 0) {
                         data.cars.forEach(car => {
                             jQuery('#mona-items-content').append(`
-                            
+
                                  <li class="product__item" src-popup=".mona-popup-${car.id}">
                         <div class="product-block">
 
@@ -170,7 +170,7 @@
                                 </p>
                                 <p class="price mona-text-label">${car.price} VND</p>
                                 <div class="mona-except">
-                                     <p>${limitText(car.description, 20, '[...]')}</p>
+                                     <p>${limitText(car.short_description, 20, '[...]')}</p>
                                 </div>
                                 <a href="${app_url}/san-pham/${car.slug}" class="more">
                                     <i class="fa fa-long-arrow-right"></i>
