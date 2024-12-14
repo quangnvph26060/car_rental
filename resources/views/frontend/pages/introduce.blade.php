@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="detail">
                                     <p class="truncate-description">
-                                        {{ $item->short_description }}
+                                        {!! $item->short_description !!}
                                     </p>
                                     <a href="{{ route('frontend.service') }}" class="mn-btn btn-1">XEM THÊM</a>
                                 </div>
