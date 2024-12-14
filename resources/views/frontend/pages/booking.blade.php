@@ -4,12 +4,12 @@
     <main class="datxe">
         <div class="page-position"
             style="
-        background-image: url(https://xecuoiluxury.com/template//images/child-page/childpage-bg-1.jpg);
+      background-image: url({{asset('frontend/assets/image/childpage-bg-1.jpg')}});
       ">
             <div class="title">
                 <h2 class="hd">Đặt xe</h2>
                 <div class="pos-nav">
-                    <a href="https://xecuoiluxury.com">Trang chủ</a>
+                    <a href="{{ url('/') }}">Trang chủ</a>
                     -
                     <span class="current">Đặt xe</span>
                 </div>
