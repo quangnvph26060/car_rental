@@ -34,7 +34,7 @@
                                 <div class="detail right">
                                     <h4 class="hd"><a href="{{ route('frontend.service' , $item->slug) }}">{{ $item->name }}</a></h4>
                                     <p>
-                                        {{ $item->short_description }}
+                                        {!! $item->short_description !!}
                                     </p>
                                     <a href="{{ route('frontend.service' , $item->slug) }}" class="mn-btn btn-1">Xem
                                         thêm</a>
