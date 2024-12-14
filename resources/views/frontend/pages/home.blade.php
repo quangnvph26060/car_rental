@@ -52,7 +52,7 @@
                                 <div class="tit-wrap">
                                     <h3 class="hd">{{ $type->name }}</h3>
                                     <p style="text-align: justify">
-                                        {{ $type->short_description }}
+                                        {!! $type->short_description !!}
                                     </p>
                                 </div>
                             </div>
@@ -65,18 +65,20 @@
                                         <h3 class="hd">{{ $type->name }}</h3>
                                     </div>
                                 </div>
+                                {{-- {{ asset('frontend/assets/image/services-bg-hv-640x370.jpg') }} --}}
+                                <div class="back" style="background-image: url({{ showImage($type->image_back) }});">
 
-                                    <div class="back" style="background-image: url({{ asset('frontend/assets/image/services-bg-hv-640x370.jpg')}});">
-                                        <div class="black-overlay"></div>
-                                        <div class="bl-content">
-                                            <h3 class="hd">{{ $type->name }}</h3>
-                                            <p>
-                                                {{ $type->short_description }}
-                                            </p>
-                                            <a href="{{ route('frontend.service', $type->slug) }}" class="color1">Xem
-                                                thêm</a>
-                                        </div>
+                                    <div class="black-overlay"></div>
+
+                                    <div class="bl-content">
+                                        <h3 class="hd">{{ $type->name }}</h3>
+                                        <p>
+                                            {!! $type->short_description !!}
+                                        </p>
+                                        <a href="{{ route('frontend.service', $type->slug) }}" class="color1">Xem
+                                            thêm</a>
                                     </div>
+                                </div>
 
 
                             </div>
@@ -98,7 +100,7 @@
                     <div class="col75 right">
                         <ul class="list-product clear" id="mona-home-list">
                             @foreach ($cars as $car)
-                                <li class="product__item" id="car-item" style="height: 450px">
+                                <li class="product__item" id="car-item" style="height: 380px">
                                     <div class="product-block">
                                         <div class="img">
                                             <a href="{{ route('frontend.product', ['slug' => $car->slug]) }}">
@@ -156,13 +158,13 @@
                             <ul class="list-feat clear">
                                 @foreach ($commitments as $commitment)
                                     <li class="feat__item">
-                                        <div class="feat-block dlex" style="">
+                                        <div class="feat-block" style="">
                                             <div class="img">
                                                 <img width="70" height="70" src="{{ showImage($commitment->icon) }}"
                                                     class="attachment-medium size-medium" alt="{{ $commitment->title }}" />
                                             </div>
                                             <div class="ct">
-                                                <p class="hd">{{ $commitment->title }}</p>
+                                                <p class="hd" style="font-weight: 600">{{ $commitment->title }}</p>
                                                 <p>
                                                     {{ $commitment->description }}
                                                 </p>
@@ -294,7 +296,7 @@
                         <h2 class="hd">{{ $configWebsite->about_us_title }}</h2>
                         <div class="mona-content">
 
-                                {!! $configWebsite->about_us_content !!}
+                            {!! $configWebsite->about_us_content !!}
                         </div>
                         <a href="{{ route('frontend.introduce') }}" class="mn-btn btn-1">Xem thêm</a>
                     </div>
@@ -400,7 +402,7 @@
                     if (data.cars && data.cars.length > 0) {
                         data.cars.forEach(car => {
                             jQuery('#mona-home-list').append(`
-                                <li class="product__item" id="car-item" style="height: 450px">
+                                <li class="product__item" id="car-item" style="height: 380px">
                                     <div class="product-block">
                                         <div class="img">
                                             <a href="${app_url}/san-pham/${car.slug}"> <!-- Link tới hình ảnh lớn -->
@@ -467,13 +469,13 @@
         }
 
         /* .back {
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            color: white;
-            overflow: hidden;
+                            position: relative;
+                            background-size: cover;
+                            background-position: center;
+                            color: white;
+                            overflow: hidden;
 
-        }
+                        } */
 
         .black-overlay {
             position: absolute;
@@ -490,7 +492,7 @@
             position: relative;
             z-index: 2;
 
-            text-align: center;
-        } */
+            /* text-align: center; */
+        }
     </style>
 @endpush
