@@ -12,10 +12,10 @@
                 <a href="{{ route('frontend.service') }}">Dịch vụ</a>
             </li>
             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1943">
-                <a href="{{ route('frontend.service', 'xe-cuoi-dep') }}">Xe Cưới</a>
+                <a href="{{ route('frontend.service', 'xe-sieu-sang') }}">Xe Siêu Sang</a>
             </li>
             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2445">
-                <a href="{{ route('frontend.service', 'hoa-xe-cuoi') }}">Hoa Cưới</a>
+                <a href="{{ route('frontend.service', 'xe-mui-tran') }}">Xe Mui Trần</a>
             </li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2426">
                 <a href="{{ route('frontend.contact') }}">Liên Hệ</a>
@@ -23,7 +23,8 @@
         </ul>
         <ul class="ft-media clear">
             <li>
-                <a href="{{ $configWebsite->fanpage }}" target="_blank" class="square-30fa"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="{{ $configWebsite->fanpage }}" target="_blank" class="square-30fa"><i
+                        class="fa-brands fa-facebook-f"></i></a>
             </li>
             <li>
                 <a href="#" target="_blank" class="square-30fa"><i class="fa-brands fa-google"></i></a>
