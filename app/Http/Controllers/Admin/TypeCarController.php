@@ -22,8 +22,8 @@ class TypeCarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:6|unique:sgo_types,name',
-            'title' => 'nullable|min:6|unique:sgo_types,title',
+            'name' => 'required|min:3|unique:sgo_types,name',
+            'title' => 'nullable|min:3|unique:sgo_types,title',
             'short_description' => 'required|min:6|max:255',
             'described_above' => 'nullable|min:50',
             'described_below' => 'nullable|min:100',
@@ -62,8 +62,8 @@ class TypeCarController extends Controller
     public function update($id, Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|min:6|unique:sgo_types,name,' . $id,
-            'title' => 'nullable|min:6',
+            'name' => 'required|min:3|unique:sgo_types,name,' . $id,
+            'title' => 'nullable|min:3',
             'short_description' => 'required|min:6',
             'described_above' => 'nullable|min:50',
             'described_below' => 'nullable|min:100',

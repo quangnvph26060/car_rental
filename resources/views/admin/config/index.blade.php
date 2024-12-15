@@ -122,6 +122,15 @@
                                                 @enderror
                                             </div>
                                         </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="copyright">Nội dung chân trang</label>
+                                                <input type="text" name="copyright" id="copyright"
+                                                    value="{{ old('copyright', $config->copyright ?? '') }}"
+                                                    class="form-control ">
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div>
