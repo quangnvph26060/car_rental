@@ -61,7 +61,7 @@ a {
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #118df0;
+    /* color: #118df0; */
 }
 a > img {
     display: block;
@@ -3150,6 +3150,7 @@ textarea.f-control {
 /*# sourceMappingURL=style.css.map */
 
 .fixed-buttons {
+    z-index: 10;
     position: fixed;
     bottom: 0;
     left: 0;
