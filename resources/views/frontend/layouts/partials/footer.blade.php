@@ -43,3 +43,12 @@
         {{ $configWebsite->copyright }}
     </div>
 </div>
+
+<div class="fixed-buttons">
+    <a href="tel:{{ $configWebsite->booking_procedure }}" class="button button-blue">
+        <i>📞</i> {{ $configWebsite->advisory }}
+    </a>
+    <a href="tel:{{ $configWebsite->booking_procedure }}" class="button button-green">
+        <i>📞</i> {{ $configWebsite->booking_procedure }}
+    </a>
+</div>
