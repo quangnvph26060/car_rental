@@ -178,7 +178,7 @@
                                     <div class="form-group">
                                         <label for="comment">Chi tiết chương trình giảm giá <code>(Không bắt
                                                 buộc)</code></label>
-                                        <textarea class="form-control ckeditor" name="promotion_details" id="content" rows="5">{{ $car->promotion_details }}</textarea>
+                                        <textarea class="form-control ckeditor" name="promotion_details" rows="5">{{ $car->promotion_details }}</textarea>
                                         @error('promotion_details')
                                             <p class="form-text text-muted text-danger">{{ $message }}</p>
                                         @enderror
