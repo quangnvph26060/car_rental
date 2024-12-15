@@ -32,6 +32,7 @@ class ConfigRequest extends FormRequest
             'description_seo' => 'nullable',
             'keywords_seo' => 'nullable',
             'map' => 'nullable',
+            'copyright' => 'nullable',
 
             'about_us' => 'nullable',
             'commit_img' => 'nullable',

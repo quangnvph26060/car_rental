@@ -32,7 +32,8 @@ class Config extends Model
         'advisory',
         'headquarters',
 
-        'maintenance'
+        'maintenance',
+        'copyright'
 
     ];
 }

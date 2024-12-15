@@ -40,11 +40,6 @@
 </div>
 <div class="ft-sys">
     <div class="all center-txt">
-        © Copyright 2019 All right reserved
-        <a href="#" title="Xe cưới Luxury"><strong>Xe cưới Luxury</strong></a>
-        <a href="//www.dmca.com/Protection/Status.aspx?ID=6dc86cf2-7cfe-43ea-a0fe-228bd5e99dc5"
-            title="DMCA.com Protection Status" class="dmca-badge">
-            <img src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-02.png?ID=6dc86cf2-7cfe-43ea-a0fe-228bd5e99dc5"
-                alt="DMCA.com Protection Status" /></a>
+        {{ $configWebsite->copyright }}
     </div>
 </div>
