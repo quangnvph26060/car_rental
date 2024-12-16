@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/magnific-popup.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/lightgallery.css') }}" />
 <link rel="stylesheet"
-    href="{{ asset('frontend/assets/css/style.css') }}?v={{ filemtime(public_path('frontend/assets/css/style.css')) }}"
-/>
-<link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}" />
+    href="{{ asset('frontend/assets/css/style.css') }}?v={{ filemtime(public_path('frontend/assets/css/style.css')) }}" />
+<link rel="stylesheet"
+    href="{{ asset('frontend/assets/css/responsive.css') }}?v={{ filemtime(public_path('frontend/assets/css/responsive.css')) }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/wp-content/plugins/styles.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/wp-content/themes/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/wp-content/themes/mona-custom.css') }}" />

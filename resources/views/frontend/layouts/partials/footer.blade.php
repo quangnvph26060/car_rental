@@ -45,8 +45,9 @@
 </div>
 
 <div class="fixed-buttons">
-    <a href="tel:{{ $configWebsite->advisory }}" class="button button-blue">
+    <a href="tel:{{ str_replace(' ', '', $configWebsite->advisory) }}" class="button button-blue">
         <i>📞</i> {{ $configWebsite->advisory }}
+
     </a>
     <a href="{{ route('frontend.booking') }}" class="button button-green">
         <i class="far fa-address-card" style="color: #ffffff;"></i>
@@ -55,7 +56,8 @@
 </div>
 
 <div class="zalo-contact">
-    <a target="_bank" href="https://zalo.me/{{ $configWebsite->advisory }}" id="zalo-trigger" title="Liên hệ Zalo">
+    <a target="_bank" href="https://zalo.me/{{ str_replace(' ', '', $configWebsite->advisory) }}" id="zalo-trigger"
+        title="Liên hệ Zalo">
         {{-- <i class="fab fa-facebook-messenger"></i> --}}
         <img width="35" src="{{ asset('frontend/assets/image/icon-zalo.png') }}" alt="">
     </a>
