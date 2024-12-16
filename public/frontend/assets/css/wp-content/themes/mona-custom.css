@@ -184,7 +184,7 @@
     text-align: center;
     display: inline-block;
     vertical-align: middle;
-    background-color: #118df0;
+    background-color: #C6A87C;
     color: white;
     border-radius: unset;
     min-width: 170px;
@@ -193,10 +193,10 @@
 
 }
 
-.mona-top-social .last a:hover {
+/* .mona-top-social .last a:hover {
     background-color: transparent;
     color: #C6A87C;
-}
+} */
 
 img {
     max-width: 100%;

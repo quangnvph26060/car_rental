@@ -86,6 +86,12 @@
                         <p>Đánh giá</p>
                     </a>
                 </li>
+                <li class="nav-item {{ isActiveRoute(['admin.reviews.index']) }}">
+                    <a href="{{ route('admin.reviews.index') }}">
+                        <i class="fa"></i>
+                        <p>Album</p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item {{ isActiveRoute(['admin.contact.getContactInfo']) }}">
                     <a href="{{ route('admin.contact.getContactInfo') }}">
                         <i class="fas fa-phone-alt"></i>
