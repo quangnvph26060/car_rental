@@ -40,4 +40,9 @@ class Car extends Model
     {
         return $this->belongsTo(Color::class);
     }
+
+    public function scopeFavorite($query)
+    {
+        return $query->where('is_favorite', 1);
+    }
 }

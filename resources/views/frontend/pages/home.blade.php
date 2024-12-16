@@ -367,6 +367,11 @@
             return text;
         }
 
+        function formatPrice(price) {
+            return price.toLocaleString('en-US'); // Định dạng theo chuẩn US với dấu phẩy
+        }
+
+
 
         jQuery('.more-button a').on('click', function(e) {
             e.preventDefault();
@@ -399,6 +404,7 @@
                 success: function(data) {
                     if (data.cars && data.cars.length > 0) {
                         data.cars.forEach(car => {
+
                             jQuery('#mona-home-list').append(`
                                 <li class="product__item" id="car-item" style="height: 380px">
                                     <div class="product-block">
@@ -413,7 +419,7 @@
                                             <p class="hd">
                                                 <a href="${app_url}/san-pham/${car.slug}">${car.name}</a>
                                             </p>
-                                            <p class="price mona-text-label">${car.price} VND</p>
+                                            <p class="price mona-text-label">${formatPrice(Number(car.price))} VND</p>
                                             <div class="mona-except">
                                                 <p>${limitText(car.short_description ?? '')}</p>
                                             </div>
@@ -467,13 +473,13 @@
         }
 
         /* .back {
-                                    position: relative;
-                                    background-size: cover;
-                                    background-position: center;
-                                    color: white;
-                                    overflow: hidden;
+                                            position: relative;
+                                            background-size: cover;
+                                            background-position: center;
+                                            color: white;
+                                            overflow: hidden;
 
-                                } */
+                                        } */
 
         .black-overlay {
             position: absolute;
