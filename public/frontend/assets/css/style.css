@@ -3176,7 +3176,7 @@ textarea.f-control {
     flex: 1; /* Equal width for both buttons */
     text-align: center;
     padding: 10px 0;
-    color: white;
+    color: #F8F2A4;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
@@ -3184,12 +3184,13 @@ textarea.f-control {
 
 /* Blue button */
 .button-blue {
-    background-color: #007bff; /* Blue color */
+    background-color: #191C23;
+    border-right: 1px solid #F8F2A4;
 }
 
 /* Green button */
 .button-green {
-    background-color: #28a745; /* Green color */
+    background-color: #191C23; /* Green color */
 }
 
 /* Phone icon */

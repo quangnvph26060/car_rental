@@ -48,7 +48,8 @@
     <a href="tel:{{ $configWebsite->booking_procedure }}" class="button button-blue">
         <i>📞</i> {{ $configWebsite->advisory }}
     </a>
-    <a href="tel:{{ $configWebsite->booking_procedure }}" class="button button-green">
-        <i>📞</i> {{ $configWebsite->booking_procedure }}
+    <a href="{{ route('frontend.booking') }}" class="button button-green">
+        <i class="far fa-address-card" style="color: #118DF0;"></i>
+        Liên Hệ Đặt Xe
     </a>
 </div>
