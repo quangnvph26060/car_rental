@@ -13,20 +13,20 @@
         @include('frontend.layouts.partials.header')
 
     </header>
-
+    <h1 style="display: none">{{ $configWebsite->title }}</h1>
     <!-- start header -->
     @yield('content')
     <!-- end header -->
 
     <footer id="footer">
-       @include('frontend.layouts.partials.footer')
+        @include('frontend.layouts.partials.footer')
     </footer>
 
     <a href="javascript:;" class="scroll-top-link" id="scroll-top">
         <i class="fa-solid fa-angle-up"></i>
     </a>
 
-   @include('frontend.layouts.partials.scripts')
+    @include('frontend.layouts.partials.scripts')
 </body>
 
 </html>
