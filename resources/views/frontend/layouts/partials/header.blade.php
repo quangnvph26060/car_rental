@@ -7,8 +7,8 @@
         <div class="hdt-right">
             <div class="hdt__infos clear">
                 <div class="info__child">
-                    <div class="img">
-                        <img src="{{ asset('frontend/assets/image/header-top-icon1.png') }}" alt="" />
+                    <div class="img" >
+                        <img @style('max-width: 60%') src="{{ asset('frontend/assets/image/header-top-icon1.png') }}" alt="" />
                     </div>
                     <div class="ct">
                         {{-- Địa Chỉ Công Ty:
@@ -20,7 +20,7 @@
                 </div>
                 <div class="info__child">
                     <div class="img">
-                        <img src="{{ asset('frontend/assets/image/header-top-icon2.png') }}" alt="" />
+                        <img @style('max-width: 60%') src="{{ asset('frontend/assets/image/header-top-icon2.png') }}" alt="" />
                     </div>
                     <div class="ct">
                         {!! $configWebsite->working_hours !!}
@@ -28,7 +28,7 @@
                 </div>
                 <div class="info__child">
                     <div class="img">
-                        <img src="{{ asset('frontend/assets/image/header-top-icon3.png') }}" alt="" />
+                        <img @style('max-width: 60%') src="{{ asset('frontend/assets/image/header-top-icon3.png') }}" alt="" />
                     </div>
                     <div class="ct">
                         <p>Hotline:</p>
