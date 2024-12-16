@@ -19,11 +19,12 @@ class HomeController extends Controller
         $search = request()->input('s');
         $types = Type::latest()->take(6)->get();
         $cars = Car::take(6)->get();
+        $favoriteCar = Car::query()->favorite()->limit(5)->get();
         $carsGallery = Car::take(8)->get();
         $reviews = Review::all();
         if ($search) {
             $cars = Car::where('name', 'like', '%' . $search . '%')->paginate(9);
-            return view('frontend.pages.product.search', compact('cars', 'search'));
+            return view('frontend.pages.product.search', compact('cars', 'search', 'types', 'favoriteCar'));
         }
 
         $posts = Post::take(4)->get();
