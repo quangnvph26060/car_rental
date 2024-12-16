@@ -7,3 +7,7 @@
 <meta name="title_seo" content="{{ $configWebsite->title_seo }}">
 <meta name="description_seo" content="{{ $configWebsite->description_seo }}">
 <meta name="keywords_seo" content="{{ $configWebsite->keywords_seo }}">
+<meta name="fb:app_id" content="1234567890" />
+<meta name="og:title" content="{{ $configWebsite->title }}" />
+<meta name="og:image" content="{{ asset('frontend/assets/image/home_image.png') }}" />
+<meta name="og:description" content="{{ $configWebsite->description_seo }}" />

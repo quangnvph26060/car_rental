@@ -346,7 +346,7 @@
                     </li>
                 </ul>
             </div>
-           
+
             <div class="google-map" style="margin-top: 130px;">
                 <div class="map">
 
@@ -359,9 +359,10 @@
 
 @push('scripts')
     <script>
-        function limitText(text, limit = 120, suffix = '[...]') {
-            if (text.length > limit) {
-                return text.substring(0, limit) + suffix;
+        function limitText(text, wordLimit = 8, suffix = '[...]') {
+            const words = text.split(/\s+/);
+            if (words.length > wordLimit) {
+                return words.slice(0, wordLimit).join(' ') + ' ' + suffix;
             }
             return text;
         }
@@ -414,7 +415,7 @@
                                             </p>
                                             <p class="price mona-text-label">${car.price} VND</p>
                                             <div class="mona-except">
-                                                <p>${limitText(car.short_description ?? '', 120, '[...]')}</p>
+                                                <p>${limitText(car.short_description ?? '')}</p>
                                             </div>
                                             <a href="${app_url}/san-pham/${car.slug}" class="more">
                                                 <i class="fa fa-long-arrow-right"></i>
@@ -466,13 +467,13 @@
         }
 
         /* .back {
-                                position: relative;
-                                background-size: cover;
-                                background-position: center;
-                                color: white;
-                                overflow: hidden;
+                                    position: relative;
+                                    background-size: cover;
+                                    background-position: center;
+                                    color: white;
+                                    overflow: hidden;
 
-                            } */
+                                } */
 
         .black-overlay {
             position: absolute;
