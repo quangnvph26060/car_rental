@@ -176,7 +176,8 @@
     padding: 10px 15px;
     border-radius: 4px;
     color: white;
-    font-weight: 500;
+    font-weight: bold;
+
     font-size: 14px;
     text-transform: uppercase;
     position: relative;
@@ -189,11 +190,12 @@
     min-width: 170px;
     padding: 13px 24px;
     transition: all 0.3s ease-in-out;
+
 }
 
 .mona-top-social .last a:hover {
     background-color: transparent;
-    color: #118df0;
+    color: #C6A87C;
 }
 
 img {
