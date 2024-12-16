@@ -119,9 +119,15 @@
     }
 }
 
+/* @media screen and (max-width: 420px) {
+    .banner .banner__bg .flex-center {
+        min-height: 30vh !important;
+    }
+} */
+
 @media screen and (max-width: 780px) {
     .banner .banner__bg .flex-center {
-        min-height: 25vh;
+        min-height: 30vh;
     }
     /* .black-overlay {
         top: 50% !important;
