@@ -764,12 +764,12 @@ textarea.f-control {
     color: #118df0;
 }
 #header .nav-ul li:hover:not(.side-last) > a {
-    color: #C6A87C;
+    color: #c6a87c;
     background-color: transparent;
 }
 #header .nav-ul li.current-menu-parent > a,
 #header .nav-ul li.current-menu-item > a {
-    color: #C6A87C;
+    color: #c6a87c;
     font-weight: bold;
 }
 #header .nav-ul li a {
@@ -3176,7 +3176,7 @@ textarea.f-control {
     flex: 1; /* Equal width for both buttons */
     text-align: center;
     padding: 10px 0;
-    color: #F8F2A4;
+    color: #f8f2a4;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
@@ -3184,13 +3184,13 @@ textarea.f-control {
 
 /* Blue button */
 .button-blue {
-    background-color: #191C23;
-    border-right: 1px solid #F8F2A4;
+    background-color: #191c23;
+    border-right: 1px solid #f8f2a4;
 }
 
 /* Green button */
 .button-green {
-    background-color: #191C23; /* Green color */
+    background-color: #191c23; /* Green color */
 }
 
 /* Phone icon */
@@ -3203,4 +3203,26 @@ textarea.f-control {
     .fixed-buttons {
         display: flex; /* Show only on mobile */
     }
+}
+
+.zalo-contact {
+    position: fixed;
+    bottom: 105px;
+    right: 14px;
+    z-index: 9999;
+}
+
+.zalo-contact #zalo-trigger {
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    color: #0078ff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px solid #0078ff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

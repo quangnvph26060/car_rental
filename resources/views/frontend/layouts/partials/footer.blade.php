@@ -53,3 +53,9 @@
         Liên Hệ Đặt Xe
     </a>
 </div>
+
+<div class="zalo-contact">
+    <a target="_bank" href="https://zalo.me/{{ $configWebsite->advisory }}" id="zalo-trigger" title="Liên hệ Zalo">
+        <i class="fab fa-facebook-messenger"></i>
+    </a>
+</div>
