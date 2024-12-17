@@ -58,11 +58,11 @@ class HomeController extends Controller
 
     public function gallery()
     {
-        $cateCars = Type::query()->latest()->with(['cars.carImages'])->take(7)->get();
+        $albums = Album::all();
 
         // dd($cateCars);
 
-        return view('frontend.pages.album', compact('cateCars'));
+        return view('frontend.pages.album', compact('albums'));
     }
 
     public function getFirstImages()

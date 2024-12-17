@@ -19,9 +19,9 @@
         <div class="gallery-page">
             <div class="nav-filter">
                 <ul class="list-filter">
-                    @foreach ($cateCars as $item)
+                    @foreach ($albums as $item)
                         <li class="filter__item">
-                            <a href="javascript:;" img-filter=".{{ $item->slug }}">{{ \Str::title($item->name) }}</a>
+                            <a href="javascript:;" img-filter=".{{ $item->slug }}">{{ \Str::title($item->title) }}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -29,30 +29,17 @@
 
             <div class="gallery">
                 <ul class="list-gallery clear">
-                    @foreach ($cateCars as $category)
-                        @foreach ($category->cars as $car)
-                            @foreach ($car->carImages as $image)
-                                {{-- <li class="">
-                                    <div class="img-wrap img-src"
-                                        style="background-image: url({{ showImage($image->image_path) }});">
-                                        <img src="{{ showImage($image->image_path) }}" alt="{{ $car->name }}"
-                                            class="hide-img">
-                                    </div>
-                                </li> --}}
-
-                                <li class="{{ $category->slug }}">
-                                    <div class="img-wrap img-src"
-                                        data-src="{{ showImage($image->image_path) }}"
-                                        style="
-                                         background-image: url({{ showImage($image->image_path) }});
-                                  ">
-                                        <img width="476" height="286"
-                                            src="{{ showImage($image->image_path) }}"
-                                            class="hide-img" alt="" />
-                                    </div>
-                                </li>
-
-                            @endforeach
+                    @foreach ($albums as $item)
+                        @foreach ($item->album ?? [] as $image)
+                            <li class="{{ $item->slug }}">
+                                <div class="img-wrap img-src" data-src="{{ showImage($image) }}"
+                                    style="
+                             background-image: url({{ showImage($image) }});
+                                 ">
+                                    <img width="476" height="286" src="{{ showImage($image) }}" class="hide-img"
+                                        alt="" />
+                                </div>
+                            </li>
                         @endforeach
                     @endforeach
                 </ul>
