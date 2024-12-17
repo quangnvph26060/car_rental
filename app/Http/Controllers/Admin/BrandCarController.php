@@ -25,22 +25,26 @@ class BrandCarController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $request->validate([
-            'name' => 'required|min:6|unique:sgo_brands,name',
-            'title' => 'nullable|min:6|unique:sgo_brands,title',
-            'described_above' => 'nullable|min:20',
-            'described_below' => 'nullable|min:30',
-            'type_id' => 'nullable',
-            'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ], __('request.messages'), [
-            'name' => 'Tên hãng xe',
-            'title' => 'Tiêu đề giới thiệu',
-            'type_id' => 'Hãng xe',
-            'described_above' => 'Mô tả trên',
-            'described_below' => 'Mô tả dưới',
-            'images' => 'Hình ảnh'
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|min:6|unique:sgo_brands,name',
+                'title' => 'nullable|min:6|unique:sgo_brands,title',
+                'described_above' => 'nullable|min:20',
+                'described_below' => 'nullable|min:30',
+                'type_id' => 'nullable',
+                'images' => 'required|array',
+                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ],
+            __('request.messages'),
+            [
+                'name' => 'Tên hãng xe',
+                'title' => 'Tiêu đề giới thiệu',
+                'type_id' => 'Hãng xe',
+                'described_above' => 'Mô tả trên',
+                'described_below' => 'Mô tả dưới',
+                'images' => 'Hình ảnh'
+            ]
+        );
 
         $images = saveImages($request, 'images', 'brand', 640, 370, true);
 
