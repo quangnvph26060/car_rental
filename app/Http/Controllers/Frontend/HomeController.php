@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Benefit;
 use App\Models\Car;
 use App\Models\Post;
-use App\Models\Review;
-use App\Models\ServiceCommitment;
-use App\Models\SgoContact;
 use App\Models\Type;
+use App\Models\Album;
+use App\Models\Review;
+use App\Models\Benefit;
+use App\Models\SgoContact;
 use Illuminate\Http\Request;
+use App\Models\ServiceCommitment;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -26,12 +27,12 @@ class HomeController extends Controller
             $cars = Car::where('name', 'like', '%' . $search . '%')->paginate(9);
             return view('frontend.pages.product.search', compact('cars', 'search', 'types', 'favoriteCar'));
         }
-
+        $images = $this->getFirstImages();
         $posts = Post::take(4)->get();
         $contact = SgoContact::first();
         $benefits = Benefit::where('status', 1)->latest()->take(4)->get();
         $commitments = ServiceCommitment::latest()->take(3)->get();
-        return view('frontend.pages.home', compact('types', 'cars', 'reviews', 'posts', 'contact', 'benefits', 'commitments', 'carsGallery'));
+        return view('frontend.pages.home', compact('types', 'cars', 'reviews', 'posts', 'contact', 'benefits', 'commitments', 'carsGallery', 'images'));
     }
 
     public function ajax(Request $request)
@@ -62,5 +63,26 @@ class HomeController extends Controller
         // dd($cateCars);
 
         return view('frontend.pages.album', compact('cateCars'));
+    }
+
+    public function getFirstImages()
+    {
+        // Lấy tất cả các album
+        $albums = Album::all();
+
+        $images = [];
+
+        // Duyệt qua từng album để lấy ảnh đầu tiên
+        foreach ($albums as $album) {
+            // Giả sử albums là một mảng JSON chứa các URL ảnh
+            $albumImages = $album->album;
+
+            // Kiểm tra xem có ảnh không và lấy ảnh đầu tiên
+            if (is_array($albumImages) && count($albumImages) > 0) {
+                $images[] = $albumImages[0]; // Lấy ảnh đầu tiên
+            }
+        }
+
+        return $images;
     }
 }

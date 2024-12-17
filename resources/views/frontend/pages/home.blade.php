@@ -421,7 +421,7 @@
                                             </p>
                                             <p class="price mona-text-label">${formatPrice(Number(car.price))} VND</p>
                                             <div class="mona-except">
-                                                <p>${limitText(car.short_description ?? '')}</p>
+                                             ${limitText(car.short_description ?? '')}
                                             </div>
                                             <a href="${app_url}/san-pham/${car.slug}" class="more">
                                                 <i class="fa fa-long-arrow-right"></i>

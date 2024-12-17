@@ -86,8 +86,8 @@
                         <p>Đánh giá</p>
                     </a>
                 </li>
-                <li class="nav-item {{ isActiveRoute(['admin.reviews.index']) }}">
-                    <a href="{{ route('admin.reviews.index') }}">
+                <li class="nav-item {{ isActiveRoute(['admin.album.index']) }}">
+                    <a href="{{ route('admin.album.index') }}">
                         <i class="fas fa-images"></i>
                         <p>Album</p>
                     </a>

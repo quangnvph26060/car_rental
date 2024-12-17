@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -92,6 +93,15 @@ Route::middleware(['checkLogin', 'checkRole:1,2'])->name('admin.')->group(functi
         Route::get('/', [ConfigController::class, 'index'])->name('index');
         Route::post('/update-config', [ConfigController::class, 'update'])->name('update');
         Route::post('/maintenance', [ConfigController::class, 'maintenance'])->name('maintenance');
+    });
+
+    route::controller(AlbumController::class)->prefix('album')->name('album.')->group(function () {
+        route::get('/', 'index')->name('index');
+        route::get('create', 'create')->name('create');
+        route::post('create', 'store');
+        route::get('edit/{album}', 'edit')->name('edit');
+        route::put('edit/{album}', 'update')->name('update');
+        route::get('destroy/{album}', 'destroy')->name('destroy');
     });
 
 
