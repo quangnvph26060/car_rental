@@ -1027,7 +1027,7 @@ textarea.f-control {
 }
 @media screen and (max-width: 500px) {
     .advantages .adv__item {
-        width: 100%;
+        /* width: 100%; */
         float: none;
     }
     .advantages .adv__item .advantage-block {
