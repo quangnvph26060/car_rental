@@ -876,8 +876,8 @@ body:not(.lg-from-hash)
     white-space: nowrap;
 }
 .lg-outer .lg-item {
-    background: url("https://xecuoiluxury.com/template/js/slick/ajax-loader.gif")
-        no-repeat scroll center center transparent;
+    /* background: url("https://xecuoiluxury.com/template/js/slick/ajax-loader.gif")
+        no-repeat scroll center center transparent; */
     display: none !important;
 }
 .lg-outer.lg-css3 .lg-prev-slide,

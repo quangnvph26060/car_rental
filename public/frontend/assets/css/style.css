@@ -295,8 +295,8 @@ textarea.f-control {
 }
 
 .map {
-    background: url(https://xecuoiluxury.com/template/js/slick/ajax-loader.gif)
-        no-repeat center center/32px 32px;
+    /* background: url(https://xecuoiluxury.com/template/js/slick/ajax-loader.gif)
+        no-repeat center center/32px 32px; */
     height: 410px;
 }
 
@@ -491,6 +491,12 @@ textarea.f-control {
     }
 }
 @media screen and (max-width: 780px) {
+    .list-adv.clear {
+        display: none !important;
+    }
+    .btn-action {
+        display: flex !important;
+    }
     .sec-title2 {
         margin-bottom: 25px;
     }
@@ -3203,7 +3209,7 @@ textarea.f-control {
     .fixed-buttons {
         display: flex; /* Show only on mobile */
     }
-    .zalo-contact #zalo-trigger img{
+    .zalo-contact #zalo-trigger img {
         width: 30px !important;
     }
 }
