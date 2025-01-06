@@ -20,6 +20,12 @@
 
         <div class="advantages">
             <div class="all">
+                <div class="btn-action">
+                    <a href="{{ route('frontend.service', 'xe-hang-sang') }}"><button>Xe Siêu Sang</button></a>
+
+                    <a href="{{ route('frontend.service', 'xe-mui-tran') }}"> <button>Xe Mui Trần</button></a>
+
+                </div>
                 <ul class="list-adv clear">
                     @foreach ($benefits as $benefit)
                         <li class="adv__item">
@@ -142,7 +148,7 @@
             </div>
         </div>
 
-        <div class="features">
+        {{-- <div class="features">
             <div class="all">
                 <div class="row100">
                     <div class="col25 left">
@@ -188,7 +194,7 @@
                         sizes="(max-width: 1214px) 100vw, 1214px" />
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="feedbacks">
             <div class="all">
@@ -473,13 +479,13 @@
         }
 
         /* .back {
-                                            position: relative;
-                                            background-size: cover;
-                                            background-position: center;
-                                            color: white;
-                                            overflow: hidden;
+                                                                position: relative;
+                                                                background-size: cover;
+                                                                background-position: center;
+                                                                color: white;
+                                                                overflow: hidden;
 
-                                        } */
+                                                            } */
 
         .black-overlay {
             position: absolute;
@@ -497,6 +503,45 @@
             z-index: 2;
 
             /* text-align: center; */
+        }
+
+        .btn-action {
+            display: none;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-action button {
+            background: linear-gradient(45deg, #F8F4CA, #88613B);
+            /* Gradient màu sắc */
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            /* Hiệu ứng chuyển động mượt mà */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Đổ bóng nhẹ */
+        }
+
+        .btn-action button:hover {
+            transform: scale(1.1);
+            /* Phóng to nút khi hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            /* Đổ bóng mạnh hơn khi hover */
+            background: linear-gradient(45deg, #F8F4CA, #A67C52);
+            /* Đổi màu gradient khi hover */
+        }
+
+        .btn-action button:active {
+            transform: scale(1.05);
+            /* Thu nhỏ nút khi nhấn */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            /* Đổ bóng nhẹ khi nhấn */
         }
     </style>
 @endpush
