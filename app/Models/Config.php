@@ -33,7 +33,8 @@ class Config extends Model
         'headquarters',
 
         'maintenance',
-        'copyright'
+        'copyright',
+        'marquee'
 
     ];
 }

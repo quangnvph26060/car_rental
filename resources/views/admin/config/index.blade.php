@@ -131,6 +131,15 @@
                                                     class="form-control ">
                                             </div>
                                         </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="marquee">Nội dung Marquee</label>
+                                                <input type="text" name="marquee" id="marquee"
+                                                    value="{{ old('marquee', $config->marquee ?? '') }}"
+                                                    class="form-control ">
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div>
