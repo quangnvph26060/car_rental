@@ -44,6 +44,7 @@ class ConfigRequest extends FormRequest
             'advisory' => 'nullable',
             'headquarters' => 'nullable',
             'about_us_title' => 'nullable',
+            'marquee' => 'nullable',
 
         ];
     }

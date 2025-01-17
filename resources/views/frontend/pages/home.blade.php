@@ -4,9 +4,13 @@
 @section('content')
     <main id="home">
 
-        <marquee class="marquee" behavior="" direction="" style="color: #c8a667; margin: 5px; font-weight: 600; display: none">
-            Chào mừng quý khách đã ghé thăm DROMAN - Chúc quý khách năm mới 2025 An Khang Thịnh Vượng
-        </marquee>
+        @if (!empty($configWebsite->marquee))
+            <marquee class="marquee" behavior="" direction=""
+                style="color: #c8a667; margin: 5px; font-weight: 600; display: none">
+                {{ $configWebsite->marquee }}
+            </marquee>
+        @endif
+
 
         <div class="banner">
             <ul class="banner-slider">
@@ -484,13 +488,13 @@
         }
 
         /* .back {
-                                                                                    position: relative;
-                                                                                    background-size: cover;
-                                                                                    background-position: center;
-                                                                                    color: white;
-                                                                                    overflow: hidden;
+                                                                                                position: relative;
+                                                                                                background-size: cover;
+                                                                                                background-position: center;
+                                                                                                color: white;
+                                                                                                overflow: hidden;
 
-                                                                                } */
+                                                                                            } */
 
         .black-overlay {
             position: absolute;
