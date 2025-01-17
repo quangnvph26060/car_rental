@@ -4,7 +4,7 @@
 @section('content')
     <main id="home">
 
-        <marquee class="marquee" behavior="" direction="" style="color: #e0d234; margin: 5px; font-weight: 600; display: none">
+        <marquee class="marquee" behavior="" direction="" style="color: #c8a667; margin: 5px; font-weight: 600; display: none">
             Chào mừng quý khách đã ghé thăm DROMAN - Chúc quý khách năm mới 2025 An Khang Thịnh Vượng
         </marquee>
 
