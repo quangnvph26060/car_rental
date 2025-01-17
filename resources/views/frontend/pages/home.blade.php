@@ -3,6 +3,11 @@
 
 @section('content')
     <main id="home">
+
+        <marquee class="marquee" behavior="" direction="" style="color: #e0d234; margin: 5px; font-weight: 600; display: none">
+            Chào mừng quý khách đã ghé thăm DROMAN - Chúc quý khách năm mới 2025 An Khang Thịnh Vượng
+        </marquee>
+
         <div class="banner">
             <ul class="banner-slider">
                 <li class="banner__bg"
@@ -21,7 +26,7 @@
         <div class="advantages">
             <div class="all">
                 <div class="btn-action">
-                    <a href="{{ route('frontend.service', 'xe-hang-sang') }}"><button>Xe Siêu Sang</button></a>
+                    <a href="{{ route('frontend.service', 'xe-sieu-sang') }}"><button>Xe Siêu Sang</button></a>
 
                     <a href="{{ route('frontend.service', 'xe-mui-tran') }}"> <button>Xe Mui Trần</button></a>
 
@@ -479,13 +484,13 @@
         }
 
         /* .back {
-                                                                position: relative;
-                                                                background-size: cover;
-                                                                background-position: center;
-                                                                color: white;
-                                                                overflow: hidden;
+                                                                                    position: relative;
+                                                                                    background-size: cover;
+                                                                                    background-position: center;
+                                                                                    color: white;
+                                                                                    overflow: hidden;
 
-                                                            } */
+                                                                                } */
 
         .black-overlay {
             position: absolute;

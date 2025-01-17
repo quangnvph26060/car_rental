@@ -491,6 +491,9 @@ textarea.f-control {
     }
 }
 @media screen and (max-width: 780px) {
+    .marquee {
+        display: block !important;
+    }
     .list-adv.clear {
         display: none !important;
     }
